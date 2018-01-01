@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require('../db');
 mongoose.Promise = global.Promise;
 
 const Schema = mongoose.Schema;
@@ -13,9 +13,16 @@ const userSchema = new Schema({
 const User = mongoose.model('user', userSchema);
 
 // TODO: create user method
-User.createUser = () => {
+User.createUser = async (body) => {
 	console.log('hi, create user!');
-	return {data: 'random data object'};
+	const user = new User({
+		username: body.username,
+		password: body.password,
+		label: body.label,
+		address: body.address
+	})
+	await user.save();
+	return user;
 };
 
 // TODO: check user method
