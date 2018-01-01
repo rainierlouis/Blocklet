@@ -2,8 +2,8 @@ const User = require('../model/userSchema');
 
 const checkUser = async (ctx) => {
   try {
-    const user = await User.checkUser();
-    ctx.send(user);
+    ctx.response.body = await User.checkUser();
+    await ctx.send(ctx.response.body);
   } catch (e) { }
 }
 

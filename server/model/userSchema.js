@@ -13,10 +13,16 @@ const userSchema = new Schema({
 const User = mongoose.model('user', userSchema);
 
 // TODO: create user method
-// User.createUser = () => {}
+User.createUser = () => {
+	console.log('hi, create user!');
+	return {data: 'random data object'};
+};
 
 // TODO: check user method
-// User.checkUser = () => {}
+User.checkUser = () => {
+	console.log('hi, check user!');
+	return {data: 'random data object'};
+};
 
 module.exports = User;
 
