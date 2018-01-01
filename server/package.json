@@ -8,6 +8,7 @@
     "koa-bodyparser": "^4.2.0",
     "koa-router": "^7.3.0",
     "koa2-cors": "^2.0.5",
-    "mongoose": "^5.0.0-rc0"
+    "mongoose": "^5.0.0-rc0",
+    "nodemon": "^1.14.7"
   }
 }
