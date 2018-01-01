@@ -26,26 +26,13 @@ User.createUser = async (body) => {
 };
 
 // TODO: check user method
-User.checkUser = () => {
-	console.log('hi, check user!');
-	return {data: 'random data object'};
-};
+User.checkUser = async (username, password) => {
+	const userList = await User.find({}, (err, data) => data);
+	const user = await userList.filter(entry => {
+		return entry.username === username && entry.password === password ?
+		entry : false;
+	})
+	return user;
+}
 
 module.exports = User;
-
-// Card.getCards = () => {
-//   return Card.find({}, (err, data) => {
-//     return data;
-//   })
-// }
-//
-// Card.newCard = async (body) => {
-//   console.log(body);
-//   const card = new Card({
-//     title: body.title,
-//     date: body.date,
-//     code: body.code
-//   })
-//   await card.save();
-//   return card;
-// }

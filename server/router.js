@@ -4,7 +4,7 @@ const Router = require('koa-router'),
 const UserController = require('./controllers/user.controller');
 
 router
-  .get('/user', UserController.checkUser)
+  .post('/check', UserController.checkUser)
   .post('/user', UserController.newUser);
 
   module.exports = router;
