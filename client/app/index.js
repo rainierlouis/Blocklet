@@ -9,6 +9,9 @@ EStyleSheet.build({
 	$darkGrey: '#777777',
 	$border: '#3d354f',
 
+	$plusPerc: '#5ec16a',
+	$minusPerc: '#bf3b3b',
+
 	$white: '#FFF',
 
 })
