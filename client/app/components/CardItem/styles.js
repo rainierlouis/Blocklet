@@ -2,50 +2,30 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 
 export default EStyleSheet.create({
 	container: {
-		marginTop: 20,
-		justifyContent: 'center',
-	},
-	image: {
-		height: 70,
-		width: 70,
-	},
-	upperRow: {
+		marginTop: 15,
 		flexDirection: 'row',
-		alignItems: 'center',
-		paddingVertical: 10,
 	},
-	lowerRow: {
+	twentyFourContainer: {
 		flexDirection: 'row',
-		alignItems: 'center',
-		justifyContent: 'space-around',
-		paddingVertical: 10,
-	},
-	divider: {
-		backgroundColor: '$white',
-		width: 150,
-		alignSelf: 'flex-end',
-	},
-	symbol: {
-		color: '$white',
-		fontWeight: '800',
-		paddingLeft: 20,
-	},
-	currency: {
-		color: '$white',
-	},
-	amountRate: {
-		color: '$white',
+
 	},
 	twentyFour: {
 		color: '$white',
+		padding: 10,
 	},
 	twentyFourPerc: {
-		color: '$minusPerc',
+		color: '$minus',
+		padding: 10,
+	},
+	sevenContainer: {
+		flexDirection: 'row',
 	},
 	seven: {
 		color: '$white',
+		padding: 10,
 	},
 	sevenPerc: {
-		color: '$plusPerc',
+		color: '$plus',
+		padding: 10,
 	},
 })
