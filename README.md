@@ -2,7 +2,7 @@
 An all-in-one cryptocurrency wallet, built for mobile.
 
 ## Learning Objectives
-A solo project that is a culmination of my personal growth and learning as a full stack engineer at CodeWorks. Bringing together what I have learnt so far in building a full stack application from back to front and all the in-betweens. Expected to produce a working product within a 7 day deadline.
+A solo project that is a culmination of my personal growth and learning as a full stack engineer at CodeWorks. Bringing together what I have learnt so far in building a full stack application from back to front and all the in-betweens. Expected to produce a working application within a 7 day deadline.
 
 ## Usage
 *WIP*
@@ -11,18 +11,18 @@ A solo project that is a culmination of my personal growth and learning as a ful
 *WIP*
 
 ## Technology Stack
-Front:
+**Front:**
 - React Native
+- React Native Elements
 - React Navigation
 - Redux/Redux Saga
-- Shoutem ui
 - Expo
 
-Back:
+**Back:**
 - Node
 - Koa
 - MongoDB/Mongoose
 
-Misc:
+**Misc:**
 - Block.io API
 - Coinbase API
