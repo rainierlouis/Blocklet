@@ -14,10 +14,14 @@ class MenuList extends Component {
 
 	static propTypes = {
 		onPress: PropTypes.func,
+		navigation: PropTypes.object,
+		// dispatch: PropTypes.func,
 	}
 
 	handlePress = (item) => {
-		console.log(`transfer to screen: ${item}`);
+		item === 'Hub' ?
+		this.props.navigation.goBack(null) :
+		this.props.navigation.navigate(`${item}`);
 	}
 
 // RENDER ========================

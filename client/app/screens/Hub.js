@@ -21,32 +21,32 @@ const TEMP_7 = +1.44;
 
 const TEMP_LIST = [
 	{
-		title: '+0.002',
-		subtitle: 'Ross S.',
+		title: '+0.002 ฿T',
+		subtitle: 'confirmations: 11',
 		icon: 'keyboard-arrow-right',
 		style: {color: '#5ec16a'},
 	},
 	{
-		title: '-0.00041',
-		subtitle: 'Chandler B.',
+		title: '-0.00041 ฿T',
+		subtitle: 'confirmations: 82',
 		icon: 'keyboard-arrow-left',
 		style: {color: '#bf3b3b'},
 	},
 	{
-		title: '-0.0031',
-		subtitle: 'Rachel L.',
+		title: '-0.0031 ฿T',
+		subtitle: 'confirmations: 99',
 		icon: 'keyboard-arrow-left',
 		style: {color: '#bf3b3b'},
 	},
 	{
-		title: '+0.00019',
-		subtitle: 'Monica R.',
+		title: '+0.00019 ฿T',
+		subtitle: 'confirmations: 194',
 		icon: 'keyboard-arrow-right',
 		style: {color: '#5ec16a'},
 	},
 	{
-		title: '+0.002',
-		subtitle: 'Joey D.',
+		title: '+0.002 ฿T',
+		subtitle: 'confirmations: 194',
 		icon: 'keyboard-arrow-right',
 		style: {color: '#5ec16a'},
 	}
