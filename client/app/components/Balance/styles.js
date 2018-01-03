@@ -3,7 +3,7 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 export default EStyleSheet.create({
 	container: {
 		justifyContent: 'space-between',
-
+		marginTop: 50,
 	},
 	balanceTextTitle: {
 		color: '$darkGrey',
