@@ -2,7 +2,7 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 
 export default EStyleSheet.create({
 	container: {
-		marginTop: 15,
+		marginTop: 5,
 		flexDirection: 'row',
 	},
 	twentyFourContainer: {

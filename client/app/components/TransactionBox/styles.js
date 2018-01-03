@@ -6,7 +6,7 @@ export default EStyleSheet.create({
 		flexDirection: 'column',
 		justifyContent: 'center',
 		alignItems: 'center',
-		marginTop: 80,
+		marginTop: 45,
 
 	},
 	titleText: {

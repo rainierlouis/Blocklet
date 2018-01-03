@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, StatusBar } from 'react-native';
+import PropTypes from 'prop-types';
 
 import { Container } from '../components/Container';
 import { Balance } from '../components/Balance';
@@ -7,6 +8,7 @@ import { HeaderTop } from '../components/HeaderTop';
 import { CardItem } from '../components/CardItem';
 import { LastConverted } from '../components/TextItem';
 import { TransactionBox } from '../components/TransactionBox';
+import { TransferButton, PersonalButton } from '../components/ButtonItem';
 
 const TEMP_BASE = 'BTC';
 const TEMP_QUOTE = 'EUR';
@@ -50,10 +52,22 @@ const TEMP_LIST = [
 	}
 ]
 
-export default () => (
+class Hub extends Component {
+
+	static propTypes = {
+		navigation: PropTypes.object,
+		// dispatch: PropTypes.func,
+	}
+
+	pressMenu = () => {
+		this.props.navigation.navigate('MenuList');
+	}
+
+	render() {
+		return (
 	<Container>
 		<StatusBar translucent={false} barStyle='light-content' />
-		<HeaderTop />
+		<HeaderTop onPress={this.pressMenu}/>
 		<Balance
 			balanceAmount={TEMP_BALANCE}
 		/>
@@ -67,8 +81,14 @@ export default () => (
 			twentyFourPerc={TEMP_24}
 			sevenPerc={TEMP_7}
 		/>
+		<TransferButton />
+		<PersonalButton />
 		<TransactionBox
 			list={TEMP_LIST}
 		/>
 	</Container>
 )
+}
+}
+
+export default Hub;
