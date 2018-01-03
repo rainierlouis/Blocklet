@@ -14,7 +14,7 @@ A solo project that is a culmination of my personal growth and learning as a ful
 **Front:**
 - React Native / Elements / Animatable
 - React Navigation
-- Redux/Redux Saga
+- Redux / Redux Saga
 - Expo
 
 **Back:**
