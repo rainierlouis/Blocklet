@@ -4,7 +4,6 @@ import { Button } from 'react-native-elements';
 import PropTypes from 'prop-types';
 import * as Animatable from 'react-native-animatable';
 
-
 import styles from './styles';
 
 const LoginButton = ({ onPress }) => (

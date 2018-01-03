@@ -22,6 +22,45 @@ export default EStyleSheet.create({
 		marginLeft: 20,
 		backgroundColor: '$border',
 		flex: 1,
-		height: EStyleSheet.hairlineWidth,
+		height: 2,
 	},
+	transactionContainer: {
+		width: windowWidth,
+		flexDirection: 'row',
+		alignItems: 'center',
+		paddingLeft: 40,
+		paddingVertical: 20,
+	},
+	upper: {
+		flexDirection: 'column',
+	},
+	middle: {
+
+	},
+	lower: {
+
+	},
+	amount: {
+		color: '$white',
+	},
+	sender: {
+		color: '$darkGrey',
+		fontSize: 10,
+	},
+	confirmations: {
+		color: '$white',
+	},
+	confidence: {
+		color: '$white',
+	},
+	iconPlus: {
+		fontSize: 20,
+		paddingHorizontal: 10,
+		color: '$plus',
+	},
+	iconMinus: {
+		fontSize: 20,
+		paddingHorizontal: 10,
+		color: '$minus',
+		},
 });
