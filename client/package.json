@@ -23,12 +23,12 @@
     "moment": "^2.20.1",
     "react": "16.0.0",
     "react-native": "0.50.3",
+    "react-native-animatable": "^1.2.4",
     "react-native-elements": "^0.18.5",
     "react-native-extended-stylesheet": "^0.8.0",
     "react-native-svg": "5.5.1",
     "react-navigation": "^1.0.0-beta.22",
     "react-redux": "^5.0.6",
-    "redux": "^3.7.2",
-    "victory-native": "^0.16.5"
+    "redux": "^3.7.2"
   }
 }
