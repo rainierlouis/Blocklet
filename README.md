@@ -12,8 +12,7 @@ A solo project that is a culmination of my personal growth and learning as a ful
 
 ## Technology Stack
 **Front:**
-- React Native
-- React Native Elements
+- React Native / Elements / Animatable
 - React Navigation
 - Redux/Redux Saga
 - Expo
@@ -21,8 +20,9 @@ A solo project that is a culmination of my personal growth and learning as a ful
 **Back:**
 - Node
 - Koa
-- MongoDB/Mongoose
+- MongoDB / Mongoose
 
 **Misc:**
 - Block.io API
 - Coinbase API
+- CoinMarketCap API
