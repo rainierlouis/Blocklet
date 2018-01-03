@@ -3,6 +3,17 @@ import { StackNavigator } from 'react-navigation';
 import Hub from '../screens/Hub';
 import MenuList from '../screens/MenuList';
 import Login from '../screens/Login';
+import Loading from '../screens/Loading';
+import Transactions from '../screens/Transactions';
+
+// const LoadingStack = StackNavigator({
+// 	Loading: {
+// 		screen: Loading,
+// 	},
+// 	Hub: {
+// 		screen: HomeStack,
+// 	}
+// })
 
 const HomeStack = StackNavigator({
 	Hub: {
@@ -15,11 +26,20 @@ const HomeStack = StackNavigator({
 		screen: MenuList,
 		navigationOptions: {
 			headerTitle: 'Menu',
-			headerStyle: {backgroundColor: '#777777'},
+			headerStyle: {backgroundColor: '#43314f'},
 			headerTitleStyle: {color: 'white'},
 			headerTintColor: 'white',
 		}
 	},
+	Transactions: {
+		screen: Transactions,
+		navigationOptions: {
+			headerTitle: 'Transactions',
+			headerStyle: {backgroundColor: '#43314f'},
+			headerTitleStyle: {color: 'white'},
+			headerTintColor: 'white',
+		}
+	}
 })
 
 export default StackNavigator({
@@ -36,37 +56,3 @@ export default StackNavigator({
 	mode: 'modal',
 	headerMode: 'none',
 })
-
-
-
-// const HomeStack = StackNavigator({
-// 	Home: {
-// 		screen: Home,
-// 		navigationOptions: {
-// 			header: () => null,
-// }
-// 	},
-// 	Options: {
-// 		screen: Options,
-// 		navigationOptions: {
-// 			headerTitle: 'Options',
-// 		}
-// 	},
-// 	Themes: {
-// 		screen: Themes,
-// 		navigationOptions: {
-// 			headerTitle: 'Themes',
-// 		}
-// 	},
-// }, {
-// 	headerMode: 'screen',
-// })
-//
-// const CurrencyListStack = StackNavigator({
-// 	CurrencyList: {
-// 		screen: CurrencyList,
-// 		navigationOptions: ({ navigation }) => ({
-// 			headerTitle: navigation.state.params.title,
-// 		})
-// 	}
-// })
