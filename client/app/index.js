@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import EStyleSheet from 'react-native-extended-stylesheet';
+import { Font } from 'expo';
 
 import Hub from './screens/Hub';
 import Login from './screens/Login';
@@ -23,8 +24,36 @@ EStyleSheet.build({
  $black: '#000'
 });
 
-export default () => (
- <Provider store={store}>
-  <Navigator onNavigationStateChange={null} />
- </Provider>
-);
+export default class App extends Component {
+ constructor() {
+  super();
+  this.state = {
+   isReady: false
+  };
+ }
+
+ componentWillMount() {
+  this.loadFonts();
+ }
+
+ async loadFonts() {
+  await Expo.Font.loadAsync({
+   pacifico: require('./assets/fonts/Pacifico-Regular.ttf'),
+   judson: require('./assets/fonts/Judson-Regular.ttf'),
+   gilda: require('./assets/fonts/GildaDisplay-Regular.ttf'),
+   quicksand: require('./assets/fonts/Quicksand-Regular.ttf')
+  });
+  this.setState({ isReady: true });
+ }
+
+ render() {
+  if (!this.state.isReady) {
+   return <Expo.AppLoading />;
+  }
+  return (
+   <Provider store={store}>
+    <Navigator onNavigationStateChange={null} />
+   </Provider>
+  );
+ }
+}
