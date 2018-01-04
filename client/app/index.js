@@ -7,18 +7,24 @@ import MenuList from './screens/MenuList';
 
 import Navigator from './config/routes';
 
+import { Provider } from 'react-redux';
+import store from './config/store';
+
 EStyleSheet.build({
-	$primaryPurple: '#181337',
-	$darkGrey: '#777777',
-	$border: '#3d354f',
-	$user: '#5394bc',
+ $primaryPurple: '#181337',
+ $darkGrey: '#777777',
+ $border: '#3d354f',
+ $user: '#5394bc',
 
-	$plus: '#5ec16a',
-	$minus: '#bf3b3b',
+ $plus: '#5ec16a',
+ $minus: '#bf3b3b',
 
-	$white: '#FFF',
-	$black: '#000',
+ $white: '#FFF',
+ $black: '#000'
+});
 
-})
-
-export default () => <Navigator onNavigationStateChange={null}/>;
+export default () => (
+ <Provider store={store}>
+  <Navigator onNavigationStateChange={null} />
+ </Provider>
+);
