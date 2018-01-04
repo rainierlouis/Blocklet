@@ -10,85 +10,124 @@ import { LastConverted } from '../components/TextItem';
 import { TransactionBox } from '../components/TransactionBox';
 import { TransferButton, PersonalButton } from '../components/ButtonItem';
 
-const TEMP_BASE = 'BTC';
-const TEMP_QUOTE = 'EUR';
-const TEMP_CONV = 12212.06;
-const TEMP_DATE = new Date();
-const TEMP_BALANCE = 0.001361;
+// API fetch
+import { fetchBalance, fetchBtcRate, fetchTickerRate } from '../data/fetchData';
 
-const TEMP_24 = -2.27;
-const TEMP_7 = +1.44;
+// REDUX
+import { connect } from 'react-redux';
+
+TEMP_ADDRESS = '2N5wGeBMZZeAVozrK8aPRFNCzFBMxjsfc5p';
 
 const TEMP_LIST = [
-	{
-		title: '+0.002 ฿T',
-		subtitle: 'confirmations: 11',
-		icon: 'keyboard-arrow-right',
-		style: {color: '#5ec16a'},
-	},
-	{
-		title: '-0.00041 ฿T',
-		subtitle: 'confirmations: 82',
-		icon: 'keyboard-arrow-left',
-		style: {color: '#bf3b3b'},
-	},
-	{
-		title: '-0.0031 ฿T',
-		subtitle: 'confirmations: 99',
-		icon: 'keyboard-arrow-left',
-		style: {color: '#bf3b3b'},
-	},
-	{
-		title: '+0.00019 ฿T',
-		subtitle: 'confirmations: 194',
-		icon: 'keyboard-arrow-right',
-		style: {color: '#5ec16a'},
-	},
-	{
-		title: '+0.002 ฿T',
-		subtitle: 'confirmations: 194',
-		icon: 'keyboard-arrow-right',
-		style: {color: '#5ec16a'},
-	}
-]
+ {
+  title: '+0.002 ฿T',
+  subtitle: 'confirmations: 11',
+  icon: 'keyboard-arrow-right',
+  style: { color: '#5ec16a' }
+ },
+ {
+  title: '-0.00041 ฿T',
+  subtitle: 'confirmations: 82',
+  icon: 'keyboard-arrow-left',
+  style: { color: '#bf3b3b' }
+ },
+ {
+  title: '-0.0031 ฿T',
+  subtitle: 'confirmations: 99',
+  icon: 'keyboard-arrow-left',
+  style: { color: '#bf3b3b' }
+ },
+ {
+  title: '+0.00019 ฿T',
+  subtitle: 'confirmations: 194',
+  icon: 'keyboard-arrow-right',
+  style: { color: '#5ec16a' }
+ },
+ {
+  title: '+0.002 ฿T',
+  subtitle: 'confirmations: 194',
+  icon: 'keyboard-arrow-right',
+  style: { color: '#5ec16a' }
+ }
+];
 
 class Hub extends Component {
+ constructor(props) {
+  super(props);
+  fetchBalance(TEMP_ADDRESS).then(data => this.props.addBalance(data));
+  fetchBtcRate().then(data => this.props.addBtcRate(data));
+ }
 
-	static propTypes = {
-		navigation: PropTypes.object,
-		// dispatch: PropTypes.func,
-	}
+ componentDidMount() {
+  fetchTickerRate(this.props.baseCurrency).then(data =>
+   this.props.addTickers(data)
+  );
+ }
 
-	pressMenu = () => {
-		this.props.navigation.navigate('MenuList');
-	}
+ static propTypes = {
+  navigation: PropTypes.object,
+  dispatch: PropTypes.func
+ };
 
-	render() {
-		return (
-	<Container>
-		<StatusBar translucent={false} barStyle='light-content' />
-		<HeaderTop onPress={this.pressMenu}/>
-		<Balance
-			balanceAmount={TEMP_BALANCE}
-		/>
-		<LastConverted
-			baseCurrency={TEMP_BASE}
-			quoteCurrency={TEMP_QUOTE}
-			conversionRate={TEMP_CONV}
-			currentDate={TEMP_DATE}
-		/>
-		<CardItem
-			twentyFourPerc={TEMP_24}
-			sevenPerc={TEMP_7}
-		/>
-		<TransferButton />
-		<PersonalButton />
-		<TransactionBox
-			list={TEMP_LIST}
-		/>
-	</Container>
-)
+ pressMenu = () => {
+  this.props.navigation.navigate('MenuList');
+ };
+
+ // RENDER ===================
+
+ render() {
+  return (
+   <Container>
+    <StatusBar translucent={false} barStyle="light-content" />
+    <HeaderTop onPress={this.pressMenu} />
+    <Balance balanceAmount={+this.props.balance} />
+    <LastConverted
+     baseCurrency={this.props.baseCurrency}
+     quoteCurrency={this.props.quoteCurrency}
+     conversionRate={this.props.conversionRate}
+     currentDate={this.props.date}
+    />
+    <CardItem twentyFourPerc={this.props.rate24} sevenPerc={this.props.rate7} />
+    <TransferButton />
+    <PersonalButton />
+    <TransactionBox list={TEMP_LIST} />
+   </Container>
+  );
+ }
 }
-}
 
-export default Hub;
+const mapStateToProps = state => {
+ return {
+  baseCurrency: state.reducer.baseCurrency,
+  quoteCurrency: state.reducer.quoteCurrency,
+  balance: state.reducer.balance,
+  conversionRate: state.reducer.conversionRate,
+  date: state.reducer.date,
+  rate24: state.reducer.rate24,
+  rate7: state.reducer.rate7
+ };
+};
+
+const mapDispatchToProps = dispatch => ({
+ addTickers: tickerData =>
+  dispatch({
+   type: 'ADD_TICKERS',
+   tickerData
+  }),
+ addBtcRate: conversionRate =>
+  dispatch({
+   type: 'ADD_BTC_RATE',
+   conversionRate
+  }),
+ addBalance: balance =>
+  dispatch({
+   type: 'ADD_BALANCE',
+   balance
+  }),
+ getInitial: () =>
+  dispatch({
+   type: 'GET_INITIAL'
+  })
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Hub);
