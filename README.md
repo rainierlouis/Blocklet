@@ -20,7 +20,7 @@ _WIP_
 
 * React Native / Elements / Animatable
 * React Navigation
-* Redux / Redux Saga
+* Redux
 * Expo
 
 **Back:**
@@ -32,5 +32,4 @@ _WIP_
 **Misc:**
 
 * Block.io API
-* Coinbase API
 * CoinMarketCap API
