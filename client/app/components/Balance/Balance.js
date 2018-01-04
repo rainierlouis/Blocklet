@@ -15,7 +15,7 @@ const Balance = ({ balanceAmount }) => (
    {balanceAmount}
    <Animatable.Image
     animation="rotate"
-    iterationCount={2}
+    iterationCount="infinite"
     style={styles.image}
     source={{ uri: images.BTC }}
     resizeMode="contain"
