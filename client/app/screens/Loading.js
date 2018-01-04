@@ -1,34 +1,35 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
+import PropTypes from 'prop-types';
 
 import Spinner from 'react-native-loading-spinner-overlay';
+import { Container } from '../components/Container';
 
 class Loading extends Component {
+ constructor(props) {
+  super(props);
+  this.state = {
+   visible: true
+  };
+ }
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      visible: false
-    };
-  }
+ static propTypes = {
+  navigation: PropTypes.object
+ };
 
-  /* eslint react/no-did-mount-set-state: 0 */
-  componentDidMount() {
-    setInterval(() => {
-      this.setState({
-        visible: !this.state.visible
-      });
-    }, 3000);
-  }
+ componentDidMount() {
+  setTimeout(() => {
+   this.setState({ visible: false });
+  }, 4000);
+ }
 
-  render() {
-				
-    return (
-      <View style={{ flex: 1 }}>
-        <Spinner visible={this.state.visible} textContent={"Loading..."} textStyle={{color: '#FFF'}} />
-      </View>
-    );
-  }
+ render() {
+  return (
+   <Container style={{ height: 500, width: 250, backgroundColor: '#FFF' }}>
+    <Spinner visible={this.state.visible} textStyle={{ color: '#FFF' }} />
+   </Container>
+  );
+ }
 }
 
 export default Loading;

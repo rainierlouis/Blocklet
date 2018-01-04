@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { View, StatusBar } from 'react-native';
+import { View, StatusBar, Dimensions, Image } from 'react-native';
 import PropTypes from 'prop-types';
+import Spinner from 'react-native-loading-spinner-overlay';
 
 import { Container } from '../components/Container';
 import { Balance } from '../components/Balance';
@@ -16,7 +17,9 @@ import { fetchBalance, fetchBtcRate, fetchTickerRate } from '../data/fetchData';
 // REDUX
 import { connect } from 'react-redux';
 
-TEMP_ADDRESS = '2N5wGeBMZZeAVozrK8aPRFNCzFBMxjsfc5p';
+const remote = 'https://i.imgur.com/6q7wytm.jpg';
+
+const TEMP_ADDRESS = '2N5wGeBMZZeAVozrK8aPRFNCzFBMxjsfc5p';
 
 const TEMP_LIST = [
  {
@@ -54,6 +57,9 @@ const TEMP_LIST = [
 class Hub extends Component {
  constructor(props) {
   super(props);
+  this.state = {
+   loaded: false
+  };
   fetchBalance(TEMP_ADDRESS).then(data => this.props.addBalance(data));
   fetchBtcRate().then(data => this.props.addBtcRate(data));
  }
@@ -62,6 +68,9 @@ class Hub extends Component {
   fetchTickerRate(this.props.baseCurrency).then(data =>
    this.props.addTickers(data)
   );
+  setTimeout(() => {
+   this.setState({ loaded: true });
+  }, 2000);
  }
 
  static propTypes = {
@@ -78,19 +87,50 @@ class Hub extends Component {
  render() {
   return (
    <Container>
-    <StatusBar translucent={false} barStyle="light-content" />
-    <HeaderTop onPress={this.pressMenu} />
-    <Balance balanceAmount={+this.props.balance} />
-    <LastConverted
-     baseCurrency={this.props.baseCurrency}
-     quoteCurrency={this.props.quoteCurrency}
-     conversionRate={this.props.conversionRate}
-     currentDate={this.props.date}
-    />
-    <CardItem twentyFourPerc={this.props.rate24} sevenPerc={this.props.rate7} />
-    <TransferButton />
-    <PersonalButton />
-    <TransactionBox list={TEMP_LIST} />
+    {this.state.loaded === true ? <HeaderTop onPress={this.pressMenu} /> : null}
+    {this.state.loaded === true ? (
+     <Container>
+      <StatusBar translucent={false} barStyle="light-content" />
+      <Balance balanceAmount={+this.props.balance} />
+      <LastConverted
+       baseCurrency={this.props.baseCurrency}
+       quoteCurrency={this.props.quoteCurrency}
+       conversionRate={this.props.conversionRate}
+       currentDate={this.props.date}
+      />
+      <CardItem
+       twentyFourPerc={this.props.rate24}
+       sevenPerc={this.props.rate7}
+      />
+      <TransferButton />
+      <PersonalButton />
+      <TransactionBox list={TEMP_LIST} />
+     </Container>
+    ) : (
+     <View
+      style={{
+       flex: 1
+      }}
+     >
+      <Image
+       style={{
+        flex: 1,
+        resizeMode: 'cover',
+        width: undefined,
+        height: undefined,
+        backgroundColor: '#889DAD'
+       }}
+       source={{ uri: remote }}
+      />
+
+      <Spinner
+       visible={true}
+       animation="slide"
+       size="large"
+       textStyle={{ color: 'white' }}
+      />
+     </View>
+    )}
    </Container>
   );
  }
@@ -98,6 +138,7 @@ class Hub extends Component {
 
 const mapStateToProps = state => {
  return {
+  loaded: state.reducer.loaded,
   baseCurrency: state.reducer.baseCurrency,
   quoteCurrency: state.reducer.quoteCurrency,
   balance: state.reducer.balance,
@@ -123,10 +164,6 @@ const mapDispatchToProps = dispatch => ({
   dispatch({
    type: 'ADD_BALANCE',
    balance
-  }),
- getInitial: () =>
-  dispatch({
-   type: 'GET_INITIAL'
   })
 });
 
