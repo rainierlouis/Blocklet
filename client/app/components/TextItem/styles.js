@@ -17,10 +17,23 @@ export default EStyleSheet.create({
   fontSize: 70,
   backgroundColor: 'transparent',
   color: 'black',
-
   fontFamily: 'judson'
   // textShadowOffset: { width: 2, height: 5 },
   // textShadowColor: '$black',
   // textShadowRadius: 3
+ },
+ createContainer: {
+  flexDirection: 'row',
+  marginTop: 50
+ },
+ accountText: {
+  backgroundColor: 'transparent',
+  color: 'white'
+ },
+ createText: {
+  backgroundColor: 'transparent',
+  color: '#ddb500',
+  fontWeight: 'bold',
+  marginLeft: 5
  }
 });

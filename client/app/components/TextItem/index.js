@@ -1,5 +1,6 @@
 import LastConverted from './LastConverted';
 import LoginTitle from './LoginTitle';
+import CreateAccount from './CreateAccount';
 import styles from './styles';
 
-export { LastConverted, LoginTitle, styles };
+export { CreateAccount, LastConverted, LoginTitle, styles };
