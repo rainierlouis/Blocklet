@@ -66,7 +66,6 @@ class Hub extends Component {
  // RENDER ===================
 
  render() {
-  console.log(this.props.lastTrans);
   return (
    <Container>
     {this.state.loaded === true ? <HeaderTop onPress={this.pressMenu} /> : null}
@@ -133,10 +132,10 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
- addTickers: tickerData =>
+ addTickers: data =>
   dispatch({
    type: 'ADD_TICKERS',
-   tickerData
+   data
   }),
  addBtcRate: conversionRate =>
   dispatch({
