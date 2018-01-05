@@ -12,7 +12,13 @@ import { TransactionBox } from '../components/TransactionBox';
 import { TransferButton, PersonalButton } from '../components/ButtonItem';
 
 // API fetch
-import { fetchBalance, fetchBtcRate, fetchTickerRate } from '../data/fetchData';
+import {
+ fetchBalance,
+ fetchBtcRate,
+ fetchTickerRate,
+ fetchSent,
+ fetchReceived
+} from '../data/fetchData';
 
 // REDUX
 import { connect } from 'react-redux';
@@ -21,56 +27,31 @@ const remote = 'https://i.imgur.com/6q7wytm.jpg';
 
 const TEMP_ADDRESS = '2N5wGeBMZZeAVozrK8aPRFNCzFBMxjsfc5p';
 
-const TEMP_LIST = [
- {
-  title: '+0.002 ฿T',
-  subtitle: 'confirmations: 11',
-  icon: 'keyboard-arrow-right',
-  style: { color: '#5ec16a' }
- },
- {
-  title: '-0.00041 ฿T',
-  subtitle: 'confirmations: 82',
-  icon: 'keyboard-arrow-left',
-  style: { color: '#bf3b3b' }
- },
- {
-  title: '-0.0031 ฿T',
-  subtitle: 'confirmations: 99',
-  icon: 'keyboard-arrow-left',
-  style: { color: '#bf3b3b' }
- },
- {
-  title: '+0.00019 ฿T',
-  subtitle: 'confirmations: 194',
-  icon: 'keyboard-arrow-right',
-  style: { color: '#5ec16a' }
- },
- {
-  title: '+0.002 ฿T',
-  subtitle: 'confirmations: 194',
-  icon: 'keyboard-arrow-right',
-  style: { color: '#5ec16a' }
- }
-];
-
 class Hub extends Component {
  constructor(props) {
   super(props);
   this.state = {
    loaded: false
   };
+  // get balance
   fetchBalance(TEMP_ADDRESS).then(data => this.props.addBalance(data));
+  // get btc rate
   fetchBtcRate().then(data => this.props.addBtcRate(data));
+  // get sent trans
+  fetchSent(TEMP_ADDRESS).then(data => this.props.addSentTransactions(data));
+  // get received trans
+  fetchReceived(TEMP_ADDRESS).then(data => this.props.addRecTransactions(data));
  }
 
  componentDidMount() {
+  // get ticker rate %
   fetchTickerRate(this.props.baseCurrency).then(data =>
    this.props.addTickers(data)
   );
+  // get last 5 trans
   setTimeout(() => {
    this.setState({ loaded: true });
-  }, 2000);
+  }, 3000);
  }
 
  static propTypes = {
@@ -85,6 +66,7 @@ class Hub extends Component {
  // RENDER ===================
 
  render() {
+  console.log(this.props.lastTrans);
   return (
    <Container>
     {this.state.loaded === true ? <HeaderTop onPress={this.pressMenu} /> : null}
@@ -104,7 +86,7 @@ class Hub extends Component {
       />
       <TransferButton />
       <PersonalButton />
-      <TransactionBox list={TEMP_LIST} />
+      <TransactionBox list={this.props.lastTrans} />
      </Container>
     ) : (
      <View
@@ -138,14 +120,15 @@ class Hub extends Component {
 
 const mapStateToProps = state => {
  return {
-  loaded: state.reducer.loaded,
-  baseCurrency: state.reducer.baseCurrency,
-  quoteCurrency: state.reducer.quoteCurrency,
-  balance: state.reducer.balance,
-  conversionRate: state.reducer.conversionRate,
-  date: state.reducer.date,
-  rate24: state.reducer.rate24,
-  rate7: state.reducer.rate7
+  loaded: state.hubReducers.loaded,
+  baseCurrency: state.hubReducers.baseCurrency,
+  quoteCurrency: state.hubReducers.quoteCurrency,
+  balance: state.hubReducers.balance,
+  conversionRate: state.hubReducers.conversionRate,
+  date: state.hubReducers.date,
+  rate24: state.hubReducers.rate24,
+  rate7: state.hubReducers.rate7,
+  lastTrans: state.hubReducers.lastTrans
  };
 };
 
@@ -164,6 +147,16 @@ const mapDispatchToProps = dispatch => ({
   dispatch({
    type: 'ADD_BALANCE',
    balance
+  }),
+ addSentTransactions: sentData =>
+  dispatch({
+   type: 'ADD_SENT_TRANS',
+   sentData
+  }),
+ addRecTransactions: recData =>
+  dispatch({
+   type: 'ADD_REC_TRANS',
+   recData
   })
 });
 

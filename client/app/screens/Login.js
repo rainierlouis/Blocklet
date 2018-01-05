@@ -6,9 +6,9 @@ import { Font } from 'expo';
 
 import { Container } from '../components/Container';
 import { LoginButton, SignupButton } from '../components/ButtonItem';
-import { LoginField } from '../components/FormField';
+import { LoginField, InputField } from '../components/FormField';
 import { Logo } from '../components/Logo';
-import { LoginTitle } from '../components/TextItem';
+import { LoginTitle, CreateAccount } from '../components/TextItem';
 
 const remote = 'https://i.imgur.com/ydfBdSL.jpg';
 const remote1 = 'https://i.imgur.com/Tz9MYX4.jpg';
@@ -16,6 +16,7 @@ const remote2 = 'https://i.imgur.com/1ijuV5G.jpg';
 const remote3 = 'https://i.imgur.com/55F7qQ8.jpg';
 const remote4 = 'https://i.imgur.com/InMpJf0.jpg';
 const remote5 = 'https://i.imgur.com/FF2LQOP.jpg';
+const remote6 = 'https://image.ibb.co/eJ887G/bg2.png';
 
 class Login extends Component {
  static propTypes = {
@@ -46,7 +47,7 @@ class Login extends Component {
       height: undefined,
       backgroundColor: '#889DAD'
      }}
-     source={{ uri: remote3 }}
+     source={{ uri: remote4 }}
     />
     <View
      style={{
@@ -61,8 +62,10 @@ class Login extends Component {
     >
      {/* <LoginTitle /> */}
      <Logo />
-     <LoginField onPress={this.loginUser} />
+     <InputField />
+     {/* <LoginField onPress={this.loginUser} /> */}
      <LoginButton onPress={this.loginUser} />
+     <CreateAccount onPress={this.signUp} />
     </View>
    </View>
   );
