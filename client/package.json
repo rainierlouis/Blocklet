@@ -21,6 +21,7 @@
  "dependencies": {
   "expo": "^23.0.4",
   "moment": "^2.20.1",
+  "native-base": "^2.3.6",
   "react": "16.0.0",
   "react-native": "0.50.3",
   "react-native-animatable": "^1.2.4",
@@ -36,6 +37,8 @@
   "redux-saga": "^0.16.0"
  },
  "rnpm": {
-  "assets": ["./app/assets/fonts/"]
+  "assets": [
+   "./app/assets/fonts/"
+  ]
  }
 }
