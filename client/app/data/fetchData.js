@@ -41,3 +41,8 @@ export const fetchReceived = address =>
  )
   .then(response => response.json())
   .then(data => data.data.txs);
+
+export const fetchExchange = () =>
+ fetch(`https://block.io/api/v2/get_current_price/?api_key=${API_KEY}`)
+  .then(response => response.json())
+  .then(data => data.data.prices);
