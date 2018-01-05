@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
-import reducer from './reducer';
+import hubReducers from './hubReducers';
 
 export default combineReducers({
- reducer
+ hubReducers
 });

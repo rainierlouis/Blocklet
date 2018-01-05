@@ -5,15 +5,24 @@ const initialState = {
  conversionRate: 0,
  date: new Date(),
  rate24: 0,
- rate7: 0
+ rate7: 0,
+ lastTrans: []
 };
 
 // HELPER
 const filterCurrency = (state, list) =>
  Number(list.filter(item => item.price_base === state.quoteCurrency)[0].price);
 
+const uniqueArr = (arr, prop) =>
+ arr.filter(
+  (obj, i, list) => arr.map(mapObj => mapObj[prop]).indexOf(obj[prop]) === i
+ );
+
+const createList = (state, list) =>
+ uniqueArr(state.lastTrans.concat(list), 'txid');
+
 // REDUCER
-const reducer = (state = initialState, action) => {
+const hubReducers = (state = initialState, action) => {
  switch (action.type) {
   case 'ADD_BALANCE':
    return {
@@ -31,9 +40,19 @@ const reducer = (state = initialState, action) => {
     rate24: +action.tickerData.percent_change_24h,
     rate7: +action.tickerData.percent_change_7d
    };
+  case 'ADD_SENT_TRANS':
+   return {
+    ...state,
+    lastTrans: createList(state, action.sentData)
+   };
+  case 'ADD_REC_TRANS':
+   return {
+    ...state,
+    lastTrans: createList(state, action.recData)
+   };
   default:
    return state;
  }
 };
 
-export default reducer;
+export default hubReducers;
