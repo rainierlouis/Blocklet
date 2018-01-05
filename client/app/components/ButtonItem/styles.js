@@ -4,12 +4,12 @@ import { Dimensions } from 'react-native';
 export default EStyleSheet.create({
  transferButton: {
   marginTop: 40,
-  backgroundColor: '$plus',
+  backgroundColor: '$yellow',
   width: 150
  },
  personalButton: {
   marginTop: 15,
-  backgroundColor: '$user',
+  backgroundColor: '$yellow',
   width: 150
  },
  MenuButton: {
@@ -28,7 +28,8 @@ export default EStyleSheet.create({
  },
  loginButton: {
   width: 250,
-  backgroundColor: '#ddb500'
+  backgroundColor: '#ddb500',
+  borderRadius: 30
  },
  signupButton: {
   backgroundColor: '#ddb500',

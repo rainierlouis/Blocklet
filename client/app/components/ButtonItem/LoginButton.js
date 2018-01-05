@@ -9,8 +9,8 @@ const LoginButton = ({ onPress }) => (
  <View>
   <Button
    onPress={onPress}
-   // icon={{ name: 'sign-in', type: 'octicon' }}
-   title="Enter"
+   icon={{ name: 'check', type: 'octicon' }}
+   // title="Enter"
    buttonStyle={styles.loginButton}
    fontFamily="quicksand"
    color="white"
