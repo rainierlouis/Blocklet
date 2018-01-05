@@ -37,8 +37,8 @@ const hubReducers = (state = initialState, action) => {
   case 'ADD_TICKERS':
    return {
     ...state,
-    rate24: +action.tickerData.percent_change_24h,
-    rate7: +action.tickerData.percent_change_7d
+    rate24: +action.data.percent_change_24h,
+    rate7: +action.data.percent_change_7d
    };
   case 'ADD_SENT_TRANS':
    return {
