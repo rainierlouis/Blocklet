@@ -20,6 +20,8 @@ EStyleSheet.build({
  $plus: '#5ec16a',
  $minus: '#bf3b3b',
 
+ $yellow: '#ddb500',
+
  $white: '#FFF',
  $black: '#000'
 });
