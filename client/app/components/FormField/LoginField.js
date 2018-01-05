@@ -12,6 +12,7 @@ const LoginField = ({ onPress }) => (
   </FormLabel> */}
   <TextInput
    placeholder="Email"
+   placeholderTextColor="white"
    style={styles.textInput}
    keyboardType="email-address"
    keyboardAppearance="dark"
@@ -33,6 +34,7 @@ const LoginField = ({ onPress }) => (
   </FormLabel> */}
   <TextInput
    placeholder="Password"
+   placeholderTextColor="white"
    style={styles.textInput}
    ref={passwordRef => (this.passwordRef = passwordRef)}
    secureTextEntry={true}
