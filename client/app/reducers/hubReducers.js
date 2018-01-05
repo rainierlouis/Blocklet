@@ -1,4 +1,5 @@
 const initialState = {
+ loaded: false,
  baseCurrency: 'BTC',
  quoteCurrency: 'EUR',
  balance: 0,
@@ -24,6 +25,11 @@ const createList = (state, list) =>
 // REDUCER
 const hubReducers = (state = initialState, action) => {
  switch (action.type) {
+  case 'LOADED':
+   return {
+    ...state,
+    loaded: action.bool
+   };
   case 'ADD_BALANCE':
    return {
     ...state,
