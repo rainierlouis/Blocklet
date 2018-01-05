@@ -23,7 +23,7 @@ export const fetchBtcRate = () =>
   .then(response => response.json())
   .then(data => data.data);
 
-export const fetchTickerRate = currency =>
+export const fetchTickerRate = () =>
  fetch(`https://api.coinmarketcap.com/v1/ticker/`)
   .then(response => response.json())
   .then(data => data[0]);
