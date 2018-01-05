@@ -12,14 +12,13 @@ import { fetchSent, fetchReceived } from '../data/fetchData';
 // REDUX
 import { connect } from 'react-redux';
 
-const recArr = recentTransactionsRec.data.txs.slice();
-const sentArr = recentTransactionsSent.data.txs.slice();
+const TEMP_ADDRESS = '2N5wGeBMZZeAVozrK8aPRFNCzFBMxjsfc5p';
 
 class Transactions extends Component {
  constructor(props) {
   super(props);
-  //fetchSent
-  //fetchReceived
+  fetchSent(TEMP_ADDRESS).then(data => this.props.addSent(data));
+  fetchReceived(TEMP_ADDRESS).then(data => this.props.addRec(data));
  }
 
  static propTypes = {
@@ -44,10 +43,10 @@ class Transactions extends Component {
   return result;
  };
 
- sortData = (listOne, listTwo) => {
-  let updatedListOne = this.addSent(listOne);
-  let updatedListTwo = this.addRec(listTwo);
-  return updatedListOne.concat(updatedListTwo).sort((a, b) => b.time - a.time);
+ sortData = (sentList, recList) => {
+  let sent = this.addSent(sentList);
+  let rec = this.addRec(recList);
+  return sent.concat(rec).sort((a, b) => b.time - a.time);
  };
 
  handlePress = item => {
@@ -62,7 +61,7 @@ class Transactions extends Component {
     <StatusBar translucent={false} barStyle="light-content" />
     <FlatList
      style={{ marginTop: 10 }}
-     data={this.sortData(recArr, sentArr)}
+     data={this.sortData(this.props.recTrans, this.props.sentTrans)}
      renderItem={({ item }) => (
       <TransactionItem
        sentOrRec={item.sentOrRec}
@@ -86,9 +85,23 @@ class Transactions extends Component {
 }
 
 const mapStateToProps = state => {
- return {};
+ return {
+  recTrans: state.transactionReducers.recTrans,
+  sentTrans: state.transactionReducers.sentTrans
+ };
 };
 
-const mapDispatchToProps = dispatch => ({});
+const mapDispatchToProps = dispatch => ({
+ addRec: data =>
+  dispatch({
+   type: 'ADD_SENT',
+   data
+  }),
+ addSent: data =>
+  dispatch({
+   type: 'ADD_REC',
+   data
+  })
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Transactions);
