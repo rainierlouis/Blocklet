@@ -27,3 +27,17 @@ export const fetchTickerRate = currency =>
  fetch(`https://api.coinmarketcap.com/v1/ticker/`)
   .then(response => response.json())
   .then(data => data[0]);
+
+export const fetchSent = address =>
+ fetch(
+  `https://block.io/api/v2/get_transactions/?api_key=${API_KEY_TESTNET}&type=sent&addresses=${address}`
+ )
+  .then(response => response.json())
+  .then(data => data.data.txs);
+
+export const fetchReceived = address =>
+ fetch(
+  `https://block.io/api/v2/get_transactions/?api_key=${API_KEY_TESTNET}&type=received&addresses=${address}`
+ )
+  .then(response => response.json())
+  .then(data => data.data.txs);
