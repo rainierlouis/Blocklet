@@ -5,36 +5,43 @@ import PropTypes from 'prop-types';
 
 import styles from './styles';
 
-const iconStyles = [styles.leftIconPlus, styles.leftIconMinus]
-
-const styleCheck = list => {
-	return list.map(item => +item.title > 0 ? item.style = iconStyles[0] : item.style = iconStyles[1]);
-}
-
 const TransactionBox = ({ list }) => (
-	<View style={styles.container}>
-		<Text style={styles.titleText}>Recent Transactions</Text>
-		<List containerStyle={styles.list}>
-			{
-    list.map((item, i) => (
-					<ListItem
-						containerStyle={styles.listItem}
-						key={i}
-						title={item.title}
-						subtitle={item.subtitle}
-						leftIcon={{name: item.icon, style: item.style}}
-						hideChevron={true}
-						titleStyle={styles.listTitle}
-						subtitleStyle={styles.listSubtitle}
-					/>
-    ))
-			}
-		</List>
-	</View>
-)
+ <View style={styles.container}>
+  <Text style={styles.titleText}>Recent Transactions</Text>
+  <List containerStyle={styles.list}>
+   {list.sort((a, b) => b.time - a.time).map((item, i) => {
+    if (item.amounts_sent && i < 5) {
+     return (
+      <ListItem
+       containerStyle={styles.listItem}
+       key={i}
+       title={`-${item.amounts_sent[0].amount}`}
+       subtitle={`confirmations: ${item.confirmations}`}
+       leftIcon={{ name: 'keyboard-arrow-left', style: { color: '#bf3b3b' } }}
+       hideChevron={true}
+       titleStyle={styles.listTitle}
+       subtitleStyle={styles.listSubtitle}
+      />
+     );
+    } else if (item.amounts_received && i < 5) {
+     return (
+      <ListItem
+       containerStyle={styles.listItem}
+       key={i}
+       title={`+${item.amounts_received[0].amount}`}
+       subtitle={`confirmations: ${item.confirmations}`}
+       leftIcon={{ name: 'keyboard-arrow-right', style: { color: '#5ec16a' } }}
+       hideChevron={true}
+       titleStyle={styles.listTitle}
+       subtitleStyle={styles.listSubtitle}
+      />
+     );
+    }
+   })}
+  </List>
+ </View>
+);
 
-TransactionBox.propTypes = {
-
-}
+TransactionBox.propTypes = {};
 
 export default TransactionBox;
