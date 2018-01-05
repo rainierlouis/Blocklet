@@ -6,46 +6,36 @@ import { ListItem, Separator } from '../components/ListItem';
 import { Container } from '../components/Container';
 import menuData from '../data/menuData';
 
-// REDUX
-// import { connect } from 'react-redux';
-// import { changeBaseCurrency, changeQuoteCurrency } from '../actions/currencies';
-
 class MenuList extends Component {
+ static propTypes = {
+  onPress: PropTypes.func,
+  navigation: PropTypes.object
+ };
 
-	static propTypes = {
-		onPress: PropTypes.func,
-		navigation: PropTypes.object,
-		// dispatch: PropTypes.func,
-	}
+ handlePress = item => {
+  item === 'Exchange Info'
+   ? this.props.navigation.navigate('ExchangeInfo')
+   : this.props.navigation.navigate(`${item}`);
+ };
 
-	handlePress = (item) => {
-		item === 'Hub' ?
-		this.props.navigation.goBack(null) :
-		this.props.navigation.navigate(`${item}`);
-	}
+ // RENDER ========================
 
-// RENDER ========================
-
-	render() {
-
-		return (
-			<Container>
-				<StatusBar translucent={false} barStyle='light-content' />
-				<FlatList
-					style={{marginTop: 10}}
-					data={menuData}
-					renderItem={({ item }) => (
-						<ListItem
-							text={item}
-							onPress={() => this.handlePress(item)}
-						/>
-					)}
-					keyExtractor={item => item}
-					ItemSeparatorComponent={Separator}
-				/>
-			</Container>
-		)
-	}
+ render() {
+  return (
+   <Container>
+    <StatusBar translucent={false} barStyle="light-content" />
+    <FlatList
+     style={{ marginTop: 10 }}
+     data={menuData}
+     renderItem={({ item }) => (
+      <ListItem text={item} onPress={() => this.handlePress(item)} />
+     )}
+     keyExtractor={item => item}
+     ItemSeparatorComponent={Separator}
+    />
+   </Container>
+  );
+ }
 }
 
 export default MenuList;

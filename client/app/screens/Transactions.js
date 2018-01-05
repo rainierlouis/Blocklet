@@ -4,8 +4,7 @@ import PropTypes from 'prop-types';
 
 import { TransactionItem, Separator } from '../components/ListItem';
 import { Container } from '../components/Container';
-import recentTransactionsRec from '../data/recentTransactionsRec';
-import recentTransactionsSent from '../data/recentTransactionsSent';
+import { HeaderTop } from '../components/HeaderTop';
 
 import { fetchSent, fetchReceived } from '../data/fetchData';
 
@@ -53,14 +52,19 @@ class Transactions extends Component {
   console.log(`transfer to screen: ${item}`);
  };
 
+ pressMenu = () => {
+  this.props.navigation.navigate('MenuList');
+ };
+
  // RENDER ========================
 
  render() {
   return (
    <Container>
     <StatusBar translucent={false} barStyle="light-content" />
+    <HeaderTop onPress={this.pressMenu} />
     <FlatList
-     style={{ marginTop: 10 }}
+     style={{ marginTop: 80 }}
      data={this.sortData(this.props.recTrans, this.props.sentTrans)}
      renderItem={({ item }) => (
       <TransactionItem

@@ -30,9 +30,6 @@ const TEMP_ADDRESS = '2N5wGeBMZZeAVozrK8aPRFNCzFBMxjsfc5p';
 class Hub extends Component {
  constructor(props) {
   super(props);
-  this.state = {
-   loaded: false
-  };
   // get balance
   fetchBalance(TEMP_ADDRESS).then(data => this.props.addBalance(data));
   // get btc rate
@@ -48,9 +45,9 @@ class Hub extends Component {
   fetchTickerRate(this.props.baseCurrency).then(data =>
    this.props.addTickers(data)
   );
-  // get last 5 trans
   setTimeout(() => {
-   this.setState({ loaded: true });
+   // set loaded
+   this.props.setLoaded(true);
   }, 3000);
  }
 
@@ -68,8 +65,8 @@ class Hub extends Component {
  render() {
   return (
    <Container>
-    {this.state.loaded === true ? <HeaderTop onPress={this.pressMenu} /> : null}
-    {this.state.loaded === true ? (
+    {this.props.loaded === true ? <HeaderTop onPress={this.pressMenu} /> : null}
+    {this.props.loaded === true ? (
      <Container>
       <StatusBar translucent={false} barStyle="light-content" />
       <Balance balanceAmount={+this.props.balance} />
@@ -93,23 +90,7 @@ class Hub extends Component {
        flex: 1
       }}
      >
-      <Image
-       style={{
-        flex: 1,
-        resizeMode: 'cover',
-        width: undefined,
-        height: undefined,
-        backgroundColor: '#889DAD'
-       }}
-       source={{ uri: remote }}
-      />
-
-      <Spinner
-       visible={true}
-       animation="slide"
-       size="large"
-       textStyle={{ color: 'white' }}
-      />
+      <Spinner visible={true} animation="slide" size="large" />
      </View>
     )}
    </Container>
@@ -132,6 +113,11 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
+ setLoaded: bool =>
+  dispatch({
+   type: 'LOADED',
+   bool
+  }),
  addTickers: data =>
   dispatch({
    type: 'ADD_TICKERS',
