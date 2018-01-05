@@ -3,9 +3,39 @@ import { StackNavigator } from 'react-navigation';
 import Hub from '../screens/Hub';
 import MenuList from '../screens/MenuList';
 import Login from '../screens/Login';
-import Loading from '../screens/Loading';
 import Transactions from '../screens/Transactions';
+import ExchangeInfo from '../screens/ExchangeInfo';
 
+// const TransactionStack = StackNavigator({
+//  Transactions: {
+//   screen: Transactions,
+//   navigationOptions: {
+//    header: () => null
+//   }
+//  },
+//  MenuList: {
+//   screen: MenuStack,
+//   navigationOptions: {
+//    header: () => null
+//   }
+//  }
+// });
+//
+// const ExchangeStack = StackNavigator({
+//  ExchangeInfo: {
+//   screen: ExchangeInfo,
+//   navigationOptions: {
+//    header: () => null
+//   }
+//  },
+//  MenuList: {
+//   screen: MenuStack,
+//   navigationOptions: {
+//    header: () => null
+//   }
+//  }
+// });
+//
 const HomeStack = StackNavigator({
  Hub: {
   screen: Hub,
@@ -22,23 +52,38 @@ const HomeStack = StackNavigator({
    headerTintColor: 'white'
   }
  },
+ ExchangeInfo: {
+  screen: ExchangeInfo,
+  navigationOptions: {
+   header: () => null
+  }
+ },
  Transactions: {
   screen: Transactions,
   navigationOptions: {
-   headerTitle: 'Transactions',
-   headerStyle: { backgroundColor: '#43314f' },
-   headerTitleStyle: { color: 'white' },
-   headerTintColor: 'white'
+   header: () => null
   }
  }
 });
 
-// const LoadingStack = StackNavigator({
-//  Loading: {
-//   screen: Loading
+// const MenuStack = StackNavigator({
+//  MenuList: {
+//   screen: MenuList,
+//   navigationOptions: {
+//    headerTitle: 'Menu',
+//    headerStyle: { backgroundColor: '#43314f' },
+//    headerTitleStyle: { color: 'white' },
+//    headerTintColor: 'white'
+//   }
 //  },
 //  Hub: {
 //   screen: HomeStack
+//  },
+//  Transactions: {
+//   screen: TransactionStack
+//  },
+//  ExchangeInfo: {
+//   screen: ExchangeStack
 //  }
 // });
 
