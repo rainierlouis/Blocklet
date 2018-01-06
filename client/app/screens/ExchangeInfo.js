@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import { Container } from '../components/Container';
 import { HeaderTop } from '../components/HeaderTop';
+import { ExchangeItem } from '../components/ListItem';
 
 import { fetchExchange } from '../data/fetchData';
 
@@ -29,11 +30,19 @@ class Transactions extends Component {
  // RENDER ========================
 
  render() {
-  console.log(this.props.exchange);
+  console.log('EXCHANGE=======', this.props.exchange);
   return (
    <Container>
     <StatusBar translucent={false} barStyle="light-content" />
     <HeaderTop onPress={this.pressMenu} />
+    <FlatList
+     style={{ marginTop: 80 }}
+     data={this.props.exchange}
+     keyExtractor={(item, i) => i}
+     renderItem={({ item }) => (
+      <ExchangeItem price={item.price} priceBase={item.price_base} />
+     )}
+    />
    </Container>
   );
  }
