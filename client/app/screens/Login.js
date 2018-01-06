@@ -62,7 +62,7 @@ class Login extends Component {
     >
      {/* <LoginTitle /> */}
      <Logo />
-     <InputField />
+     <InputField onPress={this.loginUser} />
      {/* <LoginField onPress={this.loginUser} /> */}
      <LoginButton onPress={this.loginUser} />
      <CreateAccount onPress={this.signUp} />
