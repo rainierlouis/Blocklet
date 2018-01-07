@@ -27,6 +27,10 @@ class Transactions extends Component {
   this.props.navigation.navigate('MenuList');
  };
 
+ pressHome = () => {
+  this.props.navigation.navigate('Home');
+ };
+
  // RENDER ========================
 
  render() {
@@ -34,7 +38,7 @@ class Transactions extends Component {
   return (
    <Container>
     <StatusBar translucent={false} barStyle="light-content" />
-    <HeaderTop onPress={this.pressMenu} />
+    <HeaderTop onPressMenu={this.pressMenu} onPressHome={this.pressHome} />
     <FlatList
      style={{ marginTop: 80 }}
      data={this.props.exchange}

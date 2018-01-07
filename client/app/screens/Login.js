@@ -25,7 +25,7 @@ class Login extends Component {
  };
 
  loginUser = () => {
-  this.props.navigation.navigate('Hub');
+  this.props.navigation.navigate('Home');
  };
 
  signUp = () => {
