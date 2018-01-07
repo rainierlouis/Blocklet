@@ -6,17 +6,17 @@ import PropTypes from 'prop-types';
 import styles from './styles';
 
 const MenuButton = ({ onPress }) => (
-	<View style={styles.containerMenu}>
-		<Button
-			onPress={onPress}
-			icon={{name: 'three-bars', type: 'octicon'}}
-			buttonStyle={styles.MenuButton}
-		/>
-	</View>
-)
+ <View style={styles.containerMenu}>
+  <Button
+   onPress={onPress}
+   icon={{ name: 'three-bars', type: 'octicon' }}
+   buttonStyle={styles.MenuButton}
+  />
+ </View>
+);
 
 MenuButton.propTypes = {
-	onPress: PropTypes.func,
-}
+ onPress: PropTypes.func
+};
 
 export default MenuButton;
