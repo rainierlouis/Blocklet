@@ -1,42 +1,19 @@
 import { StackNavigator } from 'react-navigation';
 
+import Home from '../screens/Home';
 import Hub from '../screens/Hub';
 import MenuList from '../screens/MenuList';
 import Login from '../screens/Login';
 import Transactions from '../screens/Transactions';
 import ExchangeInfo from '../screens/ExchangeInfo';
 
-// const TransactionStack = StackNavigator({
-//  Transactions: {
-//   screen: Transactions,
-//   navigationOptions: {
-//    header: () => null
-//   }
-//  },
-//  MenuList: {
-//   screen: MenuStack,
-//   navigationOptions: {
-//    header: () => null
-//   }
-//  }
-// });
-//
-// const ExchangeStack = StackNavigator({
-//  ExchangeInfo: {
-//   screen: ExchangeInfo,
-//   navigationOptions: {
-//    header: () => null
-//   }
-//  },
-//  MenuList: {
-//   screen: MenuStack,
-//   navigationOptions: {
-//    header: () => null
-//   }
-//  }
-// });
-//
 const HomeStack = StackNavigator({
+ Home: {
+  screen: Home,
+  navigationOptions: {
+   header: () => null
+  }
+ },
  Hub: {
   screen: Hub,
   navigationOptions: {
