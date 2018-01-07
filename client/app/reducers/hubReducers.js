@@ -11,8 +11,13 @@ const initialState = {
 };
 
 // HELPER
-const filterCurrency = (state, list) =>
- Number(list.filter(item => item.price_base === state.quoteCurrency)[0].price);
+const filterCurrency = (state, list) => {
+ let res = list.filter(item => {
+  return item.price_base === state.quoteCurrency ? item : false;
+ });
+ console.log('res==================', res);
+ return res.length !== 0 ? +res[0].price : +list[0].price;
+};
 
 const uniqueArr = (arr, prop) =>
  arr.filter(
@@ -30,12 +35,17 @@ const hubReducers = (state = initialState, action) => {
     ...state,
     loaded: action.bool
    };
+  case 'SET_BASE':
+   return {
+    ...state,
+    baseCurrency: action.currency
+   };
   case 'ADD_BALANCE':
    return {
     ...state,
     balance: action.balance
    };
-  case 'ADD_BTC_RATE':
+  case 'ADD_RATE':
    return {
     ...state,
     conversionRate: filterCurrency(state, action.conversionRate.prices)
