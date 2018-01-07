@@ -12,14 +12,15 @@ const Balance = ({ balanceAmount }) => (
  <View style={styles.container}>
   <Text style={styles.balanceTextTitle}>Your Balance</Text>
   <Text h3 style={styles.balanceTextAmount}>
-   {balanceAmount}
-   <Animatable.Image
+   {balanceAmount.toFixed(7)}
+   {/* <Animatable.Image
     animation="rotate"
     iterationCount="infinite"
+    easing="linear"
     style={styles.image}
     source={{ uri: images.BTC }}
     resizeMode="contain"
-   />
+   /> */}
   </Text>
   <Divider style={styles.divider} />
  </View>
