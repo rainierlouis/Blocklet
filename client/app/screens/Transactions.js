@@ -16,13 +16,24 @@ const TEMP_ADDRESS = '2N5wGeBMZZeAVozrK8aPRFNCzFBMxjsfc5p';
 class Transactions extends Component {
  constructor(props) {
   super(props);
-  fetchSent(TEMP_ADDRESS).then(data => this.props.addSent(data));
-  fetchReceived(TEMP_ADDRESS).then(data => this.props.addRec(data));
  }
 
  static propTypes = {
   onPress: PropTypes.func
  };
+
+ componentDidMount() {
+  // get sent trans
+  fetchSent(
+   this.props.navigation.state.params.coin.ADDRESS,
+   this.props.navigation.state.params.coin.API_KEY_TESTNET
+  ).then(data => this.props.getSent(data));
+  // get received trans
+  fetchReceived(
+   this.props.navigation.state.params.coin.ADDRESS,
+   this.props.navigation.state.params.coin.API_KEY_TESTNET
+  ).then(data => this.props.getRec(data));
+ }
 
  addSent = list => {
   let result = list.map(item => {
@@ -53,7 +64,9 @@ class Transactions extends Component {
  };
 
  pressMenu = () => {
-  this.props.navigation.navigate('MenuList');
+  this.props.navigation.navigate('MenuList', {
+   coin: this.props.navigation.state.params.coin
+  });
  };
 
  pressHome = () => {
@@ -63,6 +76,10 @@ class Transactions extends Component {
  // RENDER ========================
 
  render() {
+  console.log(
+   'COIN PASSED! ===========',
+   this.props.navigation.state.params.coin
+  );
   return (
    <Container>
     <StatusBar translucent={false} barStyle="light-content" />
@@ -100,12 +117,12 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
- addRec: data =>
+ getRec: data =>
   dispatch({
    type: 'ADD_SENT',
    data
   }),
- addSent: data =>
+ getSent: data =>
   dispatch({
    type: 'ADD_REC',
    data
