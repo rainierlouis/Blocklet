@@ -15,11 +15,15 @@ const BalanceBelow = ({
  iconUrl,
  ltcIcon,
  dogeIcon,
- currency
+ currency,
+ show = true
 }) => (
  <View style={styles.balanceBelowContainer}>
+  {show ? <Text style={styles.balanceTextTitle}>Your Balance</Text> : null}
   <Text h3 style={styles.balanceTextAmount}>
-   {currency === 'DOGE' ? balanceAmount.toFixed(2) : balanceAmount.toFixed(7)}
+   {currency === 'DOGE'
+    ? balanceAmount.toFixed(2) + ' ÐT'
+    : balanceAmount.toFixed(7) + ' ŁT'}
    {/* {iconUrl ? (
     <Animatable.Image
      animation="rotate"
@@ -57,9 +61,10 @@ const BalanceBelow = ({
 BalanceBelow.propTypes = {
  balanceAmount: PropTypes.number,
  iconUrl: PropTypes.object,
- ltcIcon: PropTypes.string,
- dogeIcon: PropTypes.string,
- currency: PropTypes.string
+ ltcIcon: PropTypes.any,
+ dogeIcon: PropTypes.any,
+ currency: PropTypes.string,
+ show: PropTypes.bool
 };
 
 export default BalanceBelow;

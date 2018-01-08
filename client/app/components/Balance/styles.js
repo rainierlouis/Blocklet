@@ -6,14 +6,13 @@ export default EStyleSheet.create({
   marginTop: 50
  },
  balanceBelowContainer: {
-  justifyContent: 'center'
+  alignItems: 'center'
  },
  balanceTextTitle: {
   color: '$darkGrey'
  },
  balanceTextAmount: {
-  color: '$white',
-  alignItems: 'center'
+  color: '$white'
  },
  conversionText: {
   color: '$white',
