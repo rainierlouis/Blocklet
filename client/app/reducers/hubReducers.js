@@ -15,14 +15,15 @@ const filterCurrency = (state, list) => {
  let res = list.filter(item => {
   return item.price_base === state.quoteCurrency ? item : false;
  });
- console.log('res==================', res);
  return res.length !== 0 ? +res[0].price : +list[0].price;
 };
 
 const uniqueArr = (arr, prop) =>
- arr.filter(
-  (obj, i, list) => arr.map(mapObj => mapObj[prop]).indexOf(obj[prop]) === i
- );
+ arr
+  .slice()
+  .filter(
+   (obj, i, list) => arr.map(mapObj => mapObj[prop]).indexOf(obj[prop]) === i
+  );
 
 const createList = (state, list) =>
  uniqueArr(state.lastTrans.concat(list), 'txid');
@@ -30,6 +31,11 @@ const createList = (state, list) =>
 // REDUCER
 const hubReducers = (state = initialState, action) => {
  switch (action.type) {
+  case 'RESET_TRANS':
+   return {
+    ...state,
+    lastTrans: []
+   };
   case 'LOADED':
    return {
     ...state,
