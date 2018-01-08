@@ -14,8 +14,9 @@ import { Container } from '../components/Container';
 import { Balance, BalanceBelow } from '../components/Balance';
 import { images } from '../components/CardItem/icons/CoinIcons';
 
-// API fetch
+// API/data fetch
 import { fetchBalance } from '../data/fetchData';
+import { BTC, LTC, DOGE } from '../data/userData';
 
 // REDUX
 import { connect } from 'react-redux';
@@ -25,30 +26,6 @@ const TEMP_ADDRESS = '2N5wGeBMZZeAVozrK8aPRFNCzFBMxjsfc5p';
 const TEMP_BTC_ICON = { uri: images.BTC };
 const TEMP_LTC_ICON = { uri: images.LTC };
 const TEMP_DOGE_ICON = { uri: images.DOGE };
-
-// btc
-const BTC = {
- currency: 'BTC',
- API_KEY_TESTNET: 'f737-19e7-0636-ebbc',
- API_KEY: '98d2-7443-af3f-17e4',
- ADDRESS: '2N5wGeBMZZeAVozrK8aPRFNCzFBMxjsfc5p'
-};
-
-// ltc
-const LTC = {
- currency: 'LTC',
- API_KEY_TESTNET: '2857-f4a9-d944-c5fa',
- API_KEY: '1e47-79a6-9797-e570',
- ADDRESS: '2MxtpzTF5b5UwdK7qJstD1NnZMMedi5zy2L'
-};
-
-// doge
-const DOGE = {
- currency: 'DOGE',
- API_KEY_TESTNET: '119e-0781-247d-7297',
- API_KEY: 'b108-0d58-ccff-c468',
- ADDRESS: '2N8jnDQH9KqidrqQ4veTfAiSgh5dNNSgWr1'
-};
 
 class Home extends Component {
  constructor(props) {
@@ -101,13 +78,18 @@ class Home extends Component {
        <Balance balanceAmount={+this.props.btcBal} />
       </TouchableOpacity>
       <TouchableOpacity onPress={this.onPressLtc}>
-       <BalanceBelow balanceAmount={0.0374488} iconUrl={TEMP_LTC_ICON} />
+       <BalanceBelow
+        balanceAmount={+this.props.ltcBal}
+        iconUrl={TEMP_LTC_ICON}
+        show={false}
+       />
       </TouchableOpacity>
       <TouchableOpacity onPress={this.onPressDoge}>
        <BalanceBelow
         balanceAmount={+this.props.dogeBal}
         iconUrl={TEMP_DOGE_ICON}
         currency={'DOGE'}
+        show={false}
        />
       </TouchableOpacity>
      </Container>
