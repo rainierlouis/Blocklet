@@ -30,6 +30,17 @@ import { connect } from 'react-redux';
 class Hub extends Component {
  constructor(props) {
   super(props);
+ }
+
+ componentWillMount() {
+  this.props.resetTrans();
+ }
+
+ componentDidMount() {
+  // get ticker rate %
+  fetchTickerRate(this.props.baseCurrency).then(data =>
+   this.props.addTickers(data)
+  );
   // set base baseCurrency
   this.props.setBaseCurrency(this.props.navigation.state.params.coin.currency);
   // get balance
@@ -51,13 +62,6 @@ class Hub extends Component {
    this.props.navigation.state.params.coin.ADDRESS,
    this.props.navigation.state.params.coin.API_KEY_TESTNET
   ).then(data => this.props.addRecTransactions(data));
- }
-
- componentDidMount() {
-  // get ticker rate %
-  fetchTickerRate(this.props.baseCurrency).then(data =>
-   this.props.addTickers(data)
-  );
   setTimeout(() => {
    // set loaded
    this.props.setLoaded(true);
@@ -70,7 +74,9 @@ class Hub extends Component {
  };
 
  pressMenu = () => {
-  this.props.navigation.navigate('MenuList');
+  this.props.navigation.navigate('MenuList', {
+   coin: this.props.navigation.state.params.coin
+  });
  };
 
  pressHome = () => {
@@ -88,7 +94,7 @@ class Hub extends Component {
     {this.props.loaded === true ? (
      <Container>
       <StatusBar translucent={false} barStyle="light-content" />
-      {this.props.navigation.state.params.coin.currency !== 'BTC' ? (
+      {this.props.navigation.state.params.coin.currency === 'BTC' ? (
        <Balance balanceAmount={+this.props.balance} />
       ) : (
        <BalanceBelow
@@ -141,6 +147,10 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
+ resetTrans: () =>
+  dispatch({
+   type: 'RESET_TRANS'
+  }),
  setLoaded: bool =>
   dispatch({
    type: 'LOADED',
