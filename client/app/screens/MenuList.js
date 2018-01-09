@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { ListItem, Separator } from '../components/ListItem';
 import { Container } from '../components/Container';
 import menuData from '../data/menuData';
+import { BTC, LTC, DOGE } from '../data/userData';
 
 class MenuList extends Component {
  static propTypes = {
@@ -14,8 +15,12 @@ class MenuList extends Component {
 
  handlePress = item => {
   item === 'Exchange Info'
-   ? this.props.navigation.navigate('ExchangeInfo')
-   : this.props.navigation.navigate(`${item}`);
+   ? this.props.navigation.navigate('ExchangeInfo', {
+      coin: this.props.navigation.state.params.coin
+     })
+   : this.props.navigation.navigate(`${item}`, {
+      coin: this.props.navigation.state.params.coin
+     });
  };
 
  // RENDER ========================
