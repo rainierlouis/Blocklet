@@ -30,7 +30,7 @@ const TEMP_DOGE_ICON = { uri: images.DOGE };
 class Home extends Component {
  constructor(props) {
   super(props);
-  // get balance
+  // get balances
   fetchBalance(BTC.ADDRESS, BTC.API_KEY_TESTNET).then(data =>
    this.props.getBTCBal(data)
   );
