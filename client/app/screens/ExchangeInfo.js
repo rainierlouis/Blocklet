@@ -24,7 +24,9 @@ class Transactions extends Component {
  };
 
  pressMenu = () => {
-  this.props.navigation.navigate('MenuList');
+  this.props.navigation.navigate('MenuList', {
+   coin: this.props.navigation.state.params.coin
+  });
  };
 
  pressHome = () => {
