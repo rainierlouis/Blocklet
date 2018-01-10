@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { FlatList, View, StatusBar } from 'react-native';
 import PropTypes from 'prop-types';
+import { NavigationActions } from 'react-navigation';
 
 import { Container } from '../components/Container';
 import { HeaderTop } from '../components/HeaderTop';
@@ -11,7 +12,11 @@ import { fetchExchange } from '../data/fetchData';
 // REDUX
 import { connect } from 'react-redux';
 
-const TEMP_ADDRESS = '2N5wGeBMZZeAVozrK8aPRFNCzFBMxjsfc5p';
+// Navigation Helper
+const resetAction = NavigationActions.reset({
+ index: 0,
+ actions: [NavigationActions.navigate({ routeName: 'Home' })]
+});
 
 class Transactions extends Component {
  constructor(props) {
@@ -30,7 +35,7 @@ class Transactions extends Component {
  };
 
  pressHome = () => {
-  this.props.navigation.navigate('Home');
+  this.props.navigation.dispatch(resetAction);
  };
 
  // RENDER ========================

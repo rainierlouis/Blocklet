@@ -6,6 +6,7 @@ import MenuList from '../screens/MenuList';
 import Login from '../screens/Login';
 import Transactions from '../screens/Transactions';
 import ExchangeInfo from '../screens/ExchangeInfo';
+import Personal from '../screens/Personal';
 
 const HomeStack = StackNavigator({
  Home: {
@@ -37,6 +38,12 @@ const HomeStack = StackNavigator({
  },
  Transactions: {
   screen: Transactions,
+  navigationOptions: {
+   header: () => null
+  }
+ },
+ Personal: {
+  screen: Personal,
   navigationOptions: {
    header: () => null
   }

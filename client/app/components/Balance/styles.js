@@ -26,6 +26,7 @@ export default EStyleSheet.create({
  },
  image: {
   height: 25,
-  width: 25
+  width: 25,
+  marginLeft: 4
  }
 });

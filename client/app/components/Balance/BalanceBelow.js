@@ -21,38 +21,39 @@ const BalanceBelow = ({
  <View style={styles.balanceBelowContainer}>
   {show ? <Text style={styles.balanceTextTitle}>Your Balance</Text> : null}
   <Text h3 style={styles.balanceTextAmount}>
-   {currency === 'DOGE'
-    ? balanceAmount.toFixed(2) + ' ÐT'
-    : balanceAmount.toFixed(7) + ' ŁT'}
-   {/* {iconUrl ? (
+   {currency === 'DOGE' ? balanceAmount.toFixed(2) : balanceAmount.toFixed(7)}
+   {iconUrl ? (
     <Animatable.Image
      animation="rotate"
      iterationCount="infinite"
+     duration={2000}
      easing="linear"
      style={styles.image}
      source={iconUrl}
      resizeMode="contain"
     />
-				) : null}
-				{ltcIcon ? (
+   ) : null}
+   {ltcIcon ? (
     <Animatable.Image
      animation="rotate"
      iterationCount="infinite"
+     duration={2000}
      easing="linear"
      style={styles.image}
      source={ltcIcon}
      resizeMode="contain"
     />
-				) : (
+   ) : (
     <Animatable.Image
      animation="rotate"
      iterationCount="infinite"
+     duration={2000}
      easing="linear"
      style={styles.image}
      source={dogeIcon}
      resizeMode="contain"
     />
-   )} */}
+   )}
   </Text>
   <Divider style={styles.divider} />
  </View>
@@ -68,3 +69,6 @@ BalanceBelow.propTypes = {
 };
 
 export default BalanceBelow;
+
+// + ' ÐT'
+// + ' ŁT'

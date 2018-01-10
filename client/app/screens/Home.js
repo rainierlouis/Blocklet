@@ -21,8 +21,6 @@ import { BTC, LTC, DOGE } from '../data/userData';
 // REDUX
 import { connect } from 'react-redux';
 
-const TEMP_ADDRESS = '2N5wGeBMZZeAVozrK8aPRFNCzFBMxjsfc5p';
-
 const TEMP_BTC_ICON = { uri: images.BTC };
 const TEMP_LTC_ICON = { uri: images.LTC };
 const TEMP_DOGE_ICON = { uri: images.DOGE };

@@ -21,8 +21,8 @@ export const fetchRate = apiKey =>
   .then(response => response.json())
   .then(data => data.data);
 
-export const fetchTickerRate = apiKey =>
- fetch(`https://api.coinmarketcap.com/v1/ticker/`)
+export const fetchTickerRate = currency =>
+ fetch(`https://api.coinmarketcap.com/v1/ticker/${currency}`)
   .then(response => response.json())
   .then(data => data[0]);
 
@@ -44,3 +44,17 @@ export const fetchExchange = apiKey =>
  fetch(`https://block.io/api/v2/get_current_price/?api_key=${apiKey}`)
   .then(response => response.json())
   .then(data => data.data.prices);
+
+export const fetchDogeToBtc = () =>
+ fetch(
+  `https://block.io/api/v2/get_current_price/?api_key=b108-0d58-ccff-c468&price_base=BTC`
+ )
+  .then(response => response.json())
+  .then(data => data.data.prices[0].price);
+
+export const fetchBtcToUsd = () =>
+ fetch(
+  `https://block.io/api/v2/get_current_price/?api_key=98d2-7443-af3f-17e4&price_base=USD`
+ )
+  .then(response => response.json())
+  .then(data => data.data.prices[0].price);

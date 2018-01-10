@@ -6,26 +6,26 @@ import PropTypes from 'prop-types';
 import styles from './styles';
 
 class PersonalButton extends Component {
+ constructor(props) {
+  super(props);
+ }
 
-	onPress = () => {
-		console.log('navigate to personal screen!');
-	}
-
-	render() {
-		return (
-			<View style={styles.containerPersonal}>
-				<Button
-					onPress={this.onPress}
-					icon={{name: 'person', type: 'octicon'}}
-					buttonStyle={styles.personalButton}
-				title='Personal' />
-			</View>
-		)
-	}
+ render() {
+  return (
+   <View style={styles.containerPersonal}>
+    <Button
+     onPress={this.props.onPress}
+     icon={{ name: 'person', type: 'octicon' }}
+     buttonStyle={styles.personalButton}
+     title="Personal"
+    />
+   </View>
+  );
+ }
 }
 
 PersonalButton.propTypes = {
-
-}
+ onPress: PropTypes.func
+};
 
 export default PersonalButton;

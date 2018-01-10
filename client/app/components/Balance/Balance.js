@@ -13,15 +13,15 @@ const Balance = ({ balanceAmount, show }) => (
   <Text style={styles.balanceTextTitle}>Your Balance</Text>
   <View style={styles.balanceBelowContainer}>
    <Text h3 style={styles.balanceTextAmount}>
-    {balanceAmount.toFixed(7) + ' ฿T'}
-    {/* <Animatable.Image
-					animation="rotate"
-					iterationCount="infinite"
-					easing="linear"
-					style={styles.image}
-					source={{ uri: images.BTC }}
-					resizeMode="contain"
-				/> */}
+    {balanceAmount.toFixed(7)}
+    <Animatable.Image
+     animation="rotate"
+     iterationCount="infinite"
+     easing="linear"
+     style={styles.image}
+     source={{ uri: images.BTC }}
+     resizeMode="contain"
+    />
    </Text>
   </View>
   <Divider style={styles.divider} />
