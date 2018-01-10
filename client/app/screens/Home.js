@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import Spinner from 'react-native-loading-spinner-overlay';
 
 import { Container } from '../components/Container';
-import { Balance, BalanceBelow } from '../components/Balance';
+import { Balance, BalanceBelow, BalanceDoge } from '../components/Balance';
 import { images } from '../components/CardItem/icons/CoinIcons';
 
 // API/data fetch
@@ -73,12 +73,13 @@ class Home extends Component {
      <Container>
       <StatusBar translucent={false} barStyle="light-content" />
       <TouchableOpacity onPress={this.onPressBtc}>
-       <Balance balanceAmount={+this.props.btcBal} />
+       <Balance balanceAmount={+this.props.btcBal} overview={true} />
       </TouchableOpacity>
       <TouchableOpacity onPress={this.onPressLtc}>
        <BalanceBelow
         balanceAmount={+this.props.ltcBal}
         iconUrl={TEMP_LTC_ICON}
+        overview={true}
         show={false}
        />
       </TouchableOpacity>
@@ -86,6 +87,7 @@ class Home extends Component {
        <BalanceBelow
         balanceAmount={+this.props.dogeBal}
         iconUrl={TEMP_DOGE_ICON}
+        overview={true}
         currency={'DOGE'}
         show={false}
        />
