@@ -74,7 +74,7 @@ const HomeStack = StackNavigator({
 export default StackNavigator(
  {
   Login: {
-   screen: Home
+   screen: Login
   },
   Loading: {
    screen: HomeStack,
