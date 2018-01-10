@@ -1,13 +1,16 @@
 const initialState = {
+ hubLoaded: false,
  loaded: false,
  baseCurrency: 'BTC',
- quoteCurrency: 'EUR',
+ quoteCurrency: 'USD',
  balance: 0,
  conversionRate: 0,
  date: new Date(),
  rate24: 0,
  rate7: 0,
- lastTrans: []
+ lastTrans: [],
+ dogeToBtc: '',
+ btcToUsd: ''
 };
 
 // HELPER
@@ -31,10 +34,26 @@ const createList = (state, list) =>
 // REDUCER
 const hubReducers = (state = initialState, action) => {
  switch (action.type) {
+  case 'RESET_HUB_LOAD':
+   return {
+    ...state,
+    hubLoaded: false
+   };
+  case 'RESET_TICK':
+   return {
+    ...state,
+    rate24: 0,
+    rate7: 0
+   };
   case 'RESET_TRANS':
    return {
     ...state,
     lastTrans: []
+   };
+  case 'HUB_LOADED':
+   return {
+    ...state,
+    hubLoaded: action.bool
    };
   case 'LOADED':
    return {
@@ -71,6 +90,16 @@ const hubReducers = (state = initialState, action) => {
    return {
     ...state,
     lastTrans: createList(state, action.recData)
+   };
+  case 'DOGE_TO_BTC':
+   return {
+    ...state,
+    dogeToBtc: action.data
+   };
+  case 'BTC_TO_USD':
+   return {
+    ...state,
+    btcToUsd: action.data
    };
   default:
    return state;
