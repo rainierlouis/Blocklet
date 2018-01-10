@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
+<<<<<<< HEAD
 import { FlatList, View, StatusBar, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import { NavigationActions } from 'react-navigation';
 import QRCode from 'react-native-qrcode-svg';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import Icon from 'react-native-vector-icons/Octicons';
+=======
+import { FlatList, View, StatusBar } from 'react-native';
+import PropTypes from 'prop-types';
+import { NavigationActions } from 'react-navigation';
+>>>>>>> d53c943b7b421776a7a9c59d66d9de1f181c23ea
 
 import { Container } from '../components/Container';
 import { HeaderTop } from '../components/HeaderTop';
@@ -18,6 +24,7 @@ const resetAction = NavigationActions.reset({
  actions: [NavigationActions.navigate({ routeName: 'Home' })]
 });
 
+<<<<<<< HEAD
 // Screen styles
 const styles = EStyleSheet.create({
  subTextQR: {
@@ -53,6 +60,8 @@ const styles = EStyleSheet.create({
  }
 });
 
+=======
+>>>>>>> d53c943b7b421776a7a9c59d66d9de1f181c23ea
 class Personal extends Component {
  constructor(props) {
   super(props);
@@ -79,6 +88,7 @@ class Personal extends Component {
    <Container>
     <StatusBar translucent={false} barStyle="light-content" />
     <HeaderTop onPressMenu={this.pressMenu} onPressHome={this.pressHome} />
+<<<<<<< HEAD
     <View>
      <Text style={styles.subTextQR}>QR Wallet Code</Text>
 
@@ -111,6 +121,8 @@ class Personal extends Component {
       </Text>
      </View>
     </View>
+=======
+>>>>>>> d53c943b7b421776a7a9c59d66d9de1f181c23ea
    </Container>
   );
  }
