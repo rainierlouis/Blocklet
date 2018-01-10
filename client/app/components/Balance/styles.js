@@ -28,5 +28,10 @@ export default EStyleSheet.create({
   height: 25,
   width: 25,
   marginLeft: 4
+ },
+ imageLtc: {
+  height: 20,
+  width: 20,
+  marginLeft: 4
  }
 });

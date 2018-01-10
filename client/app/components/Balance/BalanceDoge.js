@@ -8,24 +8,23 @@ import { images } from '../CardItem/icons/CoinIcons';
 
 import styles from './styles';
 
-const Balance = ({ balanceAmount, show, overview }) => (
+const Balance = ({ balanceAmount, overview }) => (
  <View style={styles.container}>
-  <Text style={styles.balanceTextTitle}>Your Balance</Text>
   <View style={styles.balanceBelowContainer}>
    {overview ? (
     <Text h3 style={styles.balanceTextAmount}>
-     {balanceAmount.toFixed(7) + ' ฿T'}
+     {balanceAmount.toFixed(2) + ' ÐT'}
     </Text>
    ) : (
     <Text h3 style={styles.balanceTextAmount}>
-     {balanceAmount.toFixed(7)}
+     {balanceAmount.toFixed(2)}
      <Animatable.Image
       animation="rotate"
       iterationCount="infinite"
       easing="linear"
       duration={2000}
       style={styles.image}
-      source={{ uri: images.BTC }}
+      source={{ uri: images.DOGE }}
       resizeMode="contain"
      />
     </Text>
