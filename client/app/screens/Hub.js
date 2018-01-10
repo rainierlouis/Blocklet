@@ -5,7 +5,7 @@ import Spinner from 'react-native-loading-spinner-overlay';
 import { NavigationActions } from 'react-navigation';
 
 import { Container } from '../components/Container';
-import { Balance, BalanceBelow } from '../components/Balance';
+import { Balance, BalanceBelow, BalanceDoge } from '../components/Balance';
 import { HeaderTop } from '../components/HeaderTop';
 import { CardItem } from '../components/CardItem';
 import { LastConverted, TotalCurrent } from '../components/TextItem';
@@ -99,7 +99,6 @@ class Hub extends Component {
 
  pressHome = () => {
   this.props.navigation.dispatch(resetAction);
-<<<<<<< HEAD
  };
 
  pressPersonal = () => {
@@ -107,15 +106,11 @@ class Hub extends Component {
    coin: this.props.navigation.state.params.coin,
    wallet: this.props.navigation.state.params.coin.ADDRESS
   });
-=======
->>>>>>> d53c943b7b421776a7a9c59d66d9de1f181c23ea
  };
 
  // RENDER ===================
 
  render() {
-  // console.log(this.props.dogeToBtc);
-  console.log(this.props.btcToUsd);
   return (
    <Container>
     {this.props.hubLoaded === true ? (
@@ -126,14 +121,23 @@ class Hub extends Component {
       <StatusBar translucent={false} barStyle="light-content" />
       {this.props.navigation.state.params.coin.currency === 'BTC' ? (
        <Balance balanceAmount={+this.props.balance} />
-      ) : (
+      ) : null}
+      {this.props.navigation.state.params.coin.currency === 'LTC' ? (
        <BalanceBelow
         balanceAmount={+this.props.balance}
         ltcIcon={TEMP_LTC_ICON}
         dogeIcon={TEMP_DOGE_ICON}
         currency={this.props.navigation.state.params.coin.currency}
        />
-      )}
+      ) : null}
+      {this.props.navigation.state.params.coin.currency === 'DOGE' ? (
+       <BalanceDoge
+        balanceAmount={+this.props.balance}
+        ltcIcon={TEMP_LTC_ICON}
+        dogeIcon={TEMP_DOGE_ICON}
+        currency={this.props.navigation.state.params.coin.currency}
+       />
+      ) : null}
       <LastConverted
        baseCurrency={this.props.baseCurrency}
        quoteCurrency={this.props.quoteCurrency}
