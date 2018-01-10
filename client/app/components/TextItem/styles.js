@@ -18,9 +18,6 @@ export default EStyleSheet.create({
   backgroundColor: 'transparent',
   color: 'black',
   fontFamily: 'judson'
-  // textShadowOffset: { width: 2, height: 5 },
-  // textShadowColor: '$black',
-  // textShadowRadius: 3
  },
  createContainer: {
   flexDirection: 'row',
@@ -35,5 +32,12 @@ export default EStyleSheet.create({
   color: '#ddb500',
   fontWeight: 'bold',
   marginLeft: 5
+ },
+ totalText: {
+  color: '$plus',
+  marginTop: 15
+ },
+ totalAmount: {
+  color: '$white'
  }
 });
