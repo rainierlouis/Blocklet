@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { View, StatusBar, Dimensions, Image } from 'react-native';
 import PropTypes from 'prop-types';
 import Spinner from 'react-native-loading-spinner-overlay';
+import { NavigationActions } from 'react-navigation';
 
 import { Container } from '../components/Container';
 import { Balance, BalanceBelow } from '../components/Balance';
 import { HeaderTop } from '../components/HeaderTop';
 import { CardItem } from '../components/CardItem';
-import { LastConverted } from '../components/TextItem';
+import { LastConverted, TotalCurrent } from '../components/TextItem';
 import { TransactionBox } from '../components/TransactionBox';
 import { TransferButton, PersonalButton } from '../components/ButtonItem';
 
@@ -21,11 +22,19 @@ import {
  fetchRate,
  fetchTickerRate,
  fetchSent,
- fetchReceived
+ fetchReceived,
+ fetchDogeToBtc,
+ fetchBtcToUsd
 } from '../data/fetchData';
 
 // REDUX
 import { connect } from 'react-redux';
+
+// Navigation Helper
+const resetAction = NavigationActions.reset({
+ index: 0,
+ actions: [NavigationActions.navigate({ routeName: 'Home' })]
+});
 
 class Hub extends Component {
  constructor(props) {
@@ -34,12 +43,17 @@ class Hub extends Component {
 
  componentWillMount() {
   this.props.resetTrans();
+  this.props.resetTicker();
+ }
+
+ componentWillUnmount() {
+  this.props.resetLoaded();
  }
 
  componentDidMount() {
   // get ticker rate %
-  fetchTickerRate(this.props.baseCurrency).then(data =>
-   this.props.addTickers(data)
+  fetchTickerRate(this.props.navigation.state.params.coin.currency_name).then(
+   data => this.props.addTickers(data)
   );
   // set base baseCurrency
   this.props.setBaseCurrency(this.props.navigation.state.params.coin.currency);
@@ -62,10 +76,14 @@ class Hub extends Component {
    this.props.navigation.state.params.coin.ADDRESS,
    this.props.navigation.state.params.coin.API_KEY_TESTNET
   ).then(data => this.props.addRecTransactions(data));
+  // get Doge to Btc
+  fetchDogeToBtc().then(data => this.props.addDogeToBtc(data));
+  // get Btc to USD
+  fetchBtcToUsd().then(data => this.props.addBtcToUsd(data));
   setTimeout(() => {
-   // set loaded
-   this.props.setLoaded(true);
-  }, 3000);
+   // set hub loaded
+   this.props.setHubLoaded(true);
+  }, 1000);
  }
 
  static propTypes = {
@@ -80,18 +98,20 @@ class Hub extends Component {
  };
 
  pressHome = () => {
-  this.props.navigation.navigate('Home');
+  this.props.navigation.dispatch(resetAction);
  };
 
  // RENDER ===================
 
  render() {
+  // console.log(this.props.dogeToBtc);
+  console.log(this.props.btcToUsd);
   return (
    <Container>
-    {this.props.loaded === true ? (
+    {this.props.hubLoaded === true ? (
      <HeaderTop onPressMenu={this.pressMenu} onPressHome={this.pressHome} />
     ) : null}
-    {this.props.loaded === true ? (
+    {this.props.hubLoaded === true ? (
      <Container>
       <StatusBar translucent={false} barStyle="light-content" />
       {this.props.navigation.state.params.coin.currency === 'BTC' ? (
@@ -109,6 +129,14 @@ class Hub extends Component {
        quoteCurrency={this.props.quoteCurrency}
        conversionRate={this.props.conversionRate}
        currentDate={this.props.date}
+      />
+      <TotalCurrent
+       baseCurrency={this.props.baseCurrency}
+       balanceAmount={+this.props.balance}
+       quoteCurrency={this.props.quoteCurrency}
+       conversionRate={this.props.conversionRate}
+       dogeToBtc={this.props.dogeToBtc}
+       btcToUsd={this.props.btcToUsd}
       />
       <CardItem
        twentyFourPerc={this.props.rate24}
@@ -134,7 +162,7 @@ class Hub extends Component {
 
 const mapStateToProps = state => {
  return {
-  loaded: state.hubReducers.loaded,
+  hubLoaded: state.hubReducers.hubLoaded,
   baseCurrency: state.hubReducers.baseCurrency,
   quoteCurrency: state.hubReducers.quoteCurrency,
   balance: state.hubReducers.balance,
@@ -142,11 +170,26 @@ const mapStateToProps = state => {
   date: state.hubReducers.date,
   rate24: state.hubReducers.rate24,
   rate7: state.hubReducers.rate7,
-  lastTrans: state.hubReducers.lastTrans
+  lastTrans: state.hubReducers.lastTrans,
+  dogeToBtc: state.hubReducers.dogeToBtc,
+  btcToUsd: state.hubReducers.btcToUsd
  };
 };
 
 const mapDispatchToProps = dispatch => ({
+ resetLoaded: () =>
+  dispatch({
+   type: 'RESET_HUB_LOAD'
+  }),
+ setHubLoaded: bool =>
+  dispatch({
+   type: 'HUB_LOADED',
+   bool
+  }),
+ resetTicker: () =>
+  dispatch({
+   type: 'RESET_TICK'
+  }),
  resetTrans: () =>
   dispatch({
    type: 'RESET_TRANS'
@@ -185,6 +228,16 @@ const mapDispatchToProps = dispatch => ({
   dispatch({
    type: 'ADD_REC_TRANS',
    recData
+  }),
+ addDogeToBtc: data =>
+  dispatch({
+   type: 'DOGE_TO_BTC',
+   data
+  }),
+ addBtcToUsd: data =>
+  dispatch({
+   type: 'BTC_TO_USD',
+   data
   })
 });
 

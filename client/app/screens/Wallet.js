@@ -17,8 +17,6 @@ import { fetchBalance } from '../data/fetchData';
 // REDUX
 import { connect } from 'react-redux';
 
-const TEMP_ADDRESS = '2N5wGeBMZZeAVozrK8aPRFNCzFBMxjsfc5p';
-
 class Hub extends Component {
  constructor(props) {
   super(props);
