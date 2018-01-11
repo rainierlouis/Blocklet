@@ -4,7 +4,7 @@
  "private": true,
  "devDependencies": {
   "jest-expo": "23.0.0",
-  "react-native-scripts": "1.8.1",
+  "react-native-scripts": "^1.8.1",
   "react-test-renderer": "16.0.0"
  },
  "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
@@ -19,22 +19,27 @@
   "preset": "jest-expo"
  },
  "dependencies": {
+  "@vx/vx": "^0.0.152",
+  "d3": "^4.12.2",
   "expo": "^23.0.4",
   "moment": "^2.20.1",
   "native-base": "^2.3.6",
-  "react": "16.0.0",
+  "react": "^16.0.0-alpha.6",
   "react-native": "0.50.3",
   "react-native-animatable": "^1.2.4",
   "react-native-elements": "^0.18.5",
   "react-native-extended-stylesheet": "^0.8.0",
   "react-native-loading-spinner-overlay": "^0.5.2",
+  "react-native-qrcode-svg": "^5.0.6",
   "react-native-svg": "5.5.1",
+  "react-native-svg-charts": "^2.0.1",
   "react-native-vector-icons": "^4.4.3",
   "react-navigation": "^1.0.0-beta.22",
   "react-redux": "^5.0.6",
   "redux": "^3.7.2",
   "redux-logger": "^3.0.6",
-  "redux-saga": "^0.16.0"
+  "redux-saga": "^0.16.0",
+  "svgs": "^3.1.2"
  },
  "rnpm": {
   "assets": [
