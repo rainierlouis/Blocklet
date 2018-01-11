@@ -7,6 +7,8 @@ import Login from '../screens/Login';
 import Transactions from '../screens/Transactions';
 import ExchangeInfo from '../screens/ExchangeInfo';
 import Personal from '../screens/Personal';
+import Transfer from '../screens/Transfer';
+import CompleteTransfer from '../screens/CompleteTransfer';
 
 const HomeStack = StackNavigator({
  Home: {
@@ -47,34 +49,25 @@ const HomeStack = StackNavigator({
   navigationOptions: {
    header: () => null
   }
+ },
+ Transfer: {
+  screen: Transfer,
+  navigationOptions: {
+   header: () => null
+  }
+ },
+ CompleteTransfer: {
+  screen: CompleteTransfer,
+  navigationOptions: {
+   header: () => null
+  }
  }
 });
-
-// const MenuStack = StackNavigator({
-//  MenuList: {
-//   screen: MenuList,
-//   navigationOptions: {
-//    headerTitle: 'Menu',
-//    headerStyle: { backgroundColor: '#43314f' },
-//    headerTitleStyle: { color: 'white' },
-//    headerTintColor: 'white'
-//   }
-//  },
-//  Hub: {
-//   screen: HomeStack
-//  },
-//  Transactions: {
-//   screen: TransactionStack
-//  },
-//  ExchangeInfo: {
-//   screen: ExchangeStack
-//  }
-// });
 
 export default StackNavigator(
  {
   Login: {
-   screen: Login
+   screen: Home
   },
   Loading: {
    screen: HomeStack,
