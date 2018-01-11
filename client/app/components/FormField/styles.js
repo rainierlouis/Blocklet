@@ -6,6 +6,10 @@ export default EStyleSheet.create({
   marginTop: 300,
   alignItems: 'center'
  },
+ amountContainer: {
+  width: 350,
+  alignItems: 'center'
+ },
  formLabel: {
   backgroundColor: 'transparent',
   flexDirection: 'row'
