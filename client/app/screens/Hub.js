@@ -108,6 +108,10 @@ class Hub extends Component {
   });
  };
 
+ pressTransfer = () => {
+  this.props.navigation.navigate('Transfer');
+ };
+
  // RENDER ===================
 
  render() {
@@ -156,7 +160,7 @@ class Hub extends Component {
        twentyFourPerc={this.props.rate24}
        sevenPerc={this.props.rate7}
       />
-      <TransferButton />
+      <TransferButton onPress={this.pressTransfer} />
       <PersonalButton onPress={this.pressPersonal} />
       <TransactionBox list={this.props.lastTrans} />
      </Container>

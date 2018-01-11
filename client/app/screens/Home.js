@@ -12,10 +12,12 @@ import Spinner from 'react-native-loading-spinner-overlay';
 
 import { Container } from '../components/Container';
 import { Balance, BalanceBelow, BalanceDoge } from '../components/Balance';
+import { HomeGraph } from '../components/Graphs';
 import { images } from '../components/CardItem/icons/CoinIcons';
 
 // API/data fetch
 import { fetchBalance } from '../data/fetchData';
+import { fetch24h } from '../data/graphData';
 import { BTC, LTC, DOGE } from '../data/userData';
 
 // REDUX
@@ -38,6 +40,9 @@ class Home extends Component {
   fetchBalance(DOGE.ADDRESS, DOGE.API_KEY_TESTNET).then(data =>
    this.props.getDOGEBal(data)
   );
+
+  // get chart data - 24h
+  fetch24h().then(data => this.props.add24h(data));
  }
 
  componentDidMount() {
@@ -72,24 +77,46 @@ class Home extends Component {
     {this.props.loaded === true ? (
      <Container>
       <StatusBar translucent={false} barStyle="light-content" />
-      <TouchableOpacity onPress={this.onPressBtc}>
+
+      <TouchableOpacity onPress={this.onPressBtc} style={{ marginTop: 50 }}>
        <Balance balanceAmount={+this.props.btcBal} overview={true} />
+       <HomeGraph
+        data={this.props.price24h.BTC}
+        svgStyle={{
+         fill: 'rgba(134, 65, 244, 0.2)',
+         stroke: 'rgb(134, 65, 244)'
+        }}
+       />
       </TouchableOpacity>
-      <TouchableOpacity onPress={this.onPressLtc}>
+      <TouchableOpacity onPress={this.onPressLtc} style={{ marginTop: 50 }}>
        <BalanceBelow
         balanceAmount={+this.props.ltcBal}
         iconUrl={TEMP_LTC_ICON}
         overview={true}
         show={false}
        />
+       <HomeGraph
+        data={this.props.price24h.LTC}
+        svgStyle={{
+         fill: 'rgba(168, 30, 30, 0.2)',
+         stroke: 'rgb(168, 30, 30)'
+        }}
+       />
       </TouchableOpacity>
-      <TouchableOpacity onPress={this.onPressDoge}>
+      <TouchableOpacity onPress={this.onPressDoge} style={{ marginTop: 50 }}>
        <BalanceBelow
         balanceAmount={+this.props.dogeBal}
         iconUrl={TEMP_DOGE_ICON}
         overview={true}
         currency={'DOGE'}
         show={false}
+       />
+       <HomeGraph
+        data={this.props.price24h.DOGE}
+        svgStyle={{
+         fill: 'rgba(68, 206, 53, 0.2)',
+         stroke: 'rgb(68, 206, 53)'
+        }}
        />
       </TouchableOpacity>
      </Container>
@@ -112,7 +139,8 @@ const mapStateToProps = state => {
   loaded: state.homeBalReducers.loaded,
   btcBal: state.homeBalReducers.btcBal,
   ltcBal: state.homeBalReducers.ltcBal,
-  dogeBal: state.homeBalReducers.dogeBal
+  dogeBal: state.homeBalReducers.dogeBal,
+  price24h: state.homeBalReducers.price24h
  };
 };
 
@@ -135,6 +163,11 @@ const mapDispatchToProps = dispatch => ({
  getDOGEBal: data =>
   dispatch({
    type: 'GET_DOGE_BAL',
+   data
+  }),
+ add24h: data =>
+  dispatch({
+   type: 'ADD_24H',
    data
   })
 });
