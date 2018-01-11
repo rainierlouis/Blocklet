@@ -2,7 +2,8 @@ const initialState = {
  loaded: false,
  btcBal: 0,
  ltcBal: 0,
- dogeBal: 0
+ dogeBal: 0,
+ price24h: []
 };
 
 // REDUCER
@@ -27,6 +28,11 @@ const exchangeReducers = (state = initialState, action) => {
    return {
     ...state,
     dogeBal: action.data
+   };
+  case 'ADD_24H':
+   return {
+    ...state,
+    price24h: action.data
    };
   default:
    return state;
