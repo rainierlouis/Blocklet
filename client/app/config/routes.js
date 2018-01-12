@@ -9,6 +9,7 @@ import ExchangeInfo from '../screens/ExchangeInfo';
 import Personal from '../screens/Personal';
 import Transfer from '../screens/Transfer';
 import CompleteTransfer from '../screens/CompleteTransfer';
+import News from '../screens/News';
 
 const HomeStack = StackNavigator({
  Home: {
@@ -67,7 +68,7 @@ const HomeStack = StackNavigator({
 export default StackNavigator(
  {
   Login: {
-   screen: Home
+   screen: News
   },
   Loading: {
    screen: HomeStack,
