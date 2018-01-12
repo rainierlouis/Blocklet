@@ -27,7 +27,7 @@ export default class HomeGraph extends Component {
     gridMax={
      this.props.data.slice().sort((a, b) => a - b)[this.props.data.length - 1]
     }
-    style={{ height: 50, width: 210, alignSelf: 'center', marginTop: 10 }}
+    style={styles.graph}
     dataPoints={this.props.data}
     curve={shape.curveLinear}
     svg={this.props.svgStyle}
