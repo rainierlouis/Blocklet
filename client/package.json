@@ -34,6 +34,7 @@
   "react-native-svg": "5.5.1",
   "react-native-svg-charts": "^2.0.1",
   "react-native-vector-icons": "^4.4.3",
+  "react-native-websocket": "^1.0.1",
   "react-navigation": "^1.0.0-beta.22",
   "react-redux": "^5.0.6",
   "redux": "^3.7.2",

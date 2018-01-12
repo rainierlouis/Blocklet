@@ -5463,6 +5463,12 @@ react-native-vector-icons@~4.4.2:
     prop-types "^15.5.10"
     yargs "^8.0.2"
 
+react-native-websocket@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-websocket/-/react-native-websocket-1.0.1.tgz#8f452625af2680f64a2f4dd7c09270b2cb86a1d6"
+  dependencies:
+    prop-types "^15.5.8"
+
 react-native@0.50.3:
   version "0.50.3"
   resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.50.3.tgz#91282bd5356cc7d794969cdc443cc764389b9af4"
