@@ -43,7 +43,8 @@ export default class App extends Component {
    pacifico: require('./assets/fonts/Pacifico-Regular.ttf'),
    judson: require('./assets/fonts/Judson-Regular.ttf'),
    gilda: require('./assets/fonts/GildaDisplay-Regular.ttf'),
-   quicksand: require('./assets/fonts/Quicksand-Regular.ttf')
+   quicksand: require('./assets/fonts/Quicksand-Regular.ttf'),
+   lato: require('./assets/fonts/Lato-Regular.ttf')
   });
   this.setState({ isReady: true });
  }
