@@ -4,15 +4,17 @@ import MenuButton from './MenuButton';
 import OptionsButton from './OptionsButton';
 import LoginButton from './LoginButton';
 import SignupButton from './SignupButton';
+import ExchangeButton from './ExchangeButton';
 
 import styles from './styles';
 
 export {
-	SignupButton,
-	PersonalButton,
-	TransferButton,
-	MenuButton,
-	OptionsButton,
-	LoginButton,
-	styles
+ ExchangeButton,
+ SignupButton,
+ PersonalButton,
+ TransferButton,
+ MenuButton,
+ OptionsButton,
+ LoginButton,
+ styles
 };

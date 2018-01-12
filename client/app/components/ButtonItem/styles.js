@@ -12,7 +12,7 @@ export default EStyleSheet.create({
   backgroundColor: '$yellow',
   width: 150
  },
- MenuButton: {
+ menuButton: {
   backgroundColor: '$primaryPurple',
   marginTop: -50,
   marginLeft: -15,
@@ -36,5 +36,9 @@ export default EStyleSheet.create({
   marginTop: 20,
   width: '100%',
   borderRadius: 2
+ },
+ exchangeButton: {
+  width: 90,
+  height: 50
  }
 });

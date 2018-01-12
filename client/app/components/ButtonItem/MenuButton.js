@@ -10,7 +10,7 @@ const MenuButton = ({ onPress }) => (
   <Button
    onPress={onPress}
    icon={{ name: 'three-bars', type: 'octicon' }}
-   buttonStyle={styles.MenuButton}
+   buttonStyle={styles.menuButton}
   />
  </View>
 );
