@@ -30,6 +30,9 @@ const TEMP_DOGE_ICON = { uri: images.DOGE };
 class Home extends Component {
  constructor(props) {
   super(props);
+ }
+
+ componentDidMount() {
   // get balances
   fetchBalance(BTC.ADDRESS, BTC.API_KEY_TESTNET).then(data =>
    this.props.getBTCBal(data)
@@ -43,13 +46,10 @@ class Home extends Component {
 
   // get chart data - 24h
   fetch24h().then(data => this.props.add24h(data));
- }
-
- componentDidMount() {
   setTimeout(() => {
    // set loaded
    this.props.setLoaded(true);
-  }, 1000);
+  }, 2500);
  }
 
  static propTypes = {

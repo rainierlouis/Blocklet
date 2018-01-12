@@ -11,6 +11,7 @@ import { CardItem } from '../components/CardItem';
 import { LastConverted, TotalCurrent } from '../components/TextItem';
 import { TransactionBox } from '../components/TransactionBox';
 import { TransferButton, PersonalButton } from '../components/ButtonItem';
+import { FabMenu } from '../components/FabMenu';
 
 import { images } from '../components/CardItem/icons/CoinIcons';
 const TEMP_LTC_ICON = { uri: images.LTC };
