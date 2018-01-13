@@ -2,8 +2,7 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 
 export default EStyleSheet.create({
  container: {
-  justifyContent: 'center',
-  marginTop: 50
+  alignItems: 'center'
  },
  balanceBelowContainer: {
   alignItems: 'center'
@@ -12,7 +11,9 @@ export default EStyleSheet.create({
   color: '$darkGrey'
  },
  balanceTextAmount: {
-  color: '$white'
+  color: '#cccccc',
+  height: null,
+  width: null
  },
  conversionText: {
   color: '$white',

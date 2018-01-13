@@ -1,21 +1,29 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { View, Image } from 'react-native';
-import { Divider, Text } from 'react-native-elements';
+import { Divider, Text, Icon } from 'react-native-elements';
 import * as Animatable from 'react-native-animatable';
 
 import { images } from '../CardItem/icons/CoinIcons';
 
 import styles from './styles';
 
+const iconItem = () => <Icon name="rowing" />;
+
 const Balance = ({ balanceAmount, show, overview }) => (
  <View style={styles.container}>
-  <Text style={styles.balanceTextTitle}>Your Balance</Text>
   <View style={styles.balanceBelowContainer}>
    {overview ? (
-    <Text h3 style={styles.balanceTextAmount}>
-     {balanceAmount.toFixed(7) + ' ฿T'}
-    </Text>
+    <View
+     style={{
+      flexDirection: 'row',
+      alignSelf: 'center'
+     }}
+    >
+     <Text h3 style={styles.balanceTextAmount}>
+      {balanceAmount.toFixed(7) + ' ฿T'}
+     </Text>
+    </View>
    ) : (
     <Text h3 style={styles.balanceTextAmount}>
      {balanceAmount.toFixed(7)}
@@ -31,6 +39,7 @@ const Balance = ({ balanceAmount, show, overview }) => (
     </Text>
    )}
   </View>
+
   <Divider style={styles.divider} />
  </View>
 );
