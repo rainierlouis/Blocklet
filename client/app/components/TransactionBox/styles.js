@@ -3,20 +3,23 @@ import { Dimensions } from 'react-native';
 
 export default EStyleSheet.create({
  container: {
+  width: 355,
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
-  marginTop: 45
+  marginTop: 10,
+  backgroundColor: '#2b2b2b'
  },
  titleText: {
   color: '$white',
   fontSize: 14
  },
  list: {
-  borderTopWidth: 0
+  marginTop: 0,
+  borderTopWidth: 0,
+  backgroundColor: '#2b2b2b'
  },
  listItem: {
-  backgroundColor: '$primaryPurple',
   borderBottomWidth: 0,
   width: Dimensions.get('window').width / 2
  },

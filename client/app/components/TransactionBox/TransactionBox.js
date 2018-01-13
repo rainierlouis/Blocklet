@@ -7,7 +7,6 @@ import styles from './styles';
 
 const TransactionBox = ({ list }) => (
  <View style={styles.container}>
-  <Text style={styles.titleText}>Recent Transactions</Text>
   <List containerStyle={styles.list}>
    {list.sort((a, b) => b.time - a.time).map((item, i) => {
     if (item.amounts_sent && i < 5) {
