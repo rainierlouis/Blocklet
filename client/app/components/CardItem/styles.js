@@ -26,5 +26,22 @@ export default EStyleSheet.create({
  plus: {
   color: '$plus',
   padding: 10
+ },
+ newsCard: {
+  borderColor: '$grey',
+  borderRadius: 15,
+  backgroundColor: '$grey'
+ },
+ newsText: {
+  marginBottom: 10,
+  color: 'white'
+ },
+ newsButton: {
+  borderRadius: 0,
+  marginLeft: 0,
+  marginRight: 0,
+  marginBottom: 0,
+  borderRadius: 30,
+  height: 15
  }
 });
