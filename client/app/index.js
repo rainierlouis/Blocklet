@@ -12,7 +12,11 @@ import { Provider } from 'react-redux';
 import store from './config/store';
 
 EStyleSheet.build({
- $primaryPurple: '#181337',
+ // $primaryPurple: '#181337',
+ $primaryPurple: '#212121',
+ // $primaryPurpleLt: '#43314f',
+ $primaryPurpleLt: '#3a3535',
+ $grey: '#2b2b2b',
  $darkGrey: '#777777',
  $border: '#3d354f',
  $user: '#5394bc',
@@ -22,7 +26,8 @@ EStyleSheet.build({
 
  $yellow: '#ddb500',
 
- $white: '#FFF',
+ // $white: '#FFF',
+ $white: '#cccccc',
  $black: '#000'
 });
 
@@ -44,7 +49,8 @@ export default class App extends Component {
    judson: require('./assets/fonts/Judson-Regular.ttf'),
    gilda: require('./assets/fonts/GildaDisplay-Regular.ttf'),
    quicksand: require('./assets/fonts/Quicksand-Regular.ttf'),
-   lato: require('./assets/fonts/Lato-Regular.ttf')
+   lato: require('./assets/fonts/Lato-Regular.ttf'),
+   latos: require('./assets/fonts/Lato-Light.ttf')
   });
   this.setState({ isReady: true });
  }
