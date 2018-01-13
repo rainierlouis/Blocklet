@@ -7,12 +7,14 @@ import {
  Text,
  TouchableOpacity
 } from 'react-native';
+import { Icon } from 'react-native-elements';
 import PropTypes from 'prop-types';
 import Spinner from 'react-native-loading-spinner-overlay';
 
 import { Container } from '../components/Container';
 import { Balance, BalanceBelow, BalanceDoge } from '../components/Balance';
 import { HomeGraph } from '../components/Graphs';
+import { HeaderTitle } from '../components/TextItem';
 import { images } from '../components/CardItem/icons/CoinIcons';
 
 // API/data fetch
@@ -49,7 +51,7 @@ class Home extends Component {
   setTimeout(() => {
    // set loaded
    this.props.setLoaded(true);
-  }, 2500);
+  }, 3000);
  }
 
  static propTypes = {
@@ -72,51 +74,112 @@ class Home extends Component {
  // RENDER ===================
 
  render() {
+  console.log(this.props.price24h);
   return (
    <Container>
     {this.props.loaded === true ? (
      <Container>
       <StatusBar translucent={false} barStyle="light-content" />
+      <HeaderTitle
+       style={{ backgroundColor: '#2b2b2b' }}
+       titleName={'Balances'}
+      />
 
-      <TouchableOpacity onPress={this.onPressBtc} style={{ marginTop: 50 }}>
-       <Balance balanceAmount={+this.props.btcBal} overview={true} />
-       <HomeGraph
-        data={this.props.price24h.BTC}
-        svgStyle={{
-         fill: 'rgba(134, 65, 244, 0.2)',
-         stroke: 'rgb(134, 65, 244)'
-        }}
+      <TouchableOpacity
+       onPress={this.onPressBtc}
+       style={{
+        marginTop: 10,
+        flexDirection: 'row',
+        backgroundColor: '#2b2b2b',
+        paddingVertical: 15,
+        paddingHorizontal: 15
+       }}
+      >
+       <View style={{ width: 290, marginRight: 20 }}>
+        <Balance balanceAmount={+this.props.btcBal} overview={true} />
+        <HomeGraph
+         data={this.props.price24h.BTC}
+         svgStyle={{
+          fill: 'rgba(221, 181, 0, 0.2)',
+          stroke: 'rgb(221, 181, 0)'
+         }}
+        />
+       </View>
+       <Icon
+        name="ios-arrow-forward"
+        type="ionicon"
+        color="#cccccc"
+        size={39}
+        style={{ marginTop: 50 }}
        />
       </TouchableOpacity>
-      <TouchableOpacity onPress={this.onPressLtc} style={{ marginTop: 50 }}>
-       <BalanceBelow
-        balanceAmount={+this.props.ltcBal}
-        iconUrl={TEMP_LTC_ICON}
-        overview={true}
-        show={false}
-       />
-       <HomeGraph
-        data={this.props.price24h.LTC}
-        svgStyle={{
-         fill: 'rgba(168, 30, 30, 0.2)',
-         stroke: 'rgb(168, 30, 30)'
-        }}
+
+      <TouchableOpacity
+       onPress={this.onPressLtc}
+       style={{
+        marginTop: 10,
+        flexDirection: 'row',
+        backgroundColor: '#2b2b2b',
+        paddingVertical: 15,
+        paddingHorizontal: 15
+       }}
+      >
+       <View style={{ width: 290, marginRight: 20 }}>
+        <BalanceBelow
+         balanceAmount={+this.props.ltcBal}
+         iconUrl={TEMP_LTC_ICON}
+         overview={true}
+         show={false}
+        />
+        <HomeGraph
+         data={this.props.price24h.LTC}
+         svgStyle={{
+          fill: 'rgba(221, 181, 0, 0.2)',
+          stroke: 'rgb(221, 181, 0)'
+         }}
+        />
+       </View>
+       <Icon
+        name="ios-arrow-forward"
+        type="ionicon"
+        color="#cccccc"
+        size={39}
+        style={{ marginTop: 10 }}
        />
       </TouchableOpacity>
-      <TouchableOpacity onPress={this.onPressDoge} style={{ marginTop: 50 }}>
-       <BalanceBelow
-        balanceAmount={+this.props.dogeBal}
-        iconUrl={TEMP_DOGE_ICON}
-        overview={true}
-        currency={'DOGE'}
-        show={false}
-       />
-       <HomeGraph
-        data={this.props.price24h.DOGE}
-        svgStyle={{
-         fill: 'rgba(68, 206, 53, 0.2)',
-         stroke: 'rgb(68, 206, 53)'
-        }}
+
+      <TouchableOpacity
+       onPress={this.onPressDoge}
+       style={{
+        marginTop: 10,
+        flexDirection: 'row',
+        backgroundColor: '#2b2b2b',
+        paddingVertical: 15,
+        paddingHorizontal: 15
+       }}
+      >
+       <View style={{ width: 290, marginRight: 20 }}>
+        <BalanceBelow
+         balanceAmount={+this.props.dogeBal}
+         iconUrl={TEMP_DOGE_ICON}
+         overview={true}
+         currency={'DOGE'}
+         show={false}
+        />
+        <HomeGraph
+         data={this.props.price24h.DOGE}
+         svgStyle={{
+          fill: 'rgba(221, 181, 0, 0.2)',
+          stroke: 'rgb(221, 181, 0)'
+         }}
+        />
+       </View>
+       <Icon
+        name="ios-arrow-forward"
+        type="ionicon"
+        color="#cccccc"
+        size={39}
+        style={{ marginTop: 10 }}
        />
       </TouchableOpacity>
      </Container>
@@ -173,3 +236,19 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
+
+// red
+// fill: 'rgba(168, 30, 30, 0.2)',
+// stroke: 'rgb(168, 30, 30)'
+
+// green
+// fill: 'rgba(68, 206, 53, 0.2)',
+// stroke: 'rgb(68, 206, 53)'
+
+// blue
+// fill: 'rgba(0, 110, 255, 0.2)',
+// stroke: 'rgb(0, 110, 255)'
+
+// orange
+// fill: 'rgba(234, 93, 0, 0.2)',
+// stroke: 'rgb(234, 93, 0)'

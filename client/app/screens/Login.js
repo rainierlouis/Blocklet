@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StatusBar, Image } from 'react-native';
+import { View, StatusBar, Image, KeyboardAvoidingView } from 'react-native';
 import PropTypes from 'prop-types';
 import * as Animatable from 'react-native-animatable';
 import { Font } from 'expo';
@@ -21,7 +21,6 @@ const remote6 = 'https://image.ibb.co/eJ887G/bg2.png';
 class Login extends Component {
  static propTypes = {
   navigation: PropTypes.object
-  // dispatch: PropTypes.func,
  };
 
  loginUser = () => {
@@ -34,7 +33,8 @@ class Login extends Component {
 
  render() {
   return (
-   <View
+   <KeyboardAvoidingView
+    behaviour="height"
     style={{
      flex: 1
     }}
@@ -60,14 +60,12 @@ class Login extends Component {
       alignItems: 'center'
      }}
     >
-     {/* <LoginTitle /> */}
      <Logo />
      <InputField onPress={this.loginUser} />
-     {/* <LoginField onPress={this.loginUser} /> */}
      <LoginButton onPress={this.loginUser} />
      <CreateAccount onPress={this.signUp} />
     </View>
-   </View>
+   </KeyboardAvoidingView>
   );
  }
 }

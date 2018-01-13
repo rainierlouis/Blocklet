@@ -9,6 +9,7 @@ import Icon from 'react-native-vector-icons/Octicons';
 
 import { Container } from '../components/Container';
 import { HeaderTop } from '../components/HeaderTop';
+import { HeaderTitle } from '../components/TextItem';
 
 // REDUX
 import { connect } from 'react-redux';
@@ -22,25 +23,26 @@ const resetAction = NavigationActions.reset({
 // Screen styles
 const styles = EStyleSheet.create({
  subTextQR: {
+  marginTop: 20,
   marginBottom: 15,
   color: '$yellow',
-  fontFamily: 'quicksand'
+  fontFamily: 'lato'
  },
  subTextName: {
   marginTop: 50,
   color: '$yellow',
   marginBottom: 5,
-  fontFamily: 'quicksand'
+  fontFamily: 'lato'
  },
  subText: {
   color: '$yellow',
   marginBottom: 5,
-  fontFamily: 'quicksand'
+  fontFamily: 'lato'
  },
  text: {
   color: '$white',
   fontSize: 15,
-  fontFamily: 'quicksand'
+  fontFamily: 'lato'
  },
  boxContainer: {
   justifyContent: 'center',
@@ -80,37 +82,44 @@ class Personal extends Component {
    <Container>
     <StatusBar translucent={false} barStyle="light-content" />
     <HeaderTop onPressMenu={this.pressMenu} onPressHome={this.pressHome} />
-
-    <View>
-     <Text style={styles.subTextQR}>QR Wallet Code</Text>
-
-     <QRCode
-      value="2N8jnDQH9KqidrqQ4veTfAiSgh5dNNSgWr1"
-      logoSize={100}
-      size={310}
-      logoMargin={5}
+    <View
+     style={{ marginTop: 35, justifyContent: 'center', alignItems: 'center' }}
+    >
+     <HeaderTitle
+      style={{ backgroundColor: '#2b2b2b' }}
+      titleName={'Personal'}
      />
+     <View>
+      <Text style={styles.subTextQR}>QR Wallet Code</Text>
 
-     <Text style={styles.subTextName}>Username</Text>
-     <View style={styles.boxContainer}>
-      <Text style={styles.text}>Selyuu</Text>
-     </View>
-     <Text style={styles.subText}>Email</Text>
-     <View style={styles.boxContainer}>
-      <Text style={styles.text}>rainierlouis@gmail.com</Text>
-     </View>
-     <Text style={styles.subText}>Password</Text>
-     <View style={styles.boxContainer}>
-      <Text style={styles.text}>
-       <Icon name="primitive-dot" />
-       <Icon name="primitive-dot" />
-       <Icon name="primitive-dot" />
-       <Icon name="primitive-dot" />
-       <Icon name="primitive-dot" />
-       <Icon name="primitive-dot" />
-       <Icon name="primitive-dot" />
-       <Icon name="primitive-dot" />
-      </Text>
+      <QRCode
+       value="2N8jnDQH9KqidrqQ4veTfAiSgh5dNNSgWr1"
+       logoSize={100}
+       size={310}
+       logoMargin={5}
+      />
+
+      <Text style={styles.subTextName}>Username</Text>
+      <View style={styles.boxContainer}>
+       <Text style={styles.text}>Selyuu</Text>
+      </View>
+      <Text style={styles.subText}>Email</Text>
+      <View style={styles.boxContainer}>
+       <Text style={styles.text}>rainierlouis@gmail.com</Text>
+      </View>
+      <Text style={styles.subText}>Password</Text>
+      <View style={styles.boxContainer}>
+       <Text style={styles.text}>
+        <Icon name="primitive-dot" />
+        <Icon name="primitive-dot" />
+        <Icon name="primitive-dot" />
+        <Icon name="primitive-dot" />
+        <Icon name="primitive-dot" />
+        <Icon name="primitive-dot" />
+        <Icon name="primitive-dot" />
+        <Icon name="primitive-dot" />
+       </Text>
+      </View>
      </View>
     </View>
    </Container>

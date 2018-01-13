@@ -11,8 +11,9 @@ import { CardItem } from '../components/CardItem';
 import { LastConverted, TotalCurrent } from '../components/TextItem';
 import { TransactionBox } from '../components/TransactionBox';
 import { TransferButton, PersonalButton } from '../components/ButtonItem';
-import { FabMenu } from '../components/FabMenu';
+import { HeaderTitle, HeaderSubTitle } from '../components/TextItem';
 
+import menuData from '../data/menuData';
 import { images } from '../components/CardItem/icons/CoinIcons';
 const TEMP_LTC_ICON = { uri: images.LTC };
 const TEMP_DOGE_ICON = { uri: images.DOGE };
@@ -43,15 +44,6 @@ class Hub extends Component {
  }
 
  componentWillMount() {
-  this.props.resetTrans();
-  this.props.resetTicker();
- }
-
- componentWillUnmount() {
-  this.props.resetLoaded();
- }
-
- componentDidMount() {
   // get ticker rate %
   fetchTickerRate(this.props.navigation.state.params.coin.currency_name).then(
    data => this.props.addTickers(data)
@@ -84,13 +76,29 @@ class Hub extends Component {
   setTimeout(() => {
    // set hub loaded
    this.props.setHubLoaded(true);
-  }, 1000);
+  }, 3000);
+ }
+
+ componentWillUnmount() {
+  this.props.resetLoaded();
+ }
+
+ componentWillAnimateIn() {
+  this.props.resetTicker();
+  this.props.resetTrans();
  }
 
  static propTypes = {
   navigation: PropTypes.object,
   dispatch: PropTypes.func
  };
+
+ adjustSelected = (arr, sel) =>
+  menuData.slice().map(item => {
+   if (item[1] === true) return (item[1] = false);
+   if (item[0] === sel) return (item[1] = true);
+   return item;
+  });
 
  pressMenu = () => {
   this.props.navigation.navigate('MenuList', {
@@ -102,10 +110,12 @@ class Hub extends Component {
   this.props.navigation.dispatch(resetAction);
  };
 
- pressPersonal = () => {
+ pressPersonal = async () => {
+  await this.adjustSelected(menuData, 'Personal');
   this.props.navigation.navigate('Personal', {
    coin: this.props.navigation.state.params.coin,
-   wallet: this.props.navigation.state.params.coin.ADDRESS
+   wallet: this.props.navigation.state.params.coin.ADDRESS,
+   selected: true
   });
  };
 
@@ -122,49 +132,75 @@ class Hub extends Component {
      <HeaderTop onPressMenu={this.pressMenu} onPressHome={this.pressHome} />
     ) : null}
     {this.props.hubLoaded === true ? (
-     <Container>
-      <StatusBar translucent={false} barStyle="light-content" />
-      {this.props.navigation.state.params.coin.currency === 'BTC' ? (
-       <Balance balanceAmount={+this.props.balance} />
-      ) : null}
-      {this.props.navigation.state.params.coin.currency === 'LTC' ? (
-       <BalanceBelow
-        balanceAmount={+this.props.balance}
-        ltcIcon={TEMP_LTC_ICON}
-        dogeIcon={TEMP_DOGE_ICON}
-        currency={this.props.navigation.state.params.coin.currency}
+     <StatusBar translucent={false} barStyle="light-content" />
+    ) : null}
+    {this.props.hubLoaded === true ? (
+     <View
+      style={{
+       marginTop: 65,
+       justifyContent: 'center',
+       alignItems: 'center'
+      }}
+     >
+      <HeaderTitle style={{ backgroundColor: '#2b2b2b' }} titleName={'Hub'} />
+      <View
+       style={{
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#2b2b2b',
+        marginTop: 10,
+        width: 355,
+        paddingVertical: 10
+       }}
+      >
+       {this.props.navigation.state.params.coin.currency === 'BTC' ? (
+        <Balance balanceAmount={+this.props.balance} />
+       ) : null}
+       {this.props.navigation.state.params.coin.currency === 'LTC' ? (
+        <BalanceBelow
+         balanceAmount={+this.props.balance}
+         ltcIcon={TEMP_LTC_ICON}
+         dogeIcon={TEMP_DOGE_ICON}
+         currency={this.props.navigation.state.params.coin.currency}
+        />
+       ) : null}
+       {this.props.navigation.state.params.coin.currency === 'DOGE' ? (
+        <BalanceDoge
+         balanceAmount={+this.props.balance}
+         ltcIcon={TEMP_LTC_ICON}
+         dogeIcon={TEMP_DOGE_ICON}
+         currency={this.props.navigation.state.params.coin.currency}
+        />
+       ) : null}
+       <LastConverted
+        baseCurrency={this.props.baseCurrency}
+        quoteCurrency={this.props.quoteCurrency}
+        conversionRate={this.props.conversionRate}
+        currentDate={this.props.date}
        />
-      ) : null}
-      {this.props.navigation.state.params.coin.currency === 'DOGE' ? (
-       <BalanceDoge
+       <TotalCurrent
+        baseCurrency={this.props.baseCurrency}
         balanceAmount={+this.props.balance}
-        ltcIcon={TEMP_LTC_ICON}
-        dogeIcon={TEMP_DOGE_ICON}
-        currency={this.props.navigation.state.params.coin.currency}
+        quoteCurrency={this.props.quoteCurrency}
+        conversionRate={this.props.conversionRate}
+        dogeToBtc={this.props.dogeToBtc}
+        btcToUsd={this.props.btcToUsd}
        />
-      ) : null}
-      <LastConverted
-       baseCurrency={this.props.baseCurrency}
-       quoteCurrency={this.props.quoteCurrency}
-       conversionRate={this.props.conversionRate}
-       currentDate={this.props.date}
-      />
-      <TotalCurrent
-       baseCurrency={this.props.baseCurrency}
-       balanceAmount={+this.props.balance}
-       quoteCurrency={this.props.quoteCurrency}
-       conversionRate={this.props.conversionRate}
-       dogeToBtc={this.props.dogeToBtc}
-       btcToUsd={this.props.btcToUsd}
-      />
-      <CardItem
-       twentyFourPerc={this.props.rate24}
-       sevenPerc={this.props.rate7}
-      />
+       <CardItem
+        twentyFourPerc={this.props.rate24}
+        sevenPerc={this.props.rate7}
+       />
+      </View>
       <TransferButton onPress={this.pressTransfer} />
       <PersonalButton onPress={this.pressPersonal} />
+      <View style={{ marginTop: 10 }}>
+       <HeaderSubTitle
+        style={{ backgroundColor: '#2b2b2b' }}
+        titleName={'Recent Transactions'}
+       />
+      </View>
       <TransactionBox list={this.props.lastTrans} />
-     </Container>
+     </View>
     ) : (
      <View
       style={{

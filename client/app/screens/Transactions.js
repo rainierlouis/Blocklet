@@ -6,6 +6,7 @@ import { NavigationActions } from 'react-navigation';
 import { TransactionItem, Separator } from '../components/ListItem';
 import { Container } from '../components/Container';
 import { HeaderTop } from '../components/HeaderTop';
+import { HeaderTitle } from '../components/TextItem';
 
 import { fetchSent, fetchReceived } from '../data/fetchData';
 
@@ -81,34 +82,35 @@ class Transactions extends Component {
  // RENDER ========================
 
  render() {
-  console.log(
-   'COIN PASSED! ===========',
-   this.props.navigation.state.params.coin
-  );
   return (
    <Container>
     <StatusBar translucent={false} barStyle="light-content" />
     <HeaderTop onPressMenu={this.pressMenu} onPressHome={this.pressHome} />
-    <FlatList
-     style={{ marginTop: 80 }}
-     data={this.sortData(this.props.recTrans, this.props.sentTrans)}
-     renderItem={({ item }) => (
-      <TransactionItem
-       sentOrRec={item.sentOrRec}
-       amount={
-        item.amounts_received
-         ? item.amounts_received[0].amount
-         : item.total_amount_sent
-       }
-       sender={item.senders[0]}
-       confidence={item.confidence}
-       confirmations={item.confirmations}
-       onPress={() => this.handlePress(item)}
-      />
-     )}
-     keyExtractor={item => item.txid}
-     ItemSeparatorComponent={Separator}
-    />
+    <View style={{ marginTop: 95 }}>
+     <HeaderTitle
+      style={{ backgroundColor: '#2b2b2b' }}
+      titleName={'Transactions'}
+     />
+     <FlatList
+      data={this.sortData(this.props.recTrans, this.props.sentTrans)}
+      renderItem={({ item }) => (
+       <TransactionItem
+        sentOrRec={item.sentOrRec}
+        amount={
+         item.amounts_received
+          ? item.amounts_received[0].amount
+          : item.total_amount_sent
+        }
+        sender={item.senders[0]}
+        confidence={item.confidence}
+        confirmations={item.confirmations}
+        onPress={() => this.handlePress(item)}
+       />
+      )}
+      keyExtractor={item => item.txid}
+      ItemSeparatorComponent={Separator}
+     />
+    </View>
    </Container>
   );
  }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FlatList, View, StatusBar } from 'react-native';
+import { FlatList, View, StatusBar, ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import { NavigationActions } from 'react-navigation';
 import { Text } from 'react-native-elements';
@@ -8,6 +8,7 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 import { Container } from '../components/Container';
 import { HeaderTop } from '../components/HeaderTop';
 import { ExchangeBox } from '../components/ExchangeBox';
+import { HeaderTitle } from '../components/TextItem';
 
 import { fetchTickerRate } from '../data/fetchData';
 import { fetch1h, fetch24h, fetch7d, fetch1m } from '../data/graphData';
@@ -65,35 +66,53 @@ class ExchangeInfo extends Component {
  // RENDER ========================
 
  render() {
-  // console.log('24h ticker================', this.props.ticker24h);
   return (
    <Container>
     <StatusBar translucent={false} barStyle="light-content" />
     <HeaderTop onPressMenu={this.pressMenu} onPressHome={this.pressHome} />
-    <View style={styles.exchContainer} />
-    <ExchangeBox
-     coin={null}
-     // 1h
-     time1h={'1h'}
-     timeText1h={'1 Hour'}
-     ticker1h={this.props.ticker1h}
-     data1h={this.props.data1h}
-     // 24h
-     time24h={'24h'}
-     timeText24h={'24 Hours'}
-     ticker24h={this.props.ticker24h}
-     data24h={this.props.data24h}
-     // 7d
-     time7d={'7d'}
-     timeText7d={'7 Days'}
-     ticker7d={this.props.ticker7d}
-     data7d={this.props.data7d}
-     // 1m
-     time1m={'1m'}
-     timeText1m={'1 Month'}
-     ticker1m={this.props.ticker1m}
-     data1m={this.props.data1m}
-    />
+    <View
+     style={{
+      marginTop: 65,
+      justifyContent: 'center',
+      alignItems: 'center'
+     }}
+    >
+     <HeaderTitle
+      style={{ backgroundColor: '#2b2b2b' }}
+      titleName={'Exchange Info'}
+     />
+
+     <View
+      style={{
+       justifyContent: 'center',
+       alignItems: 'center'
+      }}
+     >
+      <ExchangeBox
+       coin={null}
+       // 1h
+       time1h={'1h'}
+       timeText1h={'1 Hour'}
+       ticker1h={this.props.ticker1h}
+       data1h={this.props.data1h}
+       // 24h
+       time24h={'24h'}
+       timeText24h={'24 Hours'}
+       ticker24h={this.props.ticker24h}
+       data24h={this.props.data24h}
+       // 7d
+       time7d={'7d'}
+       timeText7d={'7 Days'}
+       ticker7d={this.props.ticker7d}
+       data7d={this.props.data7d}
+       // 1m
+       time1m={'1m'}
+       timeText1m={'1 Month'}
+       ticker1m={this.props.ticker1m}
+       data1m={this.props.data1m}
+      />
+     </View>
+    </View>
    </Container>
   );
  }

@@ -13,13 +13,23 @@ class MenuList extends Component {
   navigation: PropTypes.object
  };
 
- handlePress = item => {
-  item === 'Exchange Info'
+ adjustSelected = (arr, sel) =>
+  menuData.slice().map(item => {
+   if (item[1] === true) return (item[1] = false);
+   if (item[0] === sel) return (item[1] = true);
+   return item;
+  });
+
+ handlePress = async item => {
+  await this.adjustSelected(menuData, item[0]);
+  item[0] === 'Exchange Info'
    ? this.props.navigation.navigate('ExchangeInfo', {
-      coin: this.props.navigation.state.params.coin
+      coin: this.props.navigation.state.params.coin,
+      selected: item[1]
      })
-   : this.props.navigation.navigate(`${item}`, {
-      coin: this.props.navigation.state.params.coin
+   : this.props.navigation.navigate(`${item[0]}`, {
+      coin: this.props.navigation.state.params.coin,
+      selected: item[1]
      });
  };
 
@@ -30,10 +40,14 @@ class MenuList extends Component {
    <Container>
     <StatusBar translucent={false} barStyle="light-content" />
     <FlatList
-     style={{ marginTop: 10 }}
+     style={{ marginTop: 0 }}
      data={menuData}
      renderItem={({ item }) => (
-      <ListItem text={item} onPress={() => this.handlePress(item)} />
+      <ListItem
+       text={item[0]}
+       onPress={() => this.handlePress(item)}
+       selected={item[1]}
+      />
      )}
      keyExtractor={item => item}
      ItemSeparatorComponent={Separator}
