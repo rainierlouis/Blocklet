@@ -5,12 +5,18 @@ export default EStyleSheet.create({
  exchangeContainer: {
   width: 250
  },
+ exchBox: {
+  backgroundColor: '$grey',
+  marginTop: 5,
+  width: 355,
+  paddingHorizontal: 10,
+  paddingVertical: 10
+ },
  title: {
   color: '$white',
   fontSize: 20
  },
  titlePrimary: {
-  marginTop: 60,
   color: '$white',
   fontSize: 20
  },
@@ -20,12 +26,12 @@ export default EStyleSheet.create({
  amount: {
   color: '$plus',
   alignSelf: 'flex-end',
-  marginBottom: 10
+  marginBottom: 5
  },
  graph: {
   height: 60,
-  width: Dimensions.get('window').width,
+  width: 354,
   alignSelf: 'center',
-  marginBottom: 30
+  marginBottom: 5
  }
 });
