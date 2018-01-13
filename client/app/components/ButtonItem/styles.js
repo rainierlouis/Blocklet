@@ -3,14 +3,14 @@ import { Dimensions } from 'react-native';
 
 export default EStyleSheet.create({
  transferButton: {
-  marginTop: 40,
-  backgroundColor: '$plus',
-  width: 150
+  marginTop: 10,
+  backgroundColor: '$yellow',
+  width: 355
  },
  personalButton: {
-  marginTop: 15,
+  marginTop: 5,
   backgroundColor: '$yellow',
-  width: 150
+  width: 355
  },
  menuButton: {
   backgroundColor: '$primaryPurple',
