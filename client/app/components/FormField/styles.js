@@ -40,7 +40,7 @@ export default EStyleSheet.create({
   alignSelf: 'center'
  },
  input: {
-  fontFamily: 'quicksand',
+  fontFamily: 'lato',
   color: '#afafaf'
  }
 });
