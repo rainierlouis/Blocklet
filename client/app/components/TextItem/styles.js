@@ -17,7 +17,7 @@ export default EStyleSheet.create({
   fontSize: 70,
   backgroundColor: 'transparent',
   color: 'black',
-  fontFamily: 'judson'
+  fontFamily: 'lato'
  },
  createContainer: {
   flexDirection: 'row',
