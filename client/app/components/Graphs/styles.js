@@ -3,7 +3,7 @@ import { Dimensions } from 'react-native';
 
 export default EStyleSheet.create({
  graph: {
-  width: 210,
+  width: 300,
   height: 50,
   alignSelf: 'center',
   marginTop: 10
