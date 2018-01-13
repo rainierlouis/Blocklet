@@ -28,8 +28,8 @@ const HomeStack = StackNavigator({
   screen: MenuList,
   navigationOptions: {
    headerTitle: 'Menu',
-   headerStyle: { backgroundColor: '#43314f' },
-   headerTitleStyle: { color: 'white' },
+   headerStyle: { backgroundColor: '#3a3535' },
+   headerTitleStyle: { color: 'white', fontFamily: 'lato', fontSize: 25 },
    headerTintColor: 'white'
   }
  },
@@ -62,13 +62,19 @@ const HomeStack = StackNavigator({
   navigationOptions: {
    header: () => null
   }
+ },
+ News: {
+  screen: News,
+  navigationOptions: {
+   header: () => null
+  }
  }
 });
 
 export default StackNavigator(
  {
   Login: {
-   screen: News
+   screen: Login
   },
   Loading: {
    screen: HomeStack,
