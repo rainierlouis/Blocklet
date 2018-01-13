@@ -10,7 +10,7 @@ export const BTC = {
 // ltc
 export const LTC = {
  currency: 'LTC',
- currency_name: 'Bitcoin',
+ currency_name: 'Litecoin',
  API_KEY_TESTNET: '2857-f4a9-d944-c5fa',
  API_KEY: '1e47-79a6-9797-e570',
  ADDRESS: '2MxtpzTF5b5UwdK7qJstD1NnZMMedi5zy2L'
@@ -19,7 +19,7 @@ export const LTC = {
 // doge
 export const DOGE = {
  currency: 'DOGE',
- currency_name: 'Bitcoin',
+ currency_name: 'Dogecoin',
  API_KEY_TESTNET: '119e-0781-247d-7297',
  API_KEY: 'b108-0d58-ccff-c468',
  ADDRESS: '2N8jnDQH9KqidrqQ4veTfAiSgh5dNNSgWr1'

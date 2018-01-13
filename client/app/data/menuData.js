@@ -1,8 +1,9 @@
 export default [
- 'Hub',
- 'Transfer',
- 'Transactions',
- 'Exchange Info',
- 'Personal',
- 'Options'
+ ['Hub', true],
+ ['Transfer', false],
+ ['Transactions', false],
+ ['Exchange Info', false],
+ ['News', false],
+ ['Personal', false],
+ ['Options', false]
 ];
