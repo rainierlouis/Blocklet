@@ -10,6 +10,7 @@ import Personal from '../screens/Personal';
 import Transfer from '../screens/Transfer';
 import CompleteTransfer from '../screens/CompleteTransfer';
 import News from '../screens/News';
+import Market from '../screens/Market';
 
 const HomeStack = StackNavigator({
  Home: {
@@ -29,8 +30,8 @@ const HomeStack = StackNavigator({
   navigationOptions: {
    headerTitle: 'Menu',
    headerStyle: { backgroundColor: '#3a3535' },
-   headerTitleStyle: { color: 'white', fontFamily: 'lato', fontSize: 25 },
-   headerTintColor: 'white'
+   headerTitleStyle: { color: '#cccccc', fontFamily: 'lato', fontSize: 25 },
+   headerTintColor: '#cccccc'
   }
  },
  ExchangeInfo: {
@@ -65,6 +66,12 @@ const HomeStack = StackNavigator({
  },
  News: {
   screen: News,
+  navigationOptions: {
+   header: () => null
+  }
+ },
+ Market: {
+  screen: Market,
   navigationOptions: {
    header: () => null
   }
