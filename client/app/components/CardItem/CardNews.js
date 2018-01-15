@@ -11,7 +11,6 @@ const CardNews = ({ imageUrl, title, date, source }) => (
  <Card
   containerStyle={styles.newsCard}
   imageStyle={{ borderRadius: 15 }}
-  imageWrapperStyle={{ borderRadius: 15 }}
   image={{ uri: imageUrl }}
  >
   <Text style={styles.newsText}>{title}</Text>

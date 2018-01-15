@@ -30,11 +30,12 @@ export default EStyleSheet.create({
  newsCard: {
   borderColor: '$grey',
   borderRadius: 15,
-  backgroundColor: '$grey'
+  backgroundColor: '$grey',
+  width: 350
  },
  newsText: {
   marginBottom: 10,
-  color: 'white'
+  color: '$white'
  },
  newsButton: {
   borderRadius: 0,
