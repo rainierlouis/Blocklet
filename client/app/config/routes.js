@@ -30,7 +30,7 @@ const HomeStack = StackNavigator({
   navigationOptions: {
    headerTitle: 'Menu',
    headerStyle: { backgroundColor: '#3a3535' },
-   headerTitleStyle: { color: '#cccccc', fontFamily: 'lato', fontSize: 25 },
+   headerTitleStyle: { color: '#cccccc', fontFamily: 'lato', fontSize: 20 },
    headerTintColor: '#cccccc'
   }
  },
