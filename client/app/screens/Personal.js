@@ -105,7 +105,21 @@ class Personal extends Component {
       </View>
       <Text style={styles.subText}>Email</Text>
       <View style={styles.boxContainer}>
-       <Text style={styles.text}>rainierlouis@gmail.com</Text>
+       <Text style={styles.text}>
+        <Icon name="primitive-dot" />
+        <Icon name="primitive-dot" />
+        <Icon name="primitive-dot" />
+        <Icon name="primitive-dot" />
+        <Icon name="primitive-dot" />
+        <Icon name="primitive-dot" />
+        <Icon name="primitive-dot" />
+        <Icon name="primitive-dot" />
+        <Icon name="primitive-dot" />
+        <Icon name="primitive-dot" />
+        <Icon name="primitive-dot" />
+        <Icon name="primitive-dot" />
+        <Icon name="primitive-dot" style={{ marginRight: 0 }} />@gmail.com
+       </Text>
       </View>
       <Text style={styles.subText}>Password</Text>
       <View style={styles.boxContainer}>

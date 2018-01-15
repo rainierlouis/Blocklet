@@ -81,12 +81,11 @@ class Hub extends Component {
 
  componentWillUnmount() {
   this.props.resetLoaded();
- }
-
- componentWillAnimateIn() {
   this.props.resetTicker();
   this.props.resetTrans();
  }
+
+ componentWillAnimateIn() {}
 
  static propTypes = {
   navigation: PropTypes.object,
@@ -126,6 +125,7 @@ class Hub extends Component {
  // RENDER ===================
 
  render() {
+  console.log('RECENT TRANS=======================', this.props.lastTrans);
   return (
    <Container>
     {this.props.hubLoaded === true ? (
@@ -137,7 +137,7 @@ class Hub extends Component {
     {this.props.hubLoaded === true ? (
      <View
       style={{
-       marginTop: 65,
+       marginTop: 50,
        justifyContent: 'center',
        alignItems: 'center'
       }}
@@ -148,7 +148,7 @@ class Hub extends Component {
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#2b2b2b',
-        marginTop: 10,
+        marginTop: 5,
         width: 355,
         paddingVertical: 10
        }}
@@ -193,7 +193,7 @@ class Hub extends Component {
       </View>
       <TransferButton onPress={this.pressTransfer} />
       <PersonalButton onPress={this.pressPersonal} />
-      <View style={{ marginTop: 10 }}>
+      <View style={{ marginTop: 5 }}>
        <HeaderSubTitle
         style={{ backgroundColor: '#2b2b2b' }}
         titleName={'Recent Transactions'}

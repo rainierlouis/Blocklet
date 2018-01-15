@@ -5,7 +5,7 @@ import * as Animatable from 'react-native-animatable';
 import { Font } from 'expo';
 
 import { Container } from '../components/Container';
-import { LoginButton, SignupButton } from '../components/ButtonItem';
+import { LoginButton, SignupButton, FbgButton } from '../components/ButtonItem';
 import { LoginField, InputField } from '../components/FormField';
 import { Logo } from '../components/Logo';
 import { LoginTitle, CreateAccount } from '../components/TextItem';
@@ -63,6 +63,7 @@ class Login extends Component {
      <Logo />
      <InputField onPress={this.loginUser} />
      <LoginButton onPress={this.loginUser} />
+     <FbgButton />
      <CreateAccount onPress={this.signUp} />
     </View>
    </KeyboardAvoidingView>

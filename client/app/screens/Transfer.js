@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
   height: 300,
   backgroundColor: 'transparent',
   borderWidth: 3,
-  borderColor: 'white',
+  borderColor: '#cccccc',
   borderStyle: 'dashed',
   overflow: 'hidden'
  },
@@ -100,6 +100,6 @@ const styles = StyleSheet.create({
  },
  cameraContainer: {},
  cameraText: {
-  color: 'white'
+  color: '#cccccc'
  }
 });

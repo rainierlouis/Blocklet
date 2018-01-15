@@ -100,8 +100,8 @@ class Home extends Component {
         <HomeGraph
          data={this.props.price24h.BTC}
          svgStyle={{
-          fill: 'rgba(221, 181, 0, 0.2)',
-          stroke: 'rgb(221, 181, 0)'
+          fill: 'rgba(0, 110, 255, 0.2)',
+          stroke: 'rgb(0, 110, 255)'
          }}
         />
        </View>
@@ -169,8 +169,8 @@ class Home extends Component {
         <HomeGraph
          data={this.props.price24h.DOGE}
          svgStyle={{
-          fill: 'rgba(221, 181, 0, 0.2)',
-          stroke: 'rgb(221, 181, 0)'
+          fill: 'rgba(134, 65, 244, 0.2)',
+          stroke: 'rgb(134, 65, 244)'
          }}
         />
        </View>

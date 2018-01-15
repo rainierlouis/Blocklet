@@ -17,11 +17,10 @@ class MenuList extends Component {
   menuData.slice().map(item => {
    if (item[1] === true) return (item[1] = false);
    if (item[0] === sel) return (item[1] = true);
-   return item;
   });
 
  handlePress = async item => {
-  await this.adjustSelected(menuData, item[0]);
+  if (item[1] === false) await this.adjustSelected(menuData, item[0]);
   item[0] === 'Exchange Info'
    ? this.props.navigation.navigate('ExchangeInfo', {
       coin: this.props.navigation.state.params.coin,

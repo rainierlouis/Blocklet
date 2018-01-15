@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 
-import { View, StatusBar, Text, ScrollView, FlatList } from 'react-native';
+import {
+ View,
+ StatusBar,
+ Text,
+ ScrollView,
+ FlatList,
+ TouchableHighlight
+} from 'react-native';
 import PropTypes from 'prop-types';
 import { NavigationActions } from 'react-navigation';
 import moment from 'moment';
@@ -70,6 +77,7 @@ class News extends Component {
      style={{ marginTop: 100, justifyContent: 'center', alignItems: 'center' }}
     >
      <HeaderTitle style={{ backgroundColor: '#2b2b2b' }} titleName={'News'} />
+
      <FlatList
       data={this.props.articles}
       renderItem={({ item, i }) => (
