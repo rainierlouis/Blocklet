@@ -21,7 +21,7 @@ const HeaderSubTitle = ({ titleName }) => (
     color: '#cccccc',
     alignSelf: 'center',
 
-    fontSize: 15
+    fontSize: 20
    }}
   >
    {titleName}

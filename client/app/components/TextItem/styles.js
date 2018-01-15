@@ -21,11 +21,11 @@ export default EStyleSheet.create({
  },
  createContainer: {
   flexDirection: 'row',
-  marginTop: 50
+  marginTop: 40
  },
  accountText: {
   backgroundColor: 'transparent',
-  color: 'white'
+  color: '$white'
  },
  createText: {
   backgroundColor: 'transparent',
