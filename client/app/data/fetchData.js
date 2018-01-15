@@ -58,3 +58,8 @@ export const fetchBtcToUsd = () =>
  )
   .then(response => response.json())
   .then(data => data.data.prices[0].price);
+
+export const fetchMarket = () =>
+ fetch(`https://api.coinmarketcap.com/v1/ticker/?limit=10`).then(response =>
+  response.json()
+ );

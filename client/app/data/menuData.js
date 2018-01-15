@@ -3,7 +3,7 @@ export default [
  ['Transfer', false],
  ['Transactions', false],
  ['Exchange Info', false],
+ ['Market', false],
  ['News', false],
- ['Personal', false],
- ['Options', false]
+ ['Personal', false]
 ];
