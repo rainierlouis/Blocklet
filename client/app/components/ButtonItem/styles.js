@@ -3,7 +3,7 @@ import { Dimensions } from 'react-native';
 
 export default EStyleSheet.create({
  transferButton: {
-  marginTop: 10,
+  marginTop: 5,
   backgroundColor: '$yellow',
   width: 355
  },
@@ -28,6 +28,7 @@ export default EStyleSheet.create({
  },
  loginButton: {
   width: 250,
+  height: 40,
   backgroundColor: '#ddb500',
   borderRadius: 30
  },
@@ -40,5 +41,23 @@ export default EStyleSheet.create({
  exchangeButton: {
   width: 90,
   height: 50
+ },
+ fbgContainer: {
+  flexDirection: 'row',
+  marginTop: 10
+ },
+ fbButton: {
+  width: 110,
+  height: 40,
+  borderTopLeftRadius: 30,
+  borderBottomLeftRadius: 30,
+  backgroundColor: '#5062aa'
+ },
+ gButton: {
+  width: 110,
+  height: 40,
+  borderTopRightRadius: 30,
+  borderBottomRightRadius: 30,
+  backgroundColor: '#cc4545'
  }
 });

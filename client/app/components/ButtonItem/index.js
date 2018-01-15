@@ -5,6 +5,7 @@ import OptionsButton from './OptionsButton';
 import LoginButton from './LoginButton';
 import SignupButton from './SignupButton';
 import ExchangeButton from './ExchangeButton';
+import FbgButton from './FbgButton';
 
 import styles from './styles';
 
@@ -16,5 +17,6 @@ export {
  MenuButton,
  OptionsButton,
  LoginButton,
+ FbgButton,
  styles
 };

@@ -13,7 +13,7 @@ const LoginButton = ({ onPress }) => (
    // title="Enter"
    buttonStyle={styles.loginButton}
    fontFamily="quicksand"
-   color="white"
+   color="#cccccc"
    fontSize={22}
   />
  </View>
