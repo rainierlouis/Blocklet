@@ -15,7 +15,7 @@ const TransactionBox = ({ list }) => (
        containerStyle={styles.listItem}
        key={i}
        title={`-${item.amounts_sent[0].amount}`}
-       subtitle={`confirmations: ${item.confirmations}`}
+       // subtitle={`confirmations: ${item.confirmations}`}
        leftIcon={{ name: 'keyboard-arrow-left', style: { color: '#bf3b3b' } }}
        hideChevron={true}
        titleStyle={styles.listTitle}
@@ -28,7 +28,7 @@ const TransactionBox = ({ list }) => (
        containerStyle={styles.listItem}
        key={i}
        title={`+${item.amounts_received[0].amount}`}
-       subtitle={`confirmations: ${item.confirmations}`}
+       // subtitle={`confirmations: ${item.confirmations}`}
        leftIcon={{ name: 'keyboard-arrow-right', style: { color: '#5ec16a' } }}
        hideChevron={true}
        titleStyle={styles.listTitle}
