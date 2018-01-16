@@ -1,6 +1,6 @@
 # BITLET
 
-An all-in-one Cryptocurrency wallet, built for mobile.
+An all-in-one Cryptocurrency wallet, built for IOS & Android mobile.
 
 ## Learning Objectives
 
@@ -10,12 +10,12 @@ Becoming further acquainted with React Native, React Navigation and Redux.
 
 ## Screenshots
 
-![Awww](https://i.imgur.com/IrwKLiV.jpg "Yeah")
-![Awww](https://i.imgur.com/1sdFrER.png "Yeah")
-![Awww](https://i.imgur.com/a9wul0S.png "Yeah")
-![Awww](https://i.imgur.com/LfVwka0.png "Yeah")
-![Awww](https://i.imgur.com/EPp3E0u.png "Yeah")
-![Awww](https://i.imgur.com/DmBdDL9.jpg "Yeah")
+![Awww](https://i.imgur.com/x7kubfU.png "Yeah")
+![Awww](https://i.imgur.com/a2zhZFE.png "Yeah")
+![Awww](https://i.imgur.com/La0vibw.png "Yeah")
+![Awww](https://i.imgur.com/WQqIdQ6.png "Yeah")
+![Awww](https://i.imgur.com/uiP8rMF.png "Yeah")
+![Awww](https://i.imgur.com/zujzCPN.png "Yeah")
 
 ## Technology Stack
 
