@@ -28,7 +28,7 @@ export default EStyleSheet.create({
   color: '$white'
  },
  listSubtitle: {
-  fontSize: 14
+  fontSize: 10
  },
  leftIconPlus: {
   color: 'green'

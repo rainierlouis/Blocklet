@@ -1,6 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import { List, ListItem, Icon, Text } from 'react-native-elements';
+import moment from 'moment';
 import PropTypes from 'prop-types';
 
 import styles from './styles';
@@ -15,7 +16,7 @@ const TransactionBox = ({ list }) => (
        containerStyle={styles.listItem}
        key={i}
        title={`-${item.amounts_sent[0].amount}`}
-       // subtitle={`confirmations: ${item.confirmations}`}
+       subtitle={`${moment(item.time).format('MMMM')}, 16th, 2018`}
        leftIcon={{ name: 'keyboard-arrow-left', style: { color: '#bf3b3b' } }}
        hideChevron={true}
        titleStyle={styles.listTitle}
@@ -28,7 +29,7 @@ const TransactionBox = ({ list }) => (
        containerStyle={styles.listItem}
        key={i}
        title={`+${item.amounts_received[0].amount}`}
-       // subtitle={`confirmations: ${item.confirmations}`}
+       subtitle={`${moment(item.time).format('MMMM')} 16th, 2018`}
        leftIcon={{ name: 'keyboard-arrow-right', style: { color: '#5ec16a' } }}
        hideChevron={true}
        titleStyle={styles.listTitle}
