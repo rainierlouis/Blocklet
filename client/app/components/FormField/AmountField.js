@@ -27,6 +27,7 @@ export default class InputField extends Component {
       keyboardType="numeric"
       keyboardAppearance="dark"
       returnKeyType="go"
+      onChangeText={e => this.props.feeEstimate(e)}
      />
     </Item>
    </KeyboardAvoidingView>

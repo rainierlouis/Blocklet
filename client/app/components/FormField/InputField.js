@@ -24,7 +24,6 @@ export default class InputField extends Component {
      <Icon active name="mail" style={styles.icon} />
      <Input
       style={styles.input}
-      keyboardType="email-address"
       keyboardAppearance="dark"
       returnKeyType="next"
       onSubmitEditing={event => {

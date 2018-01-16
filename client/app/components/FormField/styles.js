@@ -7,6 +7,7 @@ export default EStyleSheet.create({
   alignItems: 'center'
  },
  amountContainer: {
+  marginTop: 10,
   width: 350,
   alignItems: 'center'
  },
