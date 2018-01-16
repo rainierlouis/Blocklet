@@ -10,12 +10,12 @@ Becoming further acquainted with React Native, React Navigation and Redux.
 
 ## Screenshots
 
-![Awww](https://i.imgur.com/x7kubfU.png "Yeah")
-![Awww](https://i.imgur.com/a2zhZFE.png "Yeah")
-![Awww](https://i.imgur.com/La0vibw.png "Yeah")
-![Awww](https://i.imgur.com/WQqIdQ6.png "Yeah")
-![Awww](https://i.imgur.com/uiP8rMF.png "Yeah")
-![Awww](https://i.imgur.com/zujzCPN.png "Yeah")
+![Awww](https://i.imgur.com/SbAKBKY.png "Yeah")
+![Awww](https://i.imgur.com/ZKZ0Fup.png "Yeah")
+![Awww](https://i.imgur.com/fadKEPS.png "Yeah")
+![Awww](https://i.imgur.com/Obbs6JJ.png "Yeah")
+![Awww](https://i.imgur.com/Y29OCiX.png "Yeah")
+![Awww](https://i.imgur.com/sFGyOS6.png "Yeah")
 
 ## Technology Stack
 
