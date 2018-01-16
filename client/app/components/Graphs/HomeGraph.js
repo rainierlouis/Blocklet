@@ -20,15 +20,22 @@ export default class HomeGraph extends Component {
  };
 
  render() {
+  console.log('THIS DATA PROPS SLICE SHIT!!!!!!', this.props.data);
   return (
    <AreaChart
     showGrid={false}
-    gridMin={this.props.data.slice().sort((a, b) => a - b)[0]}
+    gridMin={
+     this.props.data ? this.props.data.slice().sort((a, b) => a - b)[0] : 0
+    }
     gridMax={
-     this.props.data.slice().sort((a, b) => a - b)[this.props.data.length - 1]
+     this.props.data
+      ? this.props.data.slice().sort((a, b) => a - b)[
+         this.props.data.length - 1
+        ]
+      : 0
     }
     style={styles.graph}
-    dataPoints={this.props.data}
+    dataPoints={this.props.data ? this.props.data : []}
     curve={shape.curveLinear}
     svg={this.props.svgStyle}
    />
