@@ -5,12 +5,14 @@ export default EStyleSheet.create({
  transferButton: {
   marginTop: 5,
   backgroundColor: '$yellow',
-  width: 355
+  width: 355,
+  height: 50
  },
  personalButton: {
   marginTop: 5,
   backgroundColor: '$yellow',
-  width: 355
+  width: 355,
+  height: 50
  },
  menuButton: {
   backgroundColor: '$primaryPurple',
@@ -44,17 +46,20 @@ export default EStyleSheet.create({
  },
  fbgContainer: {
   flexDirection: 'row',
-  marginTop: 10
+  alignContent: 'center',
+  justifyContent: 'center'
  },
  fbButton: {
-  width: 110,
+  width: 120,
   height: 40,
   borderTopLeftRadius: 30,
   borderBottomLeftRadius: 30,
-  backgroundColor: '#5062aa'
+  backgroundColor: '#5062aa',
+  marginRight: -20,
+  justifyContent: 'center'
  },
  gButton: {
-  width: 110,
+  width: 120,
   height: 40,
   borderTopRightRadius: 30,
   borderBottomRightRadius: 30,

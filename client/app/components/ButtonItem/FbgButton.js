@@ -15,12 +15,18 @@ class fbgButton extends Component {
    <View style={styles.fbgContainer}>
     <Button
      onPress={this.props.onPress}
-     icon={{ name: 'facebook', type: 'font-awesome' }}
+     icon={{
+      name: 'facebook',
+      type: 'font-awesome'
+     }}
      buttonStyle={styles.fbButton}
     />
     <Button
      onPress={this.props.onPress}
-     icon={{ name: 'google-plus', type: 'font-awesome' }}
+     icon={{
+      name: 'google-plus',
+      type: 'font-awesome'
+     }}
      buttonStyle={styles.gButton}
     />
    </View>
