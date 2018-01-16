@@ -9,6 +9,7 @@ import ExchangeInfo from '../screens/ExchangeInfo';
 import Personal from '../screens/Personal';
 import Transfer from '../screens/Transfer';
 import CompleteTransfer from '../screens/CompleteTransfer';
+import Complete from '../screens/Complete';
 import News from '../screens/News';
 import Market from '../screens/Market';
 
@@ -60,6 +61,12 @@ const HomeStack = StackNavigator({
  },
  CompleteTransfer: {
   screen: CompleteTransfer,
+  navigationOptions: {
+   header: () => null
+  }
+ },
+ Complete: {
+  screen: Complete,
   navigationOptions: {
    header: () => null
   }
