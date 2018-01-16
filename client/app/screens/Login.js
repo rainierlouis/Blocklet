@@ -62,8 +62,8 @@ class Login extends Component {
     >
      <Logo />
      <InputField onPress={this.loginUser} />
-     <LoginButton onPress={this.loginUser} />
-     <FbgButton />
+     {/* <LoginButton onPress={this.loginUser} /> */}
+     <FbgButton onPress={this.loginUser} />
      <CreateAccount onPress={this.signUp} />
     </View>
    </KeyboardAvoidingView>

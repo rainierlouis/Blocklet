@@ -38,7 +38,8 @@ export default class App extends Component {
    LayoutAnimation.spring();
    this.setState({ lastScannedUrl: result.data });
    this.props.navigation.navigate('CompleteTransfer', {
-    data: result.data
+    data: result.data,
+    user: this.props.navigation.state.params.user
    });
   }
  };
@@ -80,7 +81,7 @@ const styles = StyleSheet.create({
  },
  box: {
   alignSelf: 'center',
-  marginTop: 280,
+  marginTop: 200,
   width: 300,
   height: 300,
   backgroundColor: 'transparent',

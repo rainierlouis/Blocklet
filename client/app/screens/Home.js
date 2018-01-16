@@ -51,7 +51,7 @@ class Home extends Component {
   setTimeout(() => {
    // set loaded
    this.props.setLoaded(true);
-  }, 3000);
+  }, 4000);
  }
 
  static propTypes = {
@@ -74,7 +74,6 @@ class Home extends Component {
  // RENDER ===================
 
  render() {
-  console.log(this.props.price24h);
   return (
    <Container>
     {this.props.loaded === true ? (
@@ -134,8 +133,8 @@ class Home extends Component {
         <HomeGraph
          data={this.props.price24h.LTC}
          svgStyle={{
-          fill: 'rgba(221, 181, 0, 0.2)',
-          stroke: 'rgb(221, 181, 0)'
+          fill: 'rgba(168, 30, 30, 0.2)',
+          stroke: 'rgb(168, 30, 30)'
          }}
         />
        </View>

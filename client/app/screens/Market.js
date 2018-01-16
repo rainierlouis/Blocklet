@@ -105,7 +105,9 @@ class Market extends Component {
           <Text style={{ color: '#cccccc' }}>
            {item.symbol} | {item.name}
           </Text>
-          <Text style={{ color: '#5ec16a' }}>${item.price_usd}</Text>
+          <Text style={{ color: '#5ec16a' }}>
+           ${Number(item.price_usd).toFixed(2)}
+          </Text>
          </View>
          <Divider style={{ backgroundColor: '#3f3f3f', marginVertical: 5 }} />
          <View
@@ -119,18 +121,22 @@ class Market extends Component {
            24h:{' '}
            {+item.percent_change_24h > 0 ? (
             <Text style={{ color: '#5ec16a' }}>
-             +{+item.percent_change_24h}
+             +{+item.percent_change_24h}%
             </Text>
            ) : (
-            <Text style={{ color: '#bf3b3b' }}>{+item.percent_change_24h}</Text>
+            <Text style={{ color: '#bf3b3b' }}>
+             {+item.percent_change_24h}%
+            </Text>
            )}
           </Text>
           <Text style={{ color: '#cccccc' }}>
            24h:{' '}
            {+item.percent_change_7d > 0 ? (
-            <Text style={{ color: '#5ec16a' }}>+{+item.percent_change_7d}</Text>
+            <Text style={{ color: '#5ec16a' }}>
+             +{+item.percent_change_7d}%
+            </Text>
            ) : (
-            <Text style={{ color: '#bf3b3b' }}>{+item.percent_change_7d}</Text>
+            <Text style={{ color: '#bf3b3b' }}>{+item.percent_change_7d}%</Text>
            )}
           </Text>
          </View>

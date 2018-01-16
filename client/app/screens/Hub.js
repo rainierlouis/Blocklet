@@ -76,7 +76,7 @@ class Hub extends Component {
   setTimeout(() => {
    // set hub loaded
    this.props.setHubLoaded(true);
-  }, 3000);
+  }, 1000);
  }
 
  componentWillUnmount() {
@@ -119,7 +119,9 @@ class Hub extends Component {
  };
 
  pressTransfer = () => {
-  this.props.navigation.navigate('Transfer');
+  this.props.navigation.navigate('Transfer', {
+   user: this.props.navigation.state.params.coin
+  });
  };
 
  // RENDER ===================
