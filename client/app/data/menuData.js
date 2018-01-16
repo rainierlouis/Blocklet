@@ -1,6 +1,5 @@
 export default [
  ['Hub', true],
- ['Transfer', false],
  ['Transactions', false],
  ['Exchange Info', false],
  ['Market', false],
