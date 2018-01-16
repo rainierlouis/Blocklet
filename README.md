@@ -1,4 +1,4 @@
-# BITLET
+# BLOCKLET
 
 An all-in-one Cryptocurrency wallet, built for IOS & Android mobile.
 
