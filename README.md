@@ -1,18 +1,21 @@
 # BITLET
 
-An all-in-one Bitcoin wallet, built for mobile.
+An all-in-one Cryptocurrency wallet, built for mobile.
 
 ## Learning Objectives
 
-A solo project that is a culmination of my personal growth and learning as a full stack engineer at CodeWorks. Bringing together what I have learnt so far in building a full stack application from back to front and all the in-betweens. Expected to produce a working application within a 7 day deadline.
+A solo project that is a culmination of my personal growth and learning as a full stack engineer. Bringing together what I have learnt so far in building a full stack application from back to front and all the in-betweens.
 
-## Usage
-
-_WIP_
+Becoming further acquainted with React Native, React Navigation and Redux.
 
 ## Screenshots
 
-_WIP_
+![Awww](https://i.imgur.com/IrwKLiV.jpg "Yeah")
+![Awww](https://i.imgur.com/1sdFrER.png "Yeah")
+![Awww](https://i.imgur.com/a9wul0S.png "Yeah")
+![Awww](https://i.imgur.com/LfVwka0.png "Yeah")
+![Awww](https://i.imgur.com/EPp3E0u.png "Yeah")
+![Awww](https://i.imgur.com/DmBdDL9.jpg "Yeah")
 
 ## Technology Stack
 
@@ -33,3 +36,5 @@ _WIP_
 
 * Block.io API
 * CoinMarketCap API
+* Lionshare API
+* News API
