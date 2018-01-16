@@ -45,10 +45,6 @@ export default class App extends Component {
 
  async loadFonts() {
   await Expo.Font.loadAsync({
-   pacifico: require('./assets/fonts/Pacifico-Regular.ttf'),
-   judson: require('./assets/fonts/Judson-Regular.ttf'),
-   gilda: require('./assets/fonts/GildaDisplay-Regular.ttf'),
-   quicksand: require('./assets/fonts/Quicksand-Regular.ttf'),
    lato: require('./assets/fonts/Lato-Regular.ttf'),
    latos: require('./assets/fonts/Lato-Light.ttf')
   });
