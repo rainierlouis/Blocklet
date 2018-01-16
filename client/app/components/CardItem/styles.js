@@ -43,6 +43,6 @@ export default EStyleSheet.create({
   marginRight: 0,
   marginBottom: 0,
   borderRadius: 30,
-  height: 15
+  height: 40
  }
 });

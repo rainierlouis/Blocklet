@@ -6,8 +6,6 @@ import { Text, Divider } from 'react-native-elements';
 import styles from './styles';
 import { images } from './icons/CoinIcons';
 
-// TODO: Change styling color depending on pos/neg percentage
-
 const CardItem = ({ twentyFourPerc, sevenPerc }) => (
  <View style={styles.container}>
   {twentyFourPerc > 0 ? (
