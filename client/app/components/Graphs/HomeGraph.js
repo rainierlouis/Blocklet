@@ -20,7 +20,6 @@ export default class HomeGraph extends Component {
  };
 
  render() {
-  console.log('THIS DATA PROPS SLICE SHIT!!!!!!', this.props.data);
   return (
    <AreaChart
     showGrid={false}
