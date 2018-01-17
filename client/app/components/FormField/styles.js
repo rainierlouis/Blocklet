@@ -7,7 +7,12 @@ export default EStyleSheet.create({
   alignItems: 'center'
  },
  amountContainer: {
-  marginTop: 10,
+  marginTop: 30,
+  width: 350,
+  alignItems: 'center'
+ },
+ amountContainerB: {
+  marginTop: 5,
   width: 350,
   alignItems: 'center'
  },
@@ -43,5 +48,10 @@ export default EStyleSheet.create({
  input: {
   fontFamily: 'lato',
   color: '#afafaf'
+ },
+ inputBottom: {
+  fontFamily: 'lato',
+  color: '#afafaf',
+  marginBottom: 600
  }
 });

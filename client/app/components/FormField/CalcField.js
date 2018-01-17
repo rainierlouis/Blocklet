@@ -1,14 +1,7 @@
 import React, { Component } from 'react';
-import {
- Container,
- Header,
- Content,
- Item,
- Input,
- Icon,
- Label
-} from 'native-base';
+import { Container, Header, Content, Item, Input, Label } from 'native-base';
 import { KeyboardAvoidingView } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import styles from './styles';
 
@@ -19,7 +12,12 @@ export default class AmountField extends Component {
 
  render() {
   return (
-   <KeyboardAvoidingView style={styles.amountContainer} behavior="padding">
+   <KeyboardAvoidingView
+    style={
+     this.props.bottomField ? styles.amountContainerB : styles.amountContainer
+    }
+    behavior="padding"
+   >
     <Item style={styles.textInputTwo}>
      <Icon active name={this.props.iconName} style={styles.icon} />
      <Input
@@ -27,10 +25,9 @@ export default class AmountField extends Component {
       keyboardType="numeric"
       keyboardAppearance="dark"
       returnKeyType="go"
-      onChangeText={
-       this.props.feeEstimate ? e => this.props.feeEstimate(e) : null
-      }
+      onChangeText={e => this.props.onPress(e)}
       editable={this.props.editableContent || true}
+      placeholder={this.props.updateRate}
      />
     </Item>
    </KeyboardAvoidingView>
