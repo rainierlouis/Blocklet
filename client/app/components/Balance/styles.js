@@ -17,7 +17,7 @@ export default EStyleSheet.create({
  },
  conversionText: {
   color: '$white',
-  fontSize: 10,
+  fontSize: 16,
   paddingTop: 10
  },
  divider: {
