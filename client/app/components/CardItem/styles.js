@@ -34,8 +34,9 @@ export default EStyleSheet.create({
   width: 350
  },
  newsText: {
-  marginBottom: 10,
-  color: '$white'
+  marginBottom: 5,
+  color: '$white',
+  fontSize: 14
  },
  newsButton: {
   borderRadius: 0,
