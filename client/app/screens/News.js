@@ -77,7 +77,6 @@ class News extends Component {
      style={{ marginTop: 100, justifyContent: 'center', alignItems: 'center' }}
     >
      <HeaderTitle style={{ backgroundColor: '#2b2b2b' }} titleName={'News'} />
-
      <FlatList
       data={this.props.articles}
       renderItem={({ item, i }) => (
