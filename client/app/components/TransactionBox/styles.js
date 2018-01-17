@@ -24,11 +24,11 @@ export default EStyleSheet.create({
   width: Dimensions.get('window').width / 2
  },
  listTitle: {
-  fontSize: 12,
+  fontSize: 14,
   color: '$white'
  },
  listSubtitle: {
-  fontSize: 10
+  fontSize: 12
  },
  leftIconPlus: {
   color: 'green'
