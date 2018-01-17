@@ -75,6 +75,8 @@ class Personal extends Component {
   this.props.navigation.dispatch(resetAction);
  };
 
+ headerT = () =>
+  `Personal - ${this.props.navigation.state.params.coin.currency_name}`;
  // RENDER ========================
 
  render() {
@@ -87,7 +89,7 @@ class Personal extends Component {
     >
      <HeaderTitle
       style={{ backgroundColor: '#2b2b2b' }}
-      titleName={'Personal'}
+      titleName={this.headerT()}
      />
      <View>
       <Text style={styles.subTextQR}>QR Wallet Code</Text>
