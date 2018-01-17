@@ -66,6 +66,9 @@ class Market extends Component {
   );
  };
 
+ headerT = () =>
+  `Market - ${this.props.navigation.state.params.coin.currency_name}`;
+
  // RENDER ========================
 
  render() {
@@ -74,7 +77,10 @@ class Market extends Component {
     <StatusBar translucent={false} barStyle="light-content" />
     <HeaderTop onPressMenu={this.pressMenu} onPressHome={this.pressHome} />
     <View style={{ marginTop: 100 }}>
-     <HeaderTitle style={{ backgroundColor: '#2b2b2b' }} titleName={'Market'} />
+     <HeaderTitle
+      style={{ backgroundColor: '#2b2b2b' }}
+      titleName={this.headerT()}
+     />
 
      <FlatList
       data={this.props.marketData}
@@ -130,7 +136,7 @@ class Market extends Component {
            )}
           </Text>
           <Text style={{ color: '#cccccc' }}>
-           24h:{' '}
+           7d:{' '}
            {+item.percent_change_7d > 0 ? (
             <Text style={{ color: '#5ec16a' }}>
              +{+item.percent_change_7d}%
