@@ -60,15 +60,21 @@ class Home extends Component {
  };
 
  onPressBtc = () => {
-  this.props.navigation.navigate('Hub', { coin: BTC });
+  this.props.navigation.navigate('Hub', {
+   coin: BTC
+  });
  };
 
  onPressLtc = () => {
-  this.props.navigation.navigate('Hub', { coin: LTC });
+  this.props.navigation.navigate('Hub', {
+   coin: LTC
+  });
  };
 
  onPressDoge = () => {
-  this.props.navigation.navigate('Hub', { coin: DOGE });
+  this.props.navigation.navigate('Hub', {
+   coin: DOGE
+  });
  };
 
  // RENDER ===================
@@ -87,7 +93,7 @@ class Home extends Component {
       <TouchableOpacity
        onPress={this.onPressBtc}
        style={{
-        marginTop: 10,
+        marginTop: 5,
         flexDirection: 'row',
         backgroundColor: '#2b2b2b',
         paddingVertical: 15,
@@ -116,7 +122,7 @@ class Home extends Component {
       <TouchableOpacity
        onPress={this.onPressLtc}
        style={{
-        marginTop: 10,
+        marginTop: 5,
         flexDirection: 'row',
         backgroundColor: '#2b2b2b',
         paddingVertical: 15,
@@ -150,7 +156,7 @@ class Home extends Component {
       <TouchableOpacity
        onPress={this.onPressDoge}
        style={{
-        marginTop: 10,
+        marginTop: 5,
         flexDirection: 'row',
         backgroundColor: '#2b2b2b',
         paddingVertical: 15,
