@@ -86,6 +86,8 @@ class CompleteTransfer extends Component {
   });
  };
 
+ adjustComma = amount => Number(amount.split(',').join('.'));
+
  // RENDER ========================
 
  render() {
@@ -96,13 +98,16 @@ class CompleteTransfer extends Component {
     <View style={{ justifyContent: 'center', alignItems: 'center' }}>
      <Text style={styles.title}>Sending to:</Text>
      <QRCode
-      value="2N8jnDQH9KqidrqQ4veTfAiSgh5dNNSgWr1"
+      value={this.props.navigation.state.params.user.ADDRESS}
       logoSize={100}
       size={310}
       logoMargin={5}
      />
      <Text style={styles.subHeader}>Amount</Text>
-     <AmountField feeEstimate={e => this.feeEstimate(e)} />
+     <AmountField
+      iconName="cash"
+      feeEstimate={e => this.feeEstimate(this.adjustComma(e))}
+     />
      <Text style={styles.subtitle}>Fee: {+this.props.fee}</Text>
      <Button
       icon={{ name: 'check', type: 'font-awesome' }}
