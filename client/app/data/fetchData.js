@@ -63,8 +63,8 @@ export const fetchFee = (apiKey, amount, address) =>
   `${api}get_network_fee_estimate/?api_key=${apiKey}&amounts=${amount}&to_addresses=${address}`
  ).then(response => response.json());
 
-export const sendAmount = (apiKey, amount, toAddress, fromAddress) =>
+export const sendAmount = (apiKey, amount, toAddress, fromAddress) => {
  fetch(
-  `https://block.io/api/v2/withdraw_from_addresses/?api_key=${apiKey}&amounts=${amount}&from_addresses=${fromAddress}&to_addresses=${toAddress}&pin=${PIN}
-`
+  `https://block.io/api/v2/withdraw_from_addresses/?api_key=${apiKey}&amounts=${amount}&from_addresses=${fromAddress}&to_addresses=${toAddress}&pin=${PIN}`
  );
+};
