@@ -63,6 +63,9 @@ class ExchangeInfo extends Component {
   this.props.navigation.dispatch(resetAction);
  };
 
+ headerT = () =>
+  `Exchange - ${this.props.navigation.state.params.coin.currency_name}`;
+
  // RENDER ========================
 
  render() {
@@ -72,14 +75,14 @@ class ExchangeInfo extends Component {
     <HeaderTop onPressMenu={this.pressMenu} onPressHome={this.pressHome} />
     <View
      style={{
-      marginTop: 65,
+      marginTop: 70,
       justifyContent: 'center',
       alignItems: 'center'
      }}
     >
      <HeaderTitle
       style={{ backgroundColor: '#2b2b2b' }}
-      titleName={'Exchange Info'}
+      titleName={this.headerT()}
      />
 
      <View
