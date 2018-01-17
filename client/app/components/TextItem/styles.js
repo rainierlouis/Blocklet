@@ -4,7 +4,7 @@ export default EStyleSheet.create({
  text: {
   color: '$darkGrey',
   marginTop: 10,
-  fontSize: 10,
+  fontSize: 13,
   textAlign: 'center'
  },
  container: {
