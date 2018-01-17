@@ -14,7 +14,7 @@ class fbgButton extends Component {
   return (
    <View style={styles.fbgContainer}>
     <Button
-     onPress={this.props.onPress}
+     onPress={this.props.onPressFb}
      icon={{
       name: 'facebook',
       type: 'font-awesome'
@@ -22,7 +22,7 @@ class fbgButton extends Component {
      buttonStyle={styles.fbButton}
     />
     <Button
-     onPress={this.props.onPress}
+     onPress={this.props.onPressPlus}
      icon={{
       name: 'google-plus',
       type: 'font-awesome'
@@ -35,7 +35,8 @@ class fbgButton extends Component {
 }
 
 fbgButton.propTypes = {
- onPress: PropTypes.func
+ onPressFb: PropTypes.func,
+ onPressPlus: PropTypes.func
 };
 
 export default fbgButton;
