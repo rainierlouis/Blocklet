@@ -45,7 +45,7 @@ export default class ExchangeBox extends Component {
    <View>
     <View style={styles.exchBox}>
      <Text style={styles.titlePrimary}>{this.props.timeText1h}</Text>
-     <Text style={styles.ticker}>+{this.props.ticker1h}</Text>
+     <Text style={styles.ticker}>{this.props.ticker1h}</Text>
      <Text style={styles.amount}>
       ${this.props.data1h[this.props.data1h.length - 1].toFixed(2)}
      </Text>
@@ -68,7 +68,7 @@ export default class ExchangeBox extends Component {
     </View>
     <View style={styles.exchBox}>
      <Text style={styles.title}>{this.props.timeText24h}</Text>
-     <Text style={styles.ticker}>+{this.props.ticker24h}</Text>
+     <Text style={styles.ticker}>{this.props.ticker24h}</Text>
      <Text style={styles.amount}>
       ${this.props.data24h[this.props.data24h.length - 1].toFixed(2)}
      </Text>
@@ -91,7 +91,7 @@ export default class ExchangeBox extends Component {
     </View>
     <View style={styles.exchBox}>
      <Text style={styles.title}>{this.props.timeText7d}</Text>
-     <Text style={styles.ticker}>+{this.props.ticker7d}</Text>
+     <Text style={styles.ticker}>{this.props.ticker7d}</Text>
      <Text style={styles.amount}>
       ${this.props.data7d[this.props.data7d.length - 1].toFixed(2)}
      </Text>
@@ -114,7 +114,7 @@ export default class ExchangeBox extends Component {
     </View>
     <View style={styles.exchBox}>
      <Text style={styles.title}>{this.props.timeText1m}</Text>
-     <Text style={styles.ticker}>+{this.props.ticker1m}</Text>
+     <Text style={styles.ticker}>{this.props.ticker1m}</Text>
      <Text style={styles.amount}>
       ${this.props.data1m[this.props.data1m.length - 1].toFixed(2)}
      </Text>

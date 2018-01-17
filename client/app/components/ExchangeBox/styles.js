@@ -21,7 +21,7 @@ export default EStyleSheet.create({
   fontSize: 20
  },
  ticker: {
-  color: '$plus'
+  color: '$minus'
  },
  amount: {
   color: '$plus',
