@@ -12,6 +12,9 @@ import CompleteTransfer from '../screens/CompleteTransfer';
 import Complete from '../screens/Complete';
 import News from '../screens/News';
 import Market from '../screens/Market';
+import Calculator from '../screens/Calculator';
+
+import { UserImage } from '../components/Logo';
 
 const HomeStack = StackNavigator({
  Home: {
@@ -79,6 +82,12 @@ const HomeStack = StackNavigator({
  },
  Market: {
   screen: Market,
+  navigationOptions: {
+   header: () => null
+  }
+ },
+ Calculator: {
+  screen: Calculator,
   navigationOptions: {
    header: () => null
   }
