@@ -76,7 +76,7 @@ class Hub extends Component {
   setTimeout(() => {
    // set hub loaded
    this.props.setHubLoaded(true);
-  }, 1000);
+  }, 3000);
  }
 
  componentWillUnmount() {
@@ -127,7 +127,6 @@ class Hub extends Component {
  // RENDER ===================
 
  render() {
-  console.log('RECENT TRANS=======================', this.props.lastTrans);
   return (
    <Container>
     {this.props.hubLoaded === true ? (
@@ -139,7 +138,7 @@ class Hub extends Component {
     {this.props.hubLoaded === true ? (
      <View
       style={{
-       marginTop: 50,
+       marginTop: 70,
        justifyContent: 'center',
        alignItems: 'center'
       }}
