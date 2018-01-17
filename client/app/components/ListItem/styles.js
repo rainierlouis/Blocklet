@@ -41,7 +41,7 @@ export default EStyleSheet.create({
   paddingLeft: 40,
   paddingVertical: 20,
   backgroundColor: '#2b2b2b',
-  marginTop: 10
+  marginTop: 5
  },
  upper: {
   flexDirection: 'column'

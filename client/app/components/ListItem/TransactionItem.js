@@ -26,7 +26,7 @@ const TransactionItem = ({
     <Text h4 style={styles.amount}>
      {amount} ฿T
     </Text>
-    <Text style={styles.sender}>{sender}</Text>
+    <Text style={styles.sender}>Jan 17th, 2018</Text>
    </View>
   </View>
  </TouchableHighlight>
