@@ -79,6 +79,9 @@ class Transactions extends Component {
   this.props.navigation.dispatch(resetAction);
  };
 
+ headerT = () =>
+  `Transactions - ${this.props.navigation.state.params.coin.currency_name}`;
+
  // RENDER ========================
 
  render() {
@@ -86,10 +89,10 @@ class Transactions extends Component {
    <Container>
     <StatusBar translucent={false} barStyle="light-content" />
     <HeaderTop onPressMenu={this.pressMenu} onPressHome={this.pressHome} />
-    <View style={{ marginTop: 95 }}>
+    <View style={{ marginTop: 100 }}>
      <HeaderTitle
       style={{ backgroundColor: '#2b2b2b' }}
-      titleName={'Transactions'}
+      titleName={this.headerT()}
      />
      <FlatList
       data={this.sortData(this.props.recTrans, this.props.sentTrans)}
