@@ -41,6 +41,7 @@ class Complete extends Component {
     <Animatable.Text
      animation="bounceInLeft"
      delay={800}
+     duration={2000}
      style={styles.sentText}
     >
      Sent!
