@@ -8,7 +8,7 @@ A solo project that is a culmination of my personal growth and learning as a jun
 
 Becoming further acquainted with React Native, React Navigation and Redux.
 
-## Features
+## Implemented Features
 
 * Balances (currently Bitcoin, Litecoin & Dogecoin)
 * Transfer coin via QR code
