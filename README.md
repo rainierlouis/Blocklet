@@ -8,6 +8,16 @@ A solo project that is a culmination of my personal growth and learning as a jun
 
 Becoming further acquainted with React Native, React Navigation and Redux.
 
+## Features
+
+* Balances (currently Bitcoin, Litecoin & Dogecoin)
+* Transfer coin via QR code
+* Recent Transactions
+* Exchange Information for the provided currencies
+* Market Graph Information for popular currencies
+* Currency calculator
+* Latest Cryptocurrency News
+
 ## Screenshots
 
 ![Awww](https://i.imgur.com/Jjv5ZER.png "Yeah")
