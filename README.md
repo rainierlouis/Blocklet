@@ -4,7 +4,7 @@ An all-in-one Cryptocurrency wallet, built for IOS & Android mobile.
 
 ## Learning Objectives
 
-A solo project that is a culmination of my personal growth and learning as a full stack engineer. Bringing together what I have learnt so far in building a full stack application from back to front and all the in-betweens.
+A solo project that is a culmination of my personal growth and learning as a junior developer. Bringing together what I have learnt so far in building a mobile application from back to front and all the in-betweens.
 
 Becoming further acquainted with React Native, React Navigation and Redux.
 
