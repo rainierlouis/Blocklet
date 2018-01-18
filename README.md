@@ -27,6 +27,18 @@ Becoming further acquainted with React Native, React Navigation and Redux.
 ![Awww](https://i.imgur.com/Y29OCiX.png "Yeah")
 ![Awww](https://i.imgur.com/sFGyOS6.png "Yeah")
 
+## Usage
+
+* `git clone https://github.com/rainierlouis/Blocklet.git` or download the zip file.
+
+* `cd /client`.
+
+* `npm install` to begin dependencies installation.
+
+* `npm start` to boot up the development server.
+
+* Scan the barcode with the Expo app on your phone or follow the terminal instructions to load up the emulator on your machine.
+
 ## Technology Stack
 
 **Front:**
