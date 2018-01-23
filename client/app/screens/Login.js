@@ -3,83 +3,113 @@ import { View, StatusBar, Image, KeyboardAvoidingView } from 'react-native';
 import PropTypes from 'prop-types';
 import * as Animatable from 'react-native-animatable';
 import { Font } from 'expo';
+import { connect } from 'react-redux';
 
 import { Container } from '../components/Container';
-import { LoginButton, SignupButton, FbgButton } from '../components/ButtonItem';
+import { LoginButton, SignupButton, FacebookLoginButton, GoogleLoginButton } from '../components/ButtonItem';
 import { LoginField, InputField } from '../components/FormField';
 import { Logo } from '../components/Logo';
 import { LoginTitle, CreateAccount } from '../components/TextItem';
+import serverHost from '../config/serverHost.js'
+
 
 const remote4 = 'https://i.imgur.com/InMpJf0.jpg';
 
 class Login extends Component {
- static propTypes = {
-  navigation: PropTypes.object
- };
+  static propTypes = {
+    navigation: PropTypes.object
+  };
 
- loginFb = async () => {
-  const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync(
-   '1537395802982279',
-   {
-    permissions: ['public_profile']
-   }
-  );
-  if (type === 'success') {
-   // Get the user's name using Facebook's Graph API
-   await fetch(
-    `https://graph.facebook.com/me?access_token=${token}&fields=id,name,picture.type(large)`
-   )
-    .then(response => response.json())
-    .then(data => this.props.navigation.navigate('Home', {}));
+  componentDidMount() {
+    Expo.SecureStore.getItemAsync('user')
+    .then(res => { if (res) return res.json() })
+    .then(user => {
+      console.log('user', user);
+      if (user) {
+        console.log('if');
+        this.props.setUser(user);
+        this.props.navigation.navigate('Home');
+      }
+    })
+    .catch(err => console.log(err));
   }
- };
 
- loginUser = () => {
-  this.props.navigation.navigate('Home');
- };
+  serverAuth = async (data) => {
+    // console.log('serverAuth', data);
+    return fetch(`${serverHost}/auth`, {
+      method: 'POST',
+      mode: 'CORS',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    })
+    .then(res => res.json())
+    .then(user => {
+      console.log('serverAuth response', user);
+      this.props.setUser(user);
+      return Expo.SecureStore.setItemAsync('user', JSON.stringify({user}));
+    })
+    .then(() => this.props.navigation.navigate('Home'))
+    .catch(err => console.log(err));
+  }
 
- signUp = () => {
-  console.log('navigate to sign up page!');
- };
+  renderLoginButtons() {
+    if (!this.props.user._id) {
+      return (
+        <View>
+          <FacebookLoginButton serverAuth={this.serverAuth}/>
+          <GoogleLoginButton serverAuth={this.serverAuth}/>
+        </View>
+      );
+    }
+  }
 
- render() {
-  return (
-   <KeyboardAvoidingView
-    behaviour="height"
-    style={{
-     flex: 1
-    }}
-   >
-    <Image
-     style={{
-      flex: 1,
-      resizeMode: 'cover',
-      width: undefined,
-      height: undefined,
-      backgroundColor: '#889DAD'
-     }}
-     source={{ uri: remote4 }}
-    />
-    <View
-     style={{
-      position: 'absolute',
-      top: 0,
-      bottom: 0,
-      left: 0,
-      right: 0,
-      justifyContent: 'center',
-      alignItems: 'center'
-     }}
-    >
-     <Logo />
-     <InputField onPress={this.loginUser} />
-     {/* <LoginButton onPress={this.loginUser} /> */}
-     <FbgButton onPressFb={this.loginFb} onPressPlus={this.loginUser} />
-     <CreateAccount onPress={this.signUp} />
-    </View>
-   </KeyboardAvoidingView>
-  );
- }
+  render() {
+    return (
+      <KeyboardAvoidingView
+        behaviour="height"
+        style={{
+          flex: 1
+        }}
+      >
+        <Image
+          style={{
+            flex: 1,
+            resizeMode: 'cover',
+            width: undefined,
+            height: undefined,
+            backgroundColor: '#889DAD'
+          }}
+          source={{ uri: remote4 }}
+        />
+        <View
+          style={{
+            position: 'absolute',
+            top: 0,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}
+        >
+          <Logo />
+          {this.renderLoginButtons()}
+        </View>
+      </KeyboardAvoidingView>
+    );
+  }
 }
 
-export default Login;
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  };
+ };
+
+const mapDispatchToProps = dispatch => ({
+  setUser: user => dispatch({ type: 'SET_USER', user })
+});
+
+ export default connect(mapStateToProps, mapDispatchToProps)(Login);
