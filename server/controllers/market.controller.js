@@ -19,8 +19,14 @@ const getMarkets = async (ctx) => {
     //   default:
     //     console.log('Wrong endpoint');
     // }
-    ctx.response.body = await tokens.aggregate([
+    const aggregate = await tokens.aggregate([
       {
+        $match: {
+          timestamp: {
+            $gte: new Date((new Date()).getTime() - 1000*3600*5)
+          }
+        },
+      }, {
         $group: {
           _id: {
             id: "$id",
@@ -31,19 +37,34 @@ const getMarkets = async (ctx) => {
           },
           value: { $avg: "$price" }
         }
-
       }
     ])
-    let hour = await tokens.aggregate([
-      {
-
+    // console.log(aggregate);
+    const processed = aggregate.reduce((accum, el) => {
+      if(!accum[el._id.id]) {
+        accum[el._id.id] = {
+          id: el._id.id,
+          values: [el.value]
+        }
+      } else {
+        accum[el._id.id].values.push(el.value)
       }
-    ])
-    console.log(hour);
-    await ctx.send(ctx.response.body);
+      console.log(accum);
+      return accum;
+    }, {});
+    console.log(processed);
+    // let hour = await tokens.aggregate([
+    //   {
+    //
+    //   }
+    // ])
+    // console.log(hour);
+    // await ctx.send(ctx.response.body);
   } catch (e) { }
 }
 
 module.exports = {
   getMarkets,
 }
+
+getMarkets();

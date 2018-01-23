@@ -40,12 +40,9 @@ const addData = async (id) => {
 const queryTokens  = async (token) => {
   let data = token.map((x) => {
     addData(x.id);
-    // console.log(x.id);
-    // console.log(x.symbol);
   })
 }
 
-// queryTokens(tokens);
 setInterval(() => {queryTokens(tokens)}, 300000);
 
 const readDB = () => {
