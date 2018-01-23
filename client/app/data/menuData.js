@@ -1,9 +1,11 @@
 export default [
  ['Hub', true],
  ['Transactions', false],
- ['Exchange Info', false],
+ ['Exchange', false],
  ['Calculator', false],
  ['Market', false],
  ['News', false],
- ['Personal', false]
+ ['Personal', false],
+ ['Testing', false],
+ ['Portfolio', false],
 ];

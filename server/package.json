@@ -4,11 +4,14 @@
   "main": "app.js",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.17.1",
     "koa": "^2.4.1",
     "koa-bodyparser": "^4.2.0",
     "koa-router": "^7.3.0",
     "koa2-cors": "^2.0.5",
+    "lodash": "^4.17.4",
     "mongoose": "^5.0.0-rc0",
+    "monk": "^6.0.5",
     "nodemon": "^1.14.7"
   }
 }
