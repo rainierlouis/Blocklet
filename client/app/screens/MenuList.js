@@ -21,12 +21,7 @@ class MenuList extends Component {
 
  handlePress = async item => {
   if (item[1] === false) await this.adjustSelected(menuData, item[0]);
-  item[0] === 'Exchange Info'
-   ? this.props.navigation.navigate('ExchangeInfo', {
-      coin: this.props.navigation.state.params.coin,
-      selected: item[1]
-     })
-   : this.props.navigation.navigate(`${item[0]}`, {
+    this.props.navigation.navigate(`${item[0]}`, {
       coin: this.props.navigation.state.params.coin,
       selected: item[1]
      });

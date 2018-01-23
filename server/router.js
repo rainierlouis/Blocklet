@@ -2,6 +2,8 @@
 
 const usersController = require('./controllers/usersController');
 const balancesController = require('./controllers/balancesController');
+const MarketController = require('./controllers/market.controller');
+const DataController = require('./controllers/data.controller');
 
 const router = require('koa-router')();
 
@@ -21,7 +23,9 @@ const routes = function (app) {
   router.get('/logout', authorize, usersController.logout);
   router.get('/me', authorize, usersController.me)
         .post('/balances', authorize, balancesController.addBalance)
-        .get('/balances', authorize, balancesController.getBalances);
+        .get('/balances', authorize, balancesController.getBalances)
+        .post('/data', DataController.addData)
+        .get('/markets/:period', MarketController.getMarkets);
 // router.get('/markets/:period', authorize, dataController.getmarkets);
 
   router.options('/', options);
