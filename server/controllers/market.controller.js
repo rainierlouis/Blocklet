@@ -36,10 +36,6 @@ const getMarkets = async (ctx) => {
     ])
     let hour = await tokens.aggregate([
       {
-        $sort: { timestamp: -1 },
-        prices: { $objectToArray: "$price" },
-        $range: [-1, -13],
-        // value: { $avg: "$price" }
 
       }
     ])
