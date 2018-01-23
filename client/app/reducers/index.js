@@ -8,6 +8,7 @@ import newsReducers from './newsReducers';
 import marketReducers from './marketReducers';
 import completeTransReducers from './completeTransReducers';
 import calcReducers from './calcReducers';
+import user from './user';
 
 export default combineReducers({
  hubReducers,
@@ -17,5 +18,6 @@ export default combineReducers({
  exchangeReducers,
  marketReducers,
  newsReducers,
- calcReducers
+ calcReducers,
+ user
 });

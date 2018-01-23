@@ -5,8 +5,7 @@ export default EStyleSheet.create({
   position: 'absolute',
   top: 0,
   left: 0,
-  right: 0,
-  paddingTop: 40
+  right: 0
  },
  headerInner: {
   backgroundColor: '$primaryPurple'
