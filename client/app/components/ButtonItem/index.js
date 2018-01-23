@@ -7,7 +7,6 @@ import SignupButton from './SignupButton';
 import ExchangeButton from './ExchangeButton';
 import FacebookLoginButton from './FacebookLoginButton';
 import GoogleLoginButton from './GoogleLoginButton';
-import NoLoginButton from './NoLoginButton';
 
 import styles from './styles';
 
@@ -21,6 +20,5 @@ export {
  LoginButton,
  FacebookLoginButton,
  GoogleLoginButton,
- NoLoginButton,
  styles
 };
