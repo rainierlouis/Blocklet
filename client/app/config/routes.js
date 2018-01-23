@@ -13,6 +13,7 @@ import Complete from '../screens/Complete';
 import News from '../screens/News';
 import Market from '../screens/Market';
 import Calculator from '../screens/Calculator';
+import Balances from '../screens/Balances';
 
 import { UserImage } from '../components/Logo';
 
@@ -91,7 +92,13 @@ const HomeStack = StackNavigator({
   navigationOptions: {
    header: () => null
   }
- }
+ },
+ Balances: {
+  screen: Balances,
+  navigationOptions: {
+   header: () => null
+  }
+ },
 });
 
 export default StackNavigator(
