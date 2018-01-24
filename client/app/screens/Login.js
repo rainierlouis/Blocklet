@@ -50,7 +50,7 @@ class Login extends Component {
       this.props.setUser(user);
       return Expo.SecureStore.setItemAsync('user', JSON.stringify({user}));
     })
-    .then(() => this.props.navigation.navigate('Home'))
+    .then(() => this.props.navigation.navigate('Balances'))
     .catch(err => console.log(err));
   }
 

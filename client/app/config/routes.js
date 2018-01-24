@@ -13,6 +13,11 @@ import Complete from '../screens/Complete';
 import News from '../screens/News';
 import Market from '../screens/Market';
 import Calculator from '../screens/Calculator';
+import Balances from '../screens/Balances';
+
+//PLAYING AROUND
+import Testing from '../screens/Testing';
+import Portfolio from '../screens/Portfolio';
 
 import { UserImage } from '../components/Logo';
 
@@ -38,7 +43,7 @@ const HomeStack = StackNavigator({
    headerTintColor: '#cccccc'
   }
  },
- ExchangeInfo: {
+ Exchange: {
   screen: ExchangeInfo,
   navigationOptions: {
    header: () => null
@@ -91,13 +96,31 @@ const HomeStack = StackNavigator({
   navigationOptions: {
    header: () => null
   }
+ },
+ Balances: {
+  screen: Balances,
+  navigationOptions: {
+   header: () => null
+  }
+ },
+Testing: {
+ screen: Testing,
+ navigationOptions: {
+  header: () => null
  }
+},
+Portfolio: {
+ screen: Portfolio,
+ navigationOptions: {
+  header: () => null
+ }
+},
 });
 
 export default StackNavigator(
  {
   Login: {
-   screen: Login
+   screen: ExchangeInfo
   },
   Loading: {
    screen: HomeStack,

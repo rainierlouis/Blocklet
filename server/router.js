@@ -1,7 +1,9 @@
 'use strict';
 
 const usersController = require('./controllers/usersController');
-// const usersController = require('./controllers/dataController');
+const balancesController = require('./controllers/balancesController');
+const MarketController = require('./controllers/market.controller');
+const DataController = require('./controllers/data.controller');
 
 const router = require('koa-router')();
 
@@ -14,12 +16,17 @@ const authorize = async (ctx, next) => {
   await next();
 };
 
+//CHANGING BALANCES WITHOUT AUTH!!!!!
+
 const routes = function (app) {
   router.post('/auth', usersController.auth);
   router.get('/logout', authorize, usersController.logout);
-  router.get('/me', authorize, usersController.me);
-  // router.get('/balance', authorize, usersController.getBalance);
-  // router.get('/markets/:period', authorize, dataController.getçmarkets);
+  router.get('/me', authorize, usersController.me)
+        .post('/balances', authorize, balancesController.addBalance)
+        .get('/balances', authorize, balancesController.getBalances)
+        .post('/data', DataController.addData)
+        .get('/data', DataController.getTokens)
+        .get('/markets/:period', MarketController.getMarkets);
 
   router.options('/', options);
   router.trace('/', trace);
