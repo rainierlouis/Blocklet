@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { Font } from 'expo';
+import { Provider } from 'react-redux';
+
 import Hub from './screens/Hub';
 import Login from './screens/Login';
 import MenuList from './screens/MenuList';
-import Navigator from './config/routes';
-import { Provider } from 'react-redux';
+// import Navigator from './config/routes';
+
 import store from './config/store';
+import MainNavigator from './screens/MainNavigator';
 
 EStyleSheet.build({
   // $primaryPurple: '#181337',
@@ -45,13 +48,15 @@ export default class App extends Component {
     this.setState({ isReady: true });
   }
 
+  pressUser = () => {}
+
   render() {
     if (!this.state.isReady) {
       return <Expo.AppLoading />;
     }
     return (
       <Provider store={store}>
-        <Navigator onNavigationStateChange={null} />
+        <MainNavigator/>
       </Provider>
     );
   }

@@ -6,7 +6,7 @@ import { Font } from 'expo';
 import { connect } from 'react-redux';
 
 import { Container } from '../components/Container';
-import { LoginButton, SignupButton, FacebookLoginButton, GoogleLoginButton } from '../components/ButtonItem';
+import { FacebookLoginButton, GoogleLoginButton } from '../components/ButtonItem';
 import { LoginField, InputField } from '../components/FormField';
 import { Logo } from '../components/Logo';
 import { LoginTitle, CreateAccount } from '../components/TextItem';
@@ -21,14 +21,17 @@ class Login extends Component {
   };
 
   componentDidMount() {
-    Expo.SecureStore.getItemAsync('user')
-    .then(res => { if (res) return res.json() })
-    .then(user => {
-      console.log('user', user);
-      if (user) {
-        console.log('if');
-        this.props.setUser(user);
-        this.props.navigation.navigate('Home');
+    // Expo.SecureStore.deleteItemAsync('userData')
+    Expo.SecureStore.getItemAsync('userData')
+    .then(userData => {
+      // console.log('userString', userData);
+      if (userData) {
+        let user = JSON.parse(userData).user;
+        if (user) {
+          console.log('user', user.user);
+          this.props.setUser(user.user);
+          this.props.navigation.navigate('Balances');
+        }
       }
     })
     .catch(err => console.log(err));
@@ -48,7 +51,7 @@ class Login extends Component {
     .then(user => {
       console.log('serverAuth response', user);
       this.props.setUser(user);
-      return Expo.SecureStore.setItemAsync('user', JSON.stringify({user}));
+      return Expo.SecureStore.setItemAsync('userData', JSON.stringify({user}));
     })
     .then(() => this.props.navigation.navigate('Balances'))
     .catch(err => console.log(err));
@@ -102,11 +105,9 @@ class Login extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    user: state.user
-  };
- };
+const mapStateToProps = state => ({
+  user: state.user
+});
 
 const mapDispatchToProps = dispatch => ({
   setUser: user => dispatch({ type: 'SET_USER', user })

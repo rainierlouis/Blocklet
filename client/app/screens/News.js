@@ -12,6 +12,7 @@ import PropTypes from 'prop-types';
 import { NavigationActions } from 'react-navigation';
 import moment from 'moment';
 import EStyleSheet from 'react-native-extended-stylesheet';
+import { Icon } from 'react-native-elements'
 
 import { Container } from '../components/Container';
 import { HeaderTop } from '../components/HeaderTop';
@@ -20,16 +21,8 @@ import { HeaderTitle } from '../components/TextItem';
 
 // REDUX
 import { connect } from 'react-redux';
-
 import { topNews } from '../data/newsData';
 
-// Navigation Helper
-const resetAction = NavigationActions.reset({
- index: 0,
- actions: [NavigationActions.navigate({ routeName: 'Home' })]
-});
-
-// Screen styles
 const styles = EStyleSheet.create({});
 
 class News extends Component {
@@ -66,17 +59,25 @@ class News extends Component {
   );
  };
 
+  static navigationOptions = {
+    tabBarLabel: 'News',
+    tabBarIcon: ({ tintColor }) => (
+      <Icon
+        name='newspaper-o'
+        type='font-awesome'
+        size={26}
+        color={tintColor} />
+    ),
+  }
+
  // RENDER ========================
 
  render() {
   return (
    <Container>
-    <StatusBar translucent={false} barStyle="light-content" />
-    <HeaderTop onPressMenu={this.pressMenu} onPressHome={this.pressHome} />
     <View
-     style={{ marginTop: 100, justifyContent: 'center', alignItems: 'center' }}
+     style={{ justifyContent: 'center', alignItems: 'center' }}
     >
-     <HeaderTitle style={{ backgroundColor: '#2b2b2b' }} titleName={'News'} />
      <FlatList
       data={this.props.articles}
       renderItem={({ item, i }) => (

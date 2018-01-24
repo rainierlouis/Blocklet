@@ -1,5 +1,6 @@
 import { StackNavigator } from 'react-navigation';
 
+import Main from '../screens/Main';
 import Home from '../screens/Home';
 import Hub from '../screens/Hub';
 import MenuList from '../screens/MenuList';
@@ -22,6 +23,12 @@ import Portfolio from '../screens/Portfolio';
 import { UserImage } from '../components/Logo';
 
 const HomeStack = StackNavigator({
+  Main: {
+    screen: Main,
+    navigationOptions: {
+     header: () => null
+    }
+   },
  Home: {
   screen: Home,
   navigationOptions: {

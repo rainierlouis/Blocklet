@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { FlatList, View, StatusBar, ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import { NavigationActions } from 'react-navigation';
-import { Text } from 'react-native-elements';
+import { Text, Icon } from 'react-native-elements';
 import EStyleSheet from 'react-native-extended-stylesheet';
 
 import { Container } from '../components/Container';
@@ -31,16 +31,17 @@ class Calculator extends Component {
  static propTypes = {};
 
  componentWillMount() {
-  fetchRate(this.props.navigation.state.params.coin.API_KEY).then(data =>
-   this.props.addConv(data.prices[0].price)
-  );
-  setInterval(
-   () =>
-    this.props.calcConv(
-     Number(this.props.amount) * Number(this.props.convRate)
-    ),
-   1000
-  );
+  // fetchRate(this.props.navigation.state.params.coin.API_KEY).then(data =>
+  //  this.props.addConv(data.prices[0].price)
+  // );
+  this.props.addConv(0.045678)
+  // setInterval(
+  //  () =>
+  //   this.props.calcConv(
+  //    Number(this.props.amount) * Number(this.props.convRate)
+  //   ),
+  //  1000
+  // );
  }
 
  pressMenu = () => {
@@ -53,17 +54,26 @@ class Calculator extends Component {
   this.props.navigation.dispatch(resetAction);
  };
 
- headerT = () =>
+ headerT = () => {
   `Calculator - ${this.props.navigation.state.params.coin.currency_name}`;
+  }
+
+  static navigationOptions = {
+    tabBarLabel: 'Calculator',
+    tabBarIcon: ({ tintColor }) => (
+      <Icon
+        name='calculator'
+        type='entypo'
+        size={26}
+        color={tintColor} />
+    ),
+  }
 
  // RENDER ========================
 
  render() {
   return (
    <Container>
-    <StatusBar translucent={false} barStyle="light-content" />
-    <HeaderTop onPressMenu={this.pressMenu} onPressHome={this.pressHome} />
-    <HeaderTitle titleName={this.headerT()} />
     <CalcField iconName="usd" onPress={e => this.props.addAmount(e)} />
     <CalcField
      iconName="calculator"

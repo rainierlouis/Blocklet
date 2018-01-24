@@ -1,5 +1,3 @@
-import React, { Component } from 'react';
-
 import {
  View,
  StatusBar,
@@ -14,8 +12,8 @@ import {
 import PropTypes from 'prop-types';
 import { Divider, Icon } from 'react-native-elements';
 import { NavigationActions } from 'react-navigation';
-import moment from 'moment';
 import EStyleSheet from 'react-native-extended-stylesheet';
+import React, { Component } from 'react';
 
 import { Container } from '../components/Container';
 import { HeaderTop } from '../components/HeaderTop';
@@ -62,15 +60,17 @@ class Balances extends Component {
  state = {
    modalVisible: false,
  };
- // pressMenu = () => {
- //  this.props.navigation.navigate('MenuList', {
- //   coin: this.props.navigation.state.params.coin
- //  });
- // };
- //
- // pressHome = () => {
- //  this.props.navigation.dispatch(resetAction);
- // };
+
+   static navigationOptions = {
+    tabBarLabel: 'Balances',
+    tabBarIcon: ({ tintColor }) => (
+      <Icon
+        name='account-balance'
+        size={26}
+        color={tintColor} />
+    ),
+  }
+  
  openModal(token) {
    console.log(token);
   this.setState({modalVisible:true});
@@ -177,14 +177,10 @@ closeModal() {
  }
 }
 
-
-
-const mapStateToProps = state => {
- return {
+const mapStateToProps = state => ({
   balances: state.balancesReducers.balances,
   user: state.user.user,
- };
-};
+});
 
 const mapDispatchToProps = dispatch => ({
  setBalances: data =>
