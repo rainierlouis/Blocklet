@@ -21,13 +21,17 @@ class Login extends Component {
   };
 
   componentDidMount() {
-    Expo.SecureStore.getItemAsync('user')
-    .then(user => {
-      console.log('user', user);
-      if (user) {
-        console.log('if');
-        this.props.setUser(user);
-        this.props.navigation.navigate('Balances');
+    // Expo.SecureStore.deleteItemAsync('userData')
+    Expo.SecureStore.getItemAsync('userData')
+    .then(userData => {
+      // console.log('userString', userData);
+      if (userData) {
+        let user = JSON.parse(userData).user;
+        if (user) {
+          console.log('user', user.user);
+          this.props.setUser(user.user);
+          this.props.navigation.navigate('Balances');
+        }
       }
     })
     .catch(err => console.log(err));
@@ -47,7 +51,7 @@ class Login extends Component {
     .then(user => {
       console.log('serverAuth response', user);
       this.props.setUser(user);
-      return Expo.SecureStore.setItemAsync('user', JSON.stringify({user}));
+      return Expo.SecureStore.setItemAsync('userData', JSON.stringify({user}));
     })
     .then(() => this.props.navigation.navigate('Balances'))
     .catch(err => console.log(err));

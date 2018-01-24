@@ -5,6 +5,7 @@ import Balances from './Balances';
 import Markets from './Markets';
 import Transactions from './Transactions';
 import News from './News';
+import Calculator from './Calculator';
 import { HeaderTop } from '../components/HeaderTop';
 
 // HOC -> High Order Component
@@ -25,11 +26,21 @@ const MainTabNavigator = TabNavigator({
   Markets: { screen: NavigatorWithRootScreen(Markets) },
   Transactions: { screen: NavigatorWithRootScreen(Transactions) },
   News: { screen: NavigatorWithRootScreen(News) },
+  Calculator: { screen: NavigatorWithRootScreen(Calculator) },
 },
 {
   tabBarOptions: {
-    activeTintColor: '#e91e63',
-  },
+    inactiveTintColor: '#ddb500',
+    activeTintColor: '#ddb500',
+    inactiveBackgroundColor: '#111',
+    activeBackgroundColor: '#333',
+    labelStyle: {
+      fontSize: 12,
+    },
+    style: {
+      backgroundColor: 111,
+    },
+  }
 });
 
 const MainNavigator = StackNavigator({

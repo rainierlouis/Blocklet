@@ -76,7 +76,7 @@ class News extends Component {
   return (
    <Container>
     <View
-     style={{ marginTop: 60, justifyContent: 'center', alignItems: 'center' }}
+     style={{ justifyContent: 'center', alignItems: 'center' }}
     >
      <FlatList
       data={this.props.articles}

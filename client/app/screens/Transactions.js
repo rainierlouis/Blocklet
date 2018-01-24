@@ -14,20 +14,14 @@ import { fetchSent, fetchReceived } from '../data/fetchData';
 // REDUX
 import { connect } from 'react-redux';
 
-// Navigation Helper
-const resetAction = NavigationActions.reset({
- index: 0,
- actions: [NavigationActions.navigate({ routeName: 'Home' })]
-});
-
 class Transactions extends Component {
- constructor(props) {
-  super(props);
- }
+  constructor(props) {
+    super(props);
+  }
 
- static propTypes = {
-  onPress: PropTypes.func
- };
+//  static propTypes = {
+//   onPress: PropTypes.func
+//  };
 
 //  componentDidMount() {
 //   // get sent trans
@@ -70,19 +64,19 @@ class Transactions extends Component {
 //   console.log(`transfer to screen: ${item}`);
 //  };
 
- pressMenu = () => {
-  // this.props.navigation.navigate('MenuList', {
-  //  coin: this.props.navigation.state.params.coin
-  // });
- };
+//  pressMenu = () => {
+//   this.props.navigation.navigate('MenuList', {
+//    coin: this.props.navigation.state.params.coin
+//   });
+//  };
 
- pressHome = () => {
-  // this.props.navigation.dispatch(resetAction);
- };
+//  pressHome = () => {
+//   this.props.navigation.dispatch(resetAction);
+//  };
 
- headerT = () => {
-  // `Transactions - ${this.props.navigation.state.params.coin.currency_name}`;
- }
+//  headerT = () => {
+//   `Transactions - ${this.props.navigation.state.params.coin.currency_name}`;
+//  }
 
  static navigationOptions = {
   tabBarLabel: 'Transactions',
@@ -102,14 +96,7 @@ class Transactions extends Component {
  render() {
   return (
    <Container>
-   <Text>Transactions</Text>
-    <StatusBar translucent={false} barStyle="light-content" />
-    <HeaderTop onPressMenu={this.pressMenu} onPressHome={this.pressHome} />
     <View style={{ marginTop: 100 }}>
-     <HeaderTitle
-      style={{ backgroundColor: '#2b2b2b' }}
-      titleName={this.headerT()}
-     />
      {/* <FlatList
       data={this.sortData(this.props.recTrans, this.props.sentTrans)}
       renderItem={({ item }) => (
@@ -135,24 +122,22 @@ class Transactions extends Component {
  }
 }
 
-const mapStateToProps = state => {
- return {
-  recTrans: state.transactionReducers.recTrans,
-  sentTrans: state.transactionReducers.sentTrans
- };
-};
+const mapStateToProps = state => ({
+  // recTrans: state.transactionReducers.recTrans,
+  // sentTrans: state.transactionReducers.sentTrans
+});
 
 const mapDispatchToProps = dispatch => ({
- getRec: data =>
-  dispatch({
-   type: 'ADD_SENT',
-   data
-  }),
- getSent: data =>
-  dispatch({
-   type: 'ADD_REC',
-   data
-  })
+//  getRec: data =>
+//   dispatch({
+//    type: 'ADD_SENT',
+//    data
+//   }),
+//  getSent: data =>
+//   dispatch({
+//    type: 'ADD_REC',
+//    data
+//   })
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Transactions);

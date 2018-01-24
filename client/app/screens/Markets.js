@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { Icon } from 'react-native-elements'
+import { connect } from 'react-redux';
+import { Container } from '../components/Container';
 import { HeaderTop } from '../components/HeaderTop';
 
 const styles = EStyleSheet.create({});
@@ -18,18 +20,29 @@ class Markets extends Component {
       <Icon
         name='line-graph'
         type='entypo'
-        size={26}
+        size={24}
         color={tintColor} />
     ),
   }
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Markets</Text>
-      </View>
+      <Container>
+        <View style={styles.container}>
+          <Text>Markets</Text>
+        </View>
+      </Container>
     )
   }
 }
 
-export default (Markets);
+
+const mapStateToProps = state => ({
+
+})
+
+const mapDispatchToProps = dispatch => ({
+
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Markets); 
