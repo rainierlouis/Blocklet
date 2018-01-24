@@ -23,7 +23,7 @@ const getMarkets = async (ctx) => {
       {
         $match: {
           timestamp: {
-            $gte: new Date((new Date()).getTime() - 1000*3600*5)
+            $gte: new Date((new Date()).getTime() - 1000*3600)
           }
         },
       }, {
@@ -39,6 +39,34 @@ const getMarkets = async (ctx) => {
         }
       }
     ])
+
+    // const aggregate2 = await db.tokens.aggregate([
+    //   {
+    //     $match: {
+    //       timestamp: {
+    //         $gte: new Date((new Date()).getTime() - 1000*3600*24)
+    //       }
+    //     },
+    //   }, {
+    //     $group: {
+    //       _id: {
+    //         id: "$id",
+    //         year: { $year: "$timestamp" },
+    //         day: { $dayOfMonth: "$timestamp" },
+    //         hour: {
+    //           $concat: {
+    //             $cond: [{$lte: [{ $hour: "$timestamp"}, 6 ]}, "0-6", ""],
+    //             $cond: [{$lte: [{ $hour: "$timestamp"}, 12 ]}, "6-12", ""],
+    //             $cond: [{$lte: [{ $hour: "$timestamp"}, 18 ]}, "12-18", ""],
+    //             $cond: [{$lte: [{ $hour: "$timestamp"}, 23 ]}, "18-23", ""],
+    //             // $cond: [{$hour: "$timestamp"}]
+    //           }
+    //         },
+    //         value: { $avg: "$price" }
+    //       }
+    //     }
+    //   }
+    // ])
     // console.log(aggregate);
     const processed = aggregate.reduce((accum, el) => {
       if(!accum[el._id.id]) {
@@ -49,17 +77,13 @@ const getMarkets = async (ctx) => {
       } else {
         accum[el._id.id].values.push(el.value)
       }
-      console.log(accum);
+      // console.log(accum);
       return accum;
     }, {});
-    console.log(processed);
-    // let hour = await tokens.aggregate([
-    //   {
-    //
-    //   }
-    // ])
-    // console.log(hour);
-    // await ctx.send(ctx.response.body);
+    // console.log(processed);
+    ctx.response.body = processed;
+    ctx.send(ctx.response.body);
+
   } catch (e) { }
 }
 

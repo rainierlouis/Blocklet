@@ -3,7 +3,8 @@ const tokens = require('../data/tokens.js');
 const db = require('monk')('localhost/tokens'); //coin tokens
 const _ = require('lodash');
 const model = require('../model/market.js');
-// ?limit=10`;
+
+//HERE WE FETCH DATA FOR THE HISTORICAL MARKET API
 
 const token = db.get('tokens')
 
@@ -52,7 +53,17 @@ const readDB = () => {
   })
 }
 
-readDB();
+const getTokens = async (ctx) => {
+    try {
+      console.log(tokens);
+      let res = await tokens;
+      // console.log(res);
+      ctx.response.body = res;
+      ctx.send(ctx.response.body);
+    } catch (e) { }
+}
+
+// readDB();
 
 //HOMEMADE API
 //Mins in a month 43800; (5 * 8760);
@@ -67,5 +78,5 @@ readDB();
 
 
 module.exports = {
-fetchData, addData
+fetchData, addData, getTokens,
 }

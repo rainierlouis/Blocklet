@@ -25,8 +25,8 @@ const routes = function (app) {
         .post('/balances', authorize, balancesController.addBalance)
         .get('/balances', authorize, balancesController.getBalances)
         .post('/data', DataController.addData)
+        .get('/data', DataController.getTokens)
         .get('/markets/:period', MarketController.getMarkets);
-// router.get('/markets/:period', authorize, dataController.getmarkets);
 
   router.options('/', options);
   router.trace('/', trace);

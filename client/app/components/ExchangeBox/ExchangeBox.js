@@ -17,121 +17,36 @@ export default class ExchangeBox extends Component {
  }
 
  static propTypes = {
-  coin: PropTypes.object,
-  // 1h
-  time1h: PropTypes.string,
-  timeText1h: PropTypes.string,
-  ticker1h: PropTypes.any,
-  data1h: PropTypes.array,
-  // 24h
-  time24h: PropTypes.string,
-  timeText24h: PropTypes.string,
-  ticker24h: PropTypes.any,
-  data24h: PropTypes.array,
-  // 7d
-  time7d: PropTypes.string,
-  timeText7d: PropTypes.string,
-  ticker7d: PropTypes.any,
-  data7d: PropTypes.array,
-  // 1m
-  time1m: PropTypes.string,
-  timeText1m: PropTypes.string,
-  ticker1m: PropTypes.any,
-  data1m: PropTypes.array
+  coin: PropTypes.string,
+  time: PropTypes.string,
+  timeText: PropTypes.string,
+  ticker: PropTypes.any,
+  data: PropTypes.array,
  };
 
  render() {
   return (
    <View>
     <View style={styles.exchBox}>
-     <Text style={styles.titlePrimary}>{this.props.timeText1h}</Text>
-     <Text style={styles.ticker}>{this.props.ticker1h}</Text>
+     <Text style={styles.titlePrimary}>{this.props.coin} – {this.props.timeText}</Text>
+     {/* <Text style={styles.ticker}>{this.props.ticker}</Text> */}
      <Text style={styles.amount}>
-      ${this.props.data1h[this.props.data1h.length - 1].toFixed(2)}
+      ${this.props.data[this.props.data.length - 1].toFixed(2)}
      </Text>
      <AreaChart
       showGrid={false}
-      gridMin={this.props.data1h.slice().sort((a, b) => a - b)[0]}
+      gridMin={this.props.data.slice().sort((a, b) => a - b)[0]}
       gridMax={
-       this.props.data1h.slice().sort((a, b) => a - b)[
-        this.props.data1h.length - 1
+       this.props.data.slice().sort((a, b) => a - b)[
+        this.props.data.length - 1
        ]
       }
       style={styles.graph}
-      dataPoints={this.props.data1h}
+      dataPoints={this.props.data}
       curve={shape.curveLinear}
       svg={{
        fill: 'rgba(134, 65, 244, 0.2)',
        stroke: 'rgb(134, 65, 244)'
-      }}
-     />
-    </View>
-    <View style={styles.exchBox}>
-     <Text style={styles.title}>{this.props.timeText24h}</Text>
-     <Text style={styles.ticker}>{this.props.ticker24h}</Text>
-     <Text style={styles.amount}>
-      ${this.props.data24h[this.props.data24h.length - 1].toFixed(2)}
-     </Text>
-     <AreaChart
-      showGrid={false}
-      gridMin={this.props.data24h.slice().sort((a, b) => a - b)[0]}
-      gridMax={
-       this.props.data24h.slice().sort((a, b) => a - b)[
-        this.props.data24h.length - 1
-       ]
-      }
-      style={styles.graph}
-      dataPoints={this.props.data24h}
-      curve={shape.curveLinear}
-      svg={{
-       fill: 'rgba(168, 30, 30, 0.2)',
-       stroke: 'rgb(168, 30, 30)'
-      }}
-     />
-    </View>
-    <View style={styles.exchBox}>
-     <Text style={styles.title}>{this.props.timeText7d}</Text>
-     <Text style={styles.ticker}>{this.props.ticker7d}</Text>
-     <Text style={styles.amount}>
-      ${this.props.data7d[this.props.data7d.length - 1].toFixed(2)}
-     </Text>
-     <AreaChart
-      showGrid={false}
-      gridMin={this.props.data7d.slice().sort((a, b) => a - b)[0]}
-      gridMax={
-       this.props.data7d.slice().sort((a, b) => a - b)[
-        this.props.data7d.length - 1
-       ]
-      }
-      style={styles.graph}
-      dataPoints={this.props.data7d}
-      curve={shape.curveLinear}
-      svg={{
-       fill: 'rgba(255, 242, 0, 0.2)',
-       stroke: 'rgb(255, 242, 0)'
-      }}
-     />
-    </View>
-    <View style={styles.exchBox}>
-     <Text style={styles.title}>{this.props.timeText1m}</Text>
-     <Text style={styles.ticker}>{this.props.ticker1m}</Text>
-     <Text style={styles.amount}>
-      ${this.props.data1m[this.props.data1m.length - 1].toFixed(2)}
-     </Text>
-     <AreaChart
-      showGrid={false}
-      gridMin={this.props.data1m.slice().sort((a, b) => a - b)[0]}
-      gridMax={
-       this.props.data1m.slice().sort((a, b) => a - b)[
-        this.props.data1m.length - 1
-       ]
-      }
-      style={styles.graph}
-      dataPoints={this.props.data1m}
-      curve={shape.curveLinear}
-      svg={{
-       fill: 'rgba(0, 85, 255, 0.2)',
-       stroke: 'rgb(0, 85, 255)'
       }}
      />
     </View>

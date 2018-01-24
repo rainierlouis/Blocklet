@@ -20,145 +20,149 @@ import { connect } from 'react-redux';
 
 // Navigation Helper
 const resetAction = NavigationActions.reset({
- index: 0,
- actions: [NavigationActions.navigate({ routeName: 'Home' })]
+  index: 0,
+  actions: [NavigationActions.navigate({ routeName: 'Home' })]
 });
 
 const styles = EStyleSheet.create({
- exchContainer: {
-  flexDirection: 'row'
- }
+  exchContainer: {
+    flexDirection: 'row'
+  }
 });
 
 class ExchangeInfo extends Component {
- constructor(props) {
-  super(props);
- }
+  state = {
+    data: []
+  }
 
- static propTypes = {
-  onPressMenu: PropTypes.func,
-  onPress: PropTypes.func
- };
+  constructor(props) {
+    super(props);
 
- componentDidMount() {
-  // Tickers
-  // fetchTickerRate('Bitcoin').then(data => this.props.addTickers(data));
-  // 1h
-  // fetch1h().then(data => this.props.add1h(data['BTC']));
-  // 24h
-  // fetch24h().then(data => this.props.add24h(data['BTC']));
-  // // 7d
-  // fetch7d().then(data => this.props.add7d(data['BTC']));
-  // // 1m
-  // fetch1m().then(data => this.props.add1m(data['BTC']));
- }
+    fetch('http://wijuwiju.local:3006/markets/hour')
+    .then(response => response.json())
+    .then(data => this.setState({
+        data: Object.keys(data).map(coin => {
+          return {
+            coin,
+            time: '1h',
+            timeText: '1 Hour',
+            // ticker: ,
+            data: data[coin].values,
+          }
+        })
+      })
+    );
+  }
 
- pressMenu = () => {
-  this.props.navigation.navigate('MenuList', {
-   coin: this.props.navigation.state.params.coin
-  });
- };
+  static propTypes = {
+    onPressMenu: PropTypes.func,
+    onPress: PropTypes.func
+  };
 
- pressHome = () => {
-  this.props.navigation.dispatch(resetAction);
- };
+  componentDidMount() {
+    // Tickers
+    // fetchTickerRate('Bitcoin').then(data => this.props.addTickers(data));
+    // 1h
+    // fetch1h().then(data => this.props.add1h(data['BTC']));
+    // 24h
+    // fetch24h().then(data => this.props.add24h(data['BTC']));
+    // // 7d
+    // fetch7d().then(data => this.props.add7d(data['BTC']));
+    // // 1m
+    // fetch1m().then(data => this.props.add1m(data['BTC']));
+  }
 
- headerT = () =>
-  `Exchange - ${this.props.navigation.state.params.coin.currency_name}`;
+  pressMenu = () => {
+    this.props.navigation.navigate('MenuList', {
+      coin: this.props.navigation.state.params.coin
+    });
+  };
 
- // RENDER ========================
+  pressHome = () => {
+    this.props.navigation.dispatch(resetAction);
+  };
 
- render() {
-  return (
-   <Container>
-    <StatusBar translucent={false} barStyle="light-content" />
-    <HeaderTop onPressMenu={this.pressMenu} onPressHome={this.pressHome} />
-    <View
-     style={{
-      marginTop: 70,
-      justifyContent: 'center',
-      alignItems: 'center'
-     }}
-    >
-     <HeaderTitle
-      style={{ backgroundColor: '#2b2b2b' }}
-      titleName={this.headerT()}
-     />
+  // RENDER ========================
 
-     <View
-      style={{
-       justifyContent: 'center',
-       alignItems: 'center'
-      }}
-     >
+  renderExchangeBox ({item}) {
+    return (
       <ExchangeBox
-       coin={null}
-       // 1h
-       time1h={'1h'}
-       timeText1h={'1 Hour'}
-       ticker1h={this.props.ticker1h}
-       data1h={this.props.data1h}
-       // 24h
-       time24h={'24h'}
-       timeText24h={'24 Hours'}
-       ticker24h={this.props.ticker24h}
-       data24h={this.props.data24h}
-       // 7d
-       time7d={'7d'}
-       timeText7d={'7 Days'}
-       ticker7d={this.props.ticker7d}
-       data7d={this.props.data7d}
-       // 1m
-       time1m={'1m'}
-       timeText1m={'1 Month'}
-       ticker1m={this.props.ticker1m}
-       data1m={this.props.data1m}
+        coin={item.coin}
+        time={item.time}
+        timeText={item.timeText}
+        ticker={item.ticker}
+        data={item.data}
       />
-     </View>
-    </View>
-   </Container>
-  );
- }
+    )
+  }
+
+  render() {
+
+    return (
+      <Container>
+        <StatusBar translucent={false} barStyle="light-content" />
+        <HeaderTop onPressMenu={this.pressMenu} onPressHome={this.pressHome} />
+        <View
+          style={{
+            marginTop: 100,
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}
+          >
+          <HeaderTitle
+            style={{ backgroundColor: '#2b2b2b' }}
+            titleName={"little FUCKER"}
+          />
+
+          <FlatList
+            data={this.state.data}
+            renderItem={this.renderExchangeBox}
+            keyExtractor={(item) => item.coin}
+          />
+        </View>
+      </Container>
+    );
+  }
 }
 
 const mapStateToProps = state => {
- return {
-  data1h: state.exchangeReducers.data1h,
-  ticker1h: state.exchangeReducers.ticker1h,
-  data24h: state.exchangeReducers.data24h,
-  ticker24h: state.exchangeReducers.ticker24h,
-  data7d: state.exchangeReducers.data7d,
-  ticker7d: state.exchangeReducers.ticker7d,
-  data1m: state.exchangeReducers.data1m,
-  ticker1m: state.exchangeReducers.ticker1m
- };
+  return {
+    data1h: state.exchangeReducers.data1h,
+    ticker1h: state.exchangeReducers.ticker1h,
+    data24h: state.exchangeReducers.data24h,
+    ticker24h: state.exchangeReducers.ticker24h,
+    data7d: state.exchangeReducers.data7d,
+    ticker7d: state.exchangeReducers.ticker7d,
+    data1m: state.exchangeReducers.data1m,
+    ticker1m: state.exchangeReducers.ticker1m
+  };
 };
 
 const mapDispatchToProps = dispatch => ({
- addTickers: data =>
+  addTickers: data =>
   dispatch({
-   type: 'TICKER',
-   data
+    type: 'TICKER',
+    data
   }),
- add1h: data =>
+  add1h: data =>
   dispatch({
-   type: 'DATA_1H',
-   data
+    type: 'DATA_1H',
+    data
   }),
- add24h: data =>
+  add24h: data =>
   dispatch({
-   type: 'DATA_24H',
-   data
+    type: 'DATA_24H',
+    data
   }),
- add7d: data =>
+  add7d: data =>
   dispatch({
-   type: 'DATA_7D',
-   data
+    type: 'DATA_7D',
+    data
   }),
- add1m: data =>
+  add1m: data =>
   dispatch({
-   type: 'DATA_1M',
-   data
+    type: 'DATA_1M',
+    data
   })
 });
 

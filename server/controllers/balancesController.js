@@ -5,6 +5,7 @@ const Balance = db.get('balances');
 
 const addBalance = (ctx) => {
   console.log(ctx.request.body);
+  console.log(ctx.headers);
 }
 
 const getBalances = (ctx) => {

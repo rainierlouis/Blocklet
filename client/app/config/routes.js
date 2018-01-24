@@ -103,7 +103,6 @@ const HomeStack = StackNavigator({
    header: () => null
   }
  },
-},
 Testing: {
  screen: Testing,
  navigationOptions: {
@@ -121,7 +120,7 @@ Portfolio: {
 export default StackNavigator(
  {
   Login: {
-   screen: Portfolio
+   screen: ExchangeInfo
   },
   Loading: {
    screen: HomeStack,
