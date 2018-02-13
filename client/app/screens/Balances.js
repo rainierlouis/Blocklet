@@ -70,7 +70,7 @@ class Balances extends Component {
         color={tintColor} />
     ),
   }
-  
+
  openModal(token) {
    console.log(token);
   this.setState({modalVisible:true});
@@ -124,13 +124,17 @@ closeModal() {
           </View>
         </View>
       </Modal>
-     <StatusBar translucent={false} barStyle="light-content" />
-     <HeaderTop onPressMenu={this.pressMenu} onPressHome={this.pressHome} />
      <View style={{ marginTop: 100 }}>
-      <HeaderTitle
-       style={{ backgroundColor: '#2b2b2b' }}
-       titleName={'BALANCES'}
-      />
+       <Text style={{
+         display: "flex",
+         justifyContent: "center",
+         textAlign: "center",
+         color: "white",
+         fontSize: "30",
+         paddingBottom: 100,
+         paddingTop: 0
+       }}
+         >3568.75$</Text>
       <FlatList
        data={this.props.balances}
        renderItem={({ item }) => (

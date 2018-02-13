@@ -45,8 +45,8 @@ export default class ExchangeBox extends Component {
       dataPoints={this.props.data}
       curve={shape.curveLinear}
       svg={{
-       fill: 'rgba(134, 65, 244, 0.2)',
-       stroke: 'rgb(134, 65, 244)'
+       fill: 'rgba(221, 181, 0, 0.2)',
+       stroke: 'rgb(221, 181, 0)'
       }}
      />
     </View>
