@@ -130,7 +130,7 @@ closeModal() {
          justifyContent: "center",
          textAlign: "center",
          color: "white",
-         fontSize: "30",
+         fontSize: 30,
          paddingBottom: 100,
          paddingTop: 0
        }}
