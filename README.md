@@ -1,12 +1,6 @@
-# BLOCKLET
+# Blocklet
 
 > An all-in-one Cryptocurrency wallet, built for IOS & Android mobile.
-
-## Learning Objectives
-
-A solo project that is a culmination of my personal growth and learning as a junior developer. Bringing together what I have learnt so far in building a mobile application from back to front and all the in-betweens.
-
-Becoming further acquainted with React Native, React Navigation and Redux.
 
 ## Implemented Features
 
@@ -63,7 +57,7 @@ Becoming further acquainted with React Native, React Navigation and Redux.
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](https://github.com/rainierlouis/blocklet/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## License
 
